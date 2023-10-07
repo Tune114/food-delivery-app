@@ -1,5 +1,6 @@
 package com.study.fooddeliveryapplication;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class itemAdapter extends RecyclerView.Adapter<itemAdapter.ViewHolder> {
-    private List<Item> itemList;
+    private final List<Item> itemList;
 
     // Constructor
     public itemAdapter(List<Item> itemList) {
         this.itemList = itemList;
     }
+
+    private int selectedPosition = RecyclerView.NO_POSITION;
 
     // ViewHolder class
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -44,6 +47,18 @@ public class itemAdapter extends RecyclerView.Adapter<itemAdapter.ViewHolder> {
         Item item = itemList.get(position);
         holder.imageView.setImageResource(item.getImageResource());
         holder.textView.setText(item.getText());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                item.setSelected(!item.isSelected());
+
+                if (item.isSelected()) {
+                    holder.itemView.setBackgroundResource(R.drawable.item_rounded_background); // Màu nền khi được chọn
+                } else {
+                    holder.itemView.setBackgroundResource(R.drawable.item_rounded_background_normal); // Màu nền mặc định
+                }
+            }
+        });
     }
 
     @Override

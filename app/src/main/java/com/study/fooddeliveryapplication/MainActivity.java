@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView2.setLayoutManager(layoutManager2);
         List<RestauItem> itemList2 = new ArrayList<>();
-        itemList2.add(new RestauItem(R.drawable.pic1, "Text 1a", "Text 1b"));
-        itemList2.add(new RestauItem(R.drawable.pic2, "Text 2a", "Text 2b"));
-        itemList2.add(new RestauItem(R.drawable.pic3, "Text 3a", "Text 3b"));
+        itemList2.add(new RestauItem(R.drawable.pho, "Text 1a", "Text 1b"));
+        itemList2.add(new RestauItem(R.drawable.banhmi, "Text 2a", "Text 2b"));
+        itemList2.add(new RestauItem(R.drawable.buncha, "Text 3a", "Text 3b"));
         RestauItemAdapter adapter2 = new RestauItemAdapter(itemList2);
         recyclerView2.setAdapter(adapter2);
 

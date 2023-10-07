@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class RestauItemAdapter extends RecyclerView.Adapter<RestauItemAdapter.ViewHolder>  {
-    private List<RestauItem> itemList;
+    private final List<RestauItem> itemList;
 
     public RestauItemAdapter(List<RestauItem> itemList) {
         this.itemList = itemList;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
         public TextView textView1;
         public TextView textView2;
