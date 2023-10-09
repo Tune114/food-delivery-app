@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:text="Sample Text"
         android:textSize="16sp"
-        />
+        android:clickable="true"
+        android:focusable="true" />
 
 </androidx.cardview.widget.CardView>
