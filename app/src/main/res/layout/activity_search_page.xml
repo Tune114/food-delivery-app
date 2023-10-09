@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:clipToOutline="true">
+    tools:context=".SearchPageActivity">
+
     <androidx.cardview.widget.CardView
         android:layout_width="45dp"
         android:layout_height="45dp"
@@ -18,32 +20,26 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_menu"
-            android:id="@+id/iv_menu"
+            android:src="@mipmap/ic_left_arrow"
+            android:id="@+id/iv_left_arrow"
             android:contentDescription="TODO" />
     </androidx.cardview.widget.CardView>
+
     <TextView
-        android:id="@+id/tv_deliver_to"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:id="@+id/search"
+        android:layout_width="54dp"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="85dp"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="59dp"
-        android:text="DELIVER TO"
+        android:layout_marginTop="66dp"
+        android:text="Search"
+        android:textSize="16sp"
+        android:lineSpacingExtra="2sp"
+        android:translationY="-0.77sp"
         android:gravity="top"
-        android:textColor="@color/mainColor"
-        android:textStyle="bold"
         />
-    <Spinner
-        android:id="@+id/sp_place_deliver"
-        android:layout_width="120dp"
-        android:layout_height="17dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="80dp"
-        />
+
     <androidx.cardview.widget.CardView
         android:layout_width="45dp"
         android:layout_height="45dp"
@@ -62,6 +58,7 @@
             android:id="@+id/iv_bag"
             android:contentDescription="TODO" />
     </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
         android:layout_width="25dp"
         android:layout_height="25dp"
@@ -87,18 +84,7 @@
             android:id="@+id/tv_bag_noti"
             />
     </androidx.cardview.widget.CardView>
-    <TextView
-        android:id="@+id/tv_hello_text"
-        android:layout_width="213dp"
-        android:layout_height="26dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="24dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="123dp"
-        android:text="Hey Quang, are you ok?"
-        android:lineSpacingExtra="7sp"
-        android:textSize="16sp"
-        />
+
     <EditText
         android:id="@+id/et_seachBar"
         android:layout_width="327dp"
@@ -106,7 +92,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="24dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="165dp"
+        android:layout_marginTop="123dp"
         android:hint="Search dishes,restaurants "
         android:textColor="@color/searchTextColor"
         android:textSize="16sp"
@@ -115,32 +101,19 @@
         android:background="@drawable/custom_search"
         android:elevation="0.3dp"
         android:autofillHints="" />
+
     <TextView
         android:id="@+id/tv_all_categor"
-        android:layout_width="132dp"
+        android:layout_width="140dp"
         android:layout_height="24dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="24dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="250dp"
-        android:text="ALL Categories"
+        android:layout_marginTop="209dp"
+        android:text="Recent Keywords"
         android:gravity="top"
         android:textSize="18sp"
         />
-    <TextView
-        android:id="@+id/tv_see_all"
-        android:layout_width="90dp"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="288dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="253dp"
-        android:text="See All"
-        android:gravity="top"
-        android:textSize="16sp"
-        android:clickable="true"
-        app:drawableRightCompat="@drawable/ic_right_arrow_foreground"
-        android:focusable="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView1"
@@ -150,43 +123,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="20dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="300dp"/>
+        android:layout_marginTop="245dp"/>
 
-    <TextView
-        android:id="@+id/tv_open_restau"
-        android:layout_width="160dp"
-        android:layout_height="24dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="24dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="395dp"
-        android:text="Open Restaurants"
-        android:gravity="top"
-        android:textSize="18sp"
-        />
-    <TextView
-        android:id="@+id/tv_see_all_2"
-        android:layout_width="90dp"
-        android:layout_height="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="288dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="398dp"
-        android:text="See All"
-        android:gravity="top"
-        android:textSize="16sp"
-        android:clickable="true"
-        app:drawableRightCompat="@drawable/ic_right_arrow_foreground"
-        android:focusable="true" />
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="430dp"
-        />
 </RelativeLayout>
