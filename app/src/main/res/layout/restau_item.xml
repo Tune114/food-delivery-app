@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:gravity="start"
     android:elevation="15dp"
-    >
+    android:clickable="true"
+    android:focusable="true">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -24,6 +25,8 @@
             android:layout_height="match_parent"
             android:src="@drawable/pho"
             android:scaleType="fitXY"
+            android:clickable="true"
+            android:focusable="true"
             />
     </androidx.cardview.widget.CardView>
 

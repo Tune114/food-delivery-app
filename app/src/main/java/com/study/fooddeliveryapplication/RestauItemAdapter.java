@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,6 +46,27 @@ public class RestauItemAdapter extends RecyclerView.Adapter<RestauItemAdapter.Vi
         holder.imageView.setImageResource(restauItem.getImageResource());
         holder.textView1.setText(restauItem.getText1());
         holder.textView2.setText(restauItem.getText2());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int adapterPosition = holder.getAdapterPosition();
+                RestauItem selectedItem = itemList.get(adapterPosition);
+                String info = "You Picked: " + selectedItem.getText1();
+                Toast.makeText(view.getContext(), info, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Xử lý sự kiện khi ImageView được click
+                int adapterPosition = holder.getAdapterPosition();
+                RestauItem selectedItem = itemList.get(adapterPosition);
+                String info = "Bạn đã chọn: " + selectedItem.getText1();
+                Toast.makeText(view.getContext(), info, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

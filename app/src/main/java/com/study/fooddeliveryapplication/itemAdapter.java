@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +33,7 @@ public class itemAdapter extends RecyclerView.Adapter<itemAdapter.ViewHolder> {
             imageView = view.findViewById(R.id.imageView);
             textView = view.findViewById(R.id.textView);
         }
+
     }
 
     @NonNull
@@ -50,12 +52,17 @@ public class itemAdapter extends RecyclerView.Adapter<itemAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int adapterPosition = holder.getAdapterPosition();
+                Item item = itemList.get(adapterPosition);
+
                 item.setSelected(!item.isSelected());
 
                 if (item.isSelected()) {
-                    holder.itemView.setBackgroundResource(R.drawable.item_rounded_background); // Màu nền khi được chọn
+                    holder.itemView.setBackgroundResource(R.drawable.item_rounded_background);
+                    Toast.makeText(view.getContext(), "You Picked " + item.getText() , Toast.LENGTH_SHORT).show();
                 } else {
-                    holder.itemView.setBackgroundResource(R.drawable.item_rounded_background_normal); // Màu nền mặc định
+                    holder.itemView.setBackgroundResource(R.drawable.item_rounded_background_normal);
+                    Toast.makeText(view.getContext(), "You UnPicked " + item.getText(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -9,7 +9,11 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +24,25 @@ public class HomePageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //spinner
+        String[] options = {"Option 1", "Option 2", "Option 3"};
+        CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, android.R.layout.simple_spinner_item, options);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinner = findViewById(R.id.sp_place_deliver);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedOption = (String) parent.getItemAtPosition(position);
+                Toast.makeText(getApplicationContext(), "You Picked: " + selectedOption, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Xử lý khi không có tùy chọn nào được chọn
+            }
+        });
 
         //Custom hello text
         TextView tvhello = findViewById(R.id.tv_hello_text);
@@ -36,9 +59,9 @@ public class HomePageActivity extends AppCompatActivity {
         recyclerView1.setLayoutManager(layoutManager1);
         List<Item> itemList1 = new ArrayList<>();
         itemList1.add(new Item(R.drawable.ic_search_foreground, "Text 1"));
-        itemList1.add(new Item(R.drawable.pic1, "Text 2"));
-        itemList1.add(new Item(R.drawable.pic2, "Text 3"));
-        itemList1.add(new Item(R.drawable.pic3, "Text 4"));
+        itemList1.add(new Item(R.drawable.pho, "Text 2"));
+        itemList1.add(new Item(R.drawable.banhmi, "Text 3"));
+        itemList1.add(new Item(R.drawable.buncha, "Text 4"));
         itemList1.add(new Item(R.drawable.ic_search_foreground, "Text 5"));
         itemAdapter adapter1 = new itemAdapter(itemList1);
         recyclerView1.setAdapter(adapter1);

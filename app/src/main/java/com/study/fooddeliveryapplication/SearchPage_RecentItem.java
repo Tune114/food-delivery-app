@@ -1,7 +1,7 @@
 package com.study.fooddeliveryapplication;
 
 public class SearchPage_RecentItem {
-    private String text;
+    private final String text;
 
     public SearchPage_RecentItem( String text) {
         this.text = text;
