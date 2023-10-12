@@ -1,8 +1,10 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.ui;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.study.fooddeliveryapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 
