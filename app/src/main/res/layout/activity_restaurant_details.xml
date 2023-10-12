@@ -178,28 +178,49 @@
                     android:background="#F6F5F5"
                     android:scrollbars="none">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rest_cate_items"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rest_cate_items"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#F6F5F5" />
+
+                    </RelativeLayout>
+
 
                 </HorizontalScrollView>
-
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
                     android:text="Burger (10)"
-                    android:textSize="20dp"
-                    android:textColor="@color/dark_blue"/>
+                    android:textColor="@color/dark_blue"
+                    android:textSize="20dp" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rest_cate_foods"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+                </RelativeLayout>
 
             </LinearLayout>
 
