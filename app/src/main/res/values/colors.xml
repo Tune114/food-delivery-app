@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="payment_text">#BBBBBB</color>
+    <color name="hint_text">#D0D0D0</color>
+    <color name="tuColor">#C7F4FF</color>
 </resources>
