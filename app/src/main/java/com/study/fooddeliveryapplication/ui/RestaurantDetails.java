@@ -1,5 +1,6 @@
 package com.study.fooddeliveryapplication.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -18,7 +19,7 @@ import com.study.fooddeliveryapplication.model.Food;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RestaurantDetails extends AppCompatActivity implements UpdateRestFoodItems {
+public class RestaurantDetails extends AppCompatActivity implements UpdateRestFoodItems{
 
     private RecyclerView categoriesRecyclerView;
 
@@ -45,8 +46,12 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestFo
 
         // Restaurant Foods
         foodRecyclerView=findViewById(R.id.rest_cate_foods);
-
-
+        List<Food> foods = new ArrayList<>();
+        foods.add(new Food("Burger king", "Spicy", "40$", R.drawable.burgers));
+        foods.add(new Food("Burger king", "Spicy", "40$", R.drawable.burgers));
+        foods.add(new Food("Burger king", "Spicy", "40$", R.drawable.burgers));
+        foods.add(new Food("Burger king", "Spicy", "40$", R.drawable.burgers));
+        callBack(0, foods);
     }
 
     @Override
@@ -56,4 +61,5 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestFo
         foodRecyclerView.setAdapter(foodAdapter);
         foodRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }
+
 }

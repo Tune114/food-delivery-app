@@ -8,7 +8,7 @@
         android:id="@+id/category_items_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_btn"
+        android:background="@drawable/custom_btn_unselected"
         android:text="Burger"
         android:textAllCaps="false"
         android:textSize="16dp"
