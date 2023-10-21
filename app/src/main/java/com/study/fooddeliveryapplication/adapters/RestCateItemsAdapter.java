@@ -46,6 +46,7 @@ public class RestCateItemsAdapter extends RecyclerView.Adapter<RestCateItemsAdap
     @Override
     public void onBindViewHolder(@NonNull RestCateItemsViewHolder holder, int position) {
         holder.button.setText(categories.get(position).getName());
+
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,14 +78,24 @@ public class RestCateItemsAdapter extends RecyclerView.Adapter<RestCateItemsAdap
                     foods.add(new Food("Medium BBQ", "For family", "399$", R.drawable.bbq));
                     updateRestFoodItems.callBack(categoryIndex, foods);
                 } else if (categoryIndex == 4) {
-                    foods.add(new Food("Hot pot", "So hot!!", "199$", R.drawable.hotpot));
-                    foods.add(new Food("Hot pot", "So hot!!", "199$", R.drawable.hotpot));
-                    foods.add(new Food("Medium BBQ", "For family", "399$", R.drawable.bbq));
-                    foods.add(new Food("Medium BBQ", "For family", "399$", R.drawable.bbq));
+                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
+                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
+                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
+                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
                     updateRestFoodItems.callBack(categoryIndex, foods);
                 }
             }
         });
+
+
+        if(categoryIndex == position){
+            holder.button.setBackgroundResource(R.drawable.custom_btn_selected);
+            holder.button.setTextColor(Color.parseColor("#FF000000"));
+        }else{
+            holder.button.setBackgroundResource(R.drawable.custom_btn_unselected);
+            holder.button.setTextColor(Color.parseColor("#FFFFFFFF"));
+        }
+
     }
 
     @Override
