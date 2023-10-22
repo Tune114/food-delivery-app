@@ -103,7 +103,7 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/signupbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
