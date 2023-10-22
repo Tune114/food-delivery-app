@@ -9,4 +9,9 @@
     <color name="Tim_nhat">#D8B4FF</color>
     <color name="Vang_nhat">#FFFFE0</color>
     <color name="Cam_nhat">#FFC08A</color>
+    <color name="blue">#C7F4FF</color>
+    <color name="dark_blue">#181c2e</color>
+    <color name="mainColor">#1C95FF</color>
+    <color name="searchBgColor">#F6F6F6</color>
+    <color name="searchTextColor">#676767</color>
 </resources>
