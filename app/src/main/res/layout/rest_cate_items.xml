@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cate_card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="#EFE8E8"
+    >
+    <Button
+        android:id="@+id/category_items_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_btn_unselected"
+        android:text="Burger"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        android:layout_marginRight="5dp"
+        android:padding="3dp"
+        android:textColor="@color/white"
+        />
+
+</androidx.cardview.widget.CardView>
