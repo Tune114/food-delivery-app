@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
+    tools:context=".MainActivity"/>
+=======
     tools:context=".ui.MainActivity">
 
     <ImageView
@@ -19,3 +22,4 @@
         app:srcCompat="@drawable/logo"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> master

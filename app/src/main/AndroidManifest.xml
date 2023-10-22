@@ -13,6 +13,15 @@
         android:theme="@style/Theme.FoodDeliveryApplication"
         tools:targetApi="33">
         <activity
+            android:name=".AddCart"
+            android:exported="false" />
+        <activity
+            android:name=".AddCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".Food_details"
             android:exported="true" />
         <activity
