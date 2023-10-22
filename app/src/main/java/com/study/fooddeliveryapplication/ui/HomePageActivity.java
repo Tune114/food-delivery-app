@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +14,13 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.study.fooddeliveryapplication.R;
+import com.study.fooddeliveryapplication.adapter.RestauItemAdapter;
+import com.study.fooddeliveryapplication.adapter.CustomSpinnerAdapter;
+import com.study.fooddeliveryapplication.adapter.itemAdapter;
+import com.study.fooddeliveryapplication.model.Item;
+import com.study.fooddeliveryapplication.model.RestauItem;
 
 import java.util.ArrayList;
 import java.util.List;

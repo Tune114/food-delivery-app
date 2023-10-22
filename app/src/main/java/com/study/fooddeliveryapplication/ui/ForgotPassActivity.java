@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.study.fooddeliveryapplication.R;
 
 public class ForgotPassActivity extends AppCompatActivity {
     ImageView backpage;

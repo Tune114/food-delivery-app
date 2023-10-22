@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.study.fooddeliveryapplication.R;
 
 public class Food_details extends AppCompatActivity {
 

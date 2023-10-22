@@ -1,8 +1,10 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.study.fooddeliveryapplication.R;
 
 public class AddCardActivity extends AppCompatActivity {
 

@@ -1,6 +1,5 @@
-package com.study.fooddeliveryapplication.adapters;
+package com.study.fooddeliveryapplication.adapter;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.study.fooddeliveryapplication.R;

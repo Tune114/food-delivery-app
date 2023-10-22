@@ -13,31 +13,58 @@
         android:theme="@style/Theme.FoodDeliveryApplication"
         tools:targetApi="33">
         <activity
-            android:name=".AddCart"
+            android:name=".ui.AddCart"
+            android:exported="false" >
+
+        </activity>
+
+        <activity
+            android:name=".ui.AddCardActivity"
+            android:exported="false" >
+
+
+        </activity>
+        <activity
+            android:name=".ui.PaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".AddCardActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PaymentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Food_details"
-            android:exported="false" />
+            android:name=".ui.Food_details"
+            android:exported="false" >
+        </activity>
         <activity
             android:name=".ui.RestaurantDetails"
-            android:exported="false" />
+            android:exported="false" >
+
+        </activity>
         <activity
-            android:name=".VerificationActivity"
-            android:exported="false" />
+            android:name=".ui.VerificationActivity"
+            android:exported="false" >
+
+
+    </activity>
         <activity
-            android:name=".ForgotPassActivity"
-            android:exported="false" />
+            android:name=".ui.ForgotPassActivity"
+            android:exported="false" >
+
+        </activity>
         <activity
-            android:name=".SignupActivity"
-            android:exported="false" />
+            android:name=".ui.SignupActivity"
+            android:exported="false" >
+
+        </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
+            android:exported="false" >
+        </activity>
+
+        <activity
+            android:name=".ui.SearchPageActivity"
+            android:exported="false" >
+
+
+        </activity>
+        <activity
+            android:name=".ui.HomePageActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,13 +72,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".SearchPageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HomePageActivity"
-            android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="false">

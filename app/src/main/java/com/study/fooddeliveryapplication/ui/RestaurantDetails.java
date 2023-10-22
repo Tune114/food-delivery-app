@@ -1,8 +1,6 @@
 package com.study.fooddeliveryapplication.ui;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -10,9 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.study.fooddeliveryapplication.R;
-import com.study.fooddeliveryapplication.adapters.RestCateItemsAdapter;
-import com.study.fooddeliveryapplication.adapters.RestFoodItemsAdapter;
-import com.study.fooddeliveryapplication.adapters.UpdateRestFoodItems;
+import com.study.fooddeliveryapplication.adapter.RestCateItemsAdapter;
+import com.study.fooddeliveryapplication.adapter.RestFoodItemsAdapter;
+import com.study.fooddeliveryapplication.adapter.UpdateRestFoodItems;
 import com.study.fooddeliveryapplication.model.Category;
 import com.study.fooddeliveryapplication.model.Food;
 

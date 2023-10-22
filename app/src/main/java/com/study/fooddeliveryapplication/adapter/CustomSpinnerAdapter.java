@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.adapter;
 
 import android.content.Context;
 import android.graphics.Color;

@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +10,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.study.fooddeliveryapplication.R;
+import com.study.fooddeliveryapplication.model.SearchPage_SuggestRestauItem;
+
 import java.util.List;
 
-public class SearchPage_PopularFoodItemAdapter extends RecyclerView.Adapter<SearchPage_PopularFoodItemAdapter.ViewHolder> {
-    private final List<SearchPage_PopularFoodItem> itemList;
+public class SearchPage_SuggestRestauItemAdapter extends RecyclerView.Adapter<SearchPage_SuggestRestauItemAdapter.ViewHolder> {
+    private final List<SearchPage_SuggestRestauItem> itemList;
 
     // Constructor
-    public SearchPage_PopularFoodItemAdapter(List<SearchPage_PopularFoodItem> itemList) {
+    public SearchPage_SuggestRestauItemAdapter(List<SearchPage_SuggestRestauItem> itemList) {
         this.itemList = itemList;
     }
 
@@ -25,16 +28,14 @@ public class SearchPage_PopularFoodItemAdapter extends RecyclerView.Adapter<Sear
     // ViewHolder class
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
-        public TextView textView1;
-        public TextView textView2;
+        public TextView textViewSuggestRes;
+        public TextView textViewStar;
 
         public ViewHolder(View view) {
             super(view);
             imageView = view.findViewById(R.id.imageViewRes);
-            textView1 = view.findViewById(R.id.textView1);
-            textView2 = view.findViewById(R.id.textView2);
-
-
+            textViewSuggestRes = view.findViewById(R.id.textViewSuggestRes);
+            textViewStar = view.findViewById(R.id.textViewStar);
         }
     }
 
@@ -42,26 +43,27 @@ public class SearchPage_PopularFoodItemAdapter extends RecyclerView.Adapter<Sear
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.search_page_popular_food_item, parent, false);
+                .inflate(R.layout.search_page_restau_suggest_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        SearchPage_PopularFoodItem item = itemList.get(position);
+        SearchPage_SuggestRestauItem item = itemList.get(position);
         holder.imageView.setImageResource(item.getImageResource());
-        holder.textView1.setText(item.getText1());
-        holder.textView2.setText(item.getText2());
+        holder.textViewSuggestRes.setText(item.getText());
+        holder.textViewStar.setText(item.getNum());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int adapterPosition = holder.getAdapterPosition();
-                SearchPage_PopularFoodItem selectedItem = itemList.get(adapterPosition);
-                String info = "You Picked: " + selectedItem.getText1();
+                SearchPage_SuggestRestauItem selectedItem = itemList.get(adapterPosition);
+                String info = "You Picked: " + selectedItem.getText();
                 Toast.makeText(view.getContext(), info, Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override

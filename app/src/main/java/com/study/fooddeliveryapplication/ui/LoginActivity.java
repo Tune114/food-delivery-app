@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.material.button.MaterialButton;
+import com.study.fooddeliveryapplication.R;
 
 public class LoginActivity extends AppCompatActivity {
     TextView tvforgotpass,tvsignup;

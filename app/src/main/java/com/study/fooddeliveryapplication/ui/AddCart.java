@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.ListCartItemAdapter;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class AddCart  extends AppCompatActivity {
         txtAddPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(),PaymentActivity.class);
+                Intent intent = new Intent(view.getContext(), PaymentActivity.class);
                 startActivity(intent);
             }
         });

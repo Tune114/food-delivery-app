@@ -1,6 +1,4 @@
-package com.study.fooddeliveryapplication;
-
-import static com.study.fooddeliveryapplication.R.id.backpagefgpass;
+package com.study.fooddeliveryapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +9,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import com.study.fooddeliveryapplication.R;
 
 public class VerificationActivity extends AppCompatActivity {
     EditText inputcode1,inputcode2,inputcode3,inputcode4,inputcode5,inputcode6;

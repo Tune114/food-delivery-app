@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +10,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.study.fooddeliveryapplication.R;
+import com.study.fooddeliveryapplication.model.Item;
+
 import java.util.List;
 
-public class SearchPage_RecentitemAdapter extends RecyclerView.Adapter<SearchPage_RecentitemAdapter.ViewHolder> {
-    private final List<SearchPage_RecentItem> itemList;
+public class itemAdapter extends RecyclerView.Adapter<itemAdapter.ViewHolder> {
+    private final List<Item> itemList;
 
     // Constructor
-    public SearchPage_RecentitemAdapter(List<SearchPage_RecentItem> itemList) {
+    public itemAdapter(List<Item> itemList) {
         this.itemList = itemList;
     }
 
@@ -24,35 +27,45 @@ public class SearchPage_RecentitemAdapter extends RecyclerView.Adapter<SearchPag
 
     // ViewHolder class
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        public ImageView imageView;
         public TextView textView;
 
         public ViewHolder(View view) {
             super(view);
+            imageView = view.findViewById(R.id.imageView);
             textView = view.findViewById(R.id.textView);
-
-
         }
+
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.search_page_recent_item, parent, false);
+                .inflate(R.layout.item_layout, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        SearchPage_RecentItem item = itemList.get(position);
+        Item item = itemList.get(position);
+        holder.imageView.setImageResource(item.getImageResource());
         holder.textView.setText(item.getText());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int adapterPosition = holder.getAdapterPosition();
-                SearchPage_RecentItem selectedItem = itemList.get(adapterPosition);
-                String info = "You Picked: " + selectedItem.getText();
-                Toast.makeText(view.getContext(), info, Toast.LENGTH_SHORT).show();
+                Item item = itemList.get(adapterPosition);
+
+                item.setSelected(!item.isSelected());
+
+                if (item.isSelected()) {
+                    holder.itemView.setBackgroundResource(R.drawable.item_rounded_background);
+                    Toast.makeText(view.getContext(), "You Picked " + item.getText() , Toast.LENGTH_SHORT).show();
+                } else {
+                    holder.itemView.setBackgroundResource(R.drawable.item_rounded_background_normal);
+                    Toast.makeText(view.getContext(), "You UnPicked " + item.getText(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

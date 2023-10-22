@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.model;
 
 public class SearchPage_RecentItem {
     private final String text;

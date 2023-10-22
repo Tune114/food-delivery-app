@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -6,6 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
+import com.study.fooddeliveryapplication.R;
+import com.study.fooddeliveryapplication.adapter.SearchPage_RecentitemAdapter;
+import com.study.fooddeliveryapplication.adapter.SearchPage_SuggestRestauItemAdapter;
+import com.study.fooddeliveryapplication.adapter.SearchPage_PopularFoodItemAdapter;
+import com.study.fooddeliveryapplication.model.SearchPage_PopularFoodItem;
+import com.study.fooddeliveryapplication.model.SearchPage_RecentItem;
+import com.study.fooddeliveryapplication.model.SearchPage_SuggestRestauItem;
 
 import java.util.ArrayList;
 import java.util.List;

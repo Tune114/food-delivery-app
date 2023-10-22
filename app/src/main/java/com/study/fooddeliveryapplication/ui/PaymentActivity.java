@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication;
+package com.study.fooddeliveryapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,10 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.ListCardAdapter;
 import com.study.fooddeliveryapplication.adapter.ListCardAddAdapter;
-import com.study.fooddeliveryapplication.adapter.ListCartItemAdapter;
 import com.study.fooddeliveryapplication.model.CardForPayment;
+import com.study.fooddeliveryapplication.ui.AddCardActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class PaymentActivity extends AppCompatActivity {
         btnAddNewCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(),AddCardActivity.class);
+                Intent intent = new Intent(view.getContext(), AddCardActivity.class);
                 startActivity(intent);
             }
         });

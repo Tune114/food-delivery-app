@@ -1,4 +1,4 @@
-package com.study.fooddeliveryapplication.adapters;
+package com.study.fooddeliveryapplication.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
