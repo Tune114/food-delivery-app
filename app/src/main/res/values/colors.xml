@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Xanh_navi">#C7F4FF</color>
+    <color name="Xanh_navi">#1C95FF</color>
     <color name="Tim">#800080</color>
     <color name="Hong_phan">#FFC0CB</color>
     <color name="Hong_phan_nhat">#FFD7E5</color>
