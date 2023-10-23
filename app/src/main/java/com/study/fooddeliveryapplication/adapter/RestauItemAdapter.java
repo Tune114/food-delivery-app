@@ -1,5 +1,10 @@
 package com.study.fooddeliveryapplication.adapter;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.RestauItem;
+import com.study.fooddeliveryapplication.ui.HomePageActivity;
+import com.study.fooddeliveryapplication.ui.RestaurantDetails;
 
 import java.util.List;
 
@@ -68,6 +75,12 @@ public class RestauItemAdapter extends RecyclerView.Adapter<RestauItemAdapter.Vi
                 RestauItem selectedItem = itemList.get(adapterPosition);
                 String info = "Bạn đã chọn: " + selectedItem.getText1();
                 Toast.makeText(view.getContext(), info, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(view.getContext(), RestaurantDetails.class);
+                Context context = view.getContext();
+                if (context instanceof Activity) {
+                    ((Activity)context).startActivity(intent);
+                }
             }
         });
     }

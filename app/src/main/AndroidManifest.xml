@@ -63,7 +63,7 @@
         </activity>
         <activity
             android:name=".ui.HomePageActivity"
-            android:exported="true" >
+            android:exported="false" >
 
         </activity>
         <activity

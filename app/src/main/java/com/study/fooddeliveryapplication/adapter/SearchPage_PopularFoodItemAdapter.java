@@ -1,5 +1,8 @@
 package com.study.fooddeliveryapplication.adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.SearchPage_PopularFoodItem;
+import com.study.fooddeliveryapplication.ui.Food_details;
+import com.study.fooddeliveryapplication.ui.RestaurantDetails;
 
 import java.util.List;
 
@@ -63,6 +68,12 @@ public class SearchPage_PopularFoodItemAdapter extends RecyclerView.Adapter<Sear
                 SearchPage_PopularFoodItem selectedItem = itemList.get(adapterPosition);
                 String info = "You Picked: " + selectedItem.getText1();
                 Toast.makeText(view.getContext(), info, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(view.getContext(), Food_details.class);
+                Context context = view.getContext();
+                if (context instanceof Activity) {
+                    ((Activity)context).startActivity(intent);
+                }
             }
         });
     }

@@ -99,7 +99,7 @@
         android:lineSpacingExtra="7sp"
         android:textSize="16sp"
         />
-    <EditText
+    <TextView
         android:id="@+id/et_seachBar"
         android:layout_width="327dp"
         android:layout_height="62dp"
@@ -107,14 +107,15 @@
         android:layout_marginStart="24dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="165dp"
-        android:hint="Search dishes,restaurants "
+        android:text="Search dishes,restaurants"
         android:textColor="@color/searchTextColor"
         android:textSize="16sp"
+        android:paddingTop="20dp"
         android:drawableStart="@drawable/ic_search_foreground"
         android:drawablePadding="1dp"
         android:background="@drawable/custom_search"
         android:elevation="0.3dp"
-        android:autofillHints="" />
+        />
     <TextView
         android:id="@+id/tv_all_categor"
         android:layout_width="132dp"

@@ -1,6 +1,9 @@
 package com.study.fooddeliveryapplication.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -23,10 +26,22 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestFo
 
     private RecyclerView foodRecyclerView;
 
+    ImageButton back_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_details);
+
+       back_btn = (ImageButton) findViewById(R.id.back_button);
+       back_btn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               finish();
+               Intent intent = new Intent(RestaurantDetails.this, HomePageActivity.class);
+               startActivity(intent);
+           }
+       });
 
         // Restaurant categories
         List<Category> categories=new ArrayList<>();

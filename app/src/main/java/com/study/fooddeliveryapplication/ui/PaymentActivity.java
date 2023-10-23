@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.ListCardAdapter;
@@ -21,6 +22,8 @@ import java.util.List;
 public class PaymentActivity extends AppCompatActivity {
     private RecyclerView rvListCardItem, rvListCardAdd;
     private Button btnAddNewCard;
+
+    private ImageView btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,17 @@ public class PaymentActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), AddCardActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btnBack= (ImageView)findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(PaymentActivity.this, AddCart.class);
+                startActivity(intent);
+
             }
         });
     }

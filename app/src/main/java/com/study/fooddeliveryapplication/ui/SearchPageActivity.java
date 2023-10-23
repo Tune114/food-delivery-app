@@ -1,11 +1,16 @@
 package com.study.fooddeliveryapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.SearchPage_RecentitemAdapter;
@@ -20,10 +25,32 @@ import java.util.List;
 
 public class SearchPageActivity extends AppCompatActivity {
 
+    ImageView backbtn;
+    ImageView cart;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
+
+        backbtn = (ImageView) findViewById(R.id.iv_left_arrow);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(SearchPageActivity.this, HomePageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cart = (ImageView)findViewById(R.id.iv_bag);
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchPageActivity.this, AddCart.class);
+                startActivity(intent);
+            }
+        });
 
         //Custom Recent Items
         RecyclerView recyclerView1 = findViewById(R.id.recyclerView1);

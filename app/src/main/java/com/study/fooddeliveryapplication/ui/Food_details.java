@@ -1,6 +1,9 @@
 package com.study.fooddeliveryapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +28,9 @@ public class Food_details extends AppCompatActivity {
     private int quantity = 0;
     private int price = 0;
 
+    private ImageButton btnBack;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +46,7 @@ public class Food_details extends AppCompatActivity {
         txtSumPrice = findViewById(R.id.text_sumprice);
         btnPlus = findViewById(R.id.btn_plus);
         btnMinus = findViewById(R.id.btn_minus);
+        btnBack = findViewById(R.id.button_back);
 
         btnSizeNho.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +91,15 @@ public class Food_details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 decreaseQuantity();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(Food_details.this, SearchPageActivity.class);
+                startActivity(intent);
             }
         });
     }

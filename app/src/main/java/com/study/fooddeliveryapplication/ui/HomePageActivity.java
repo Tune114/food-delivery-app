@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -11,6 +12,8 @@ import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,10 +30,33 @@ import java.util.List;
 
 public class HomePageActivity extends AppCompatActivity {
 
+    TextView et_search;
+    ImageView cart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        et_search = (TextView) findViewById(R.id.et_seachBar);
+        et_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(HomePageActivity.this, SearchPageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cart = (ImageView)findViewById(R.id.iv_bag);
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomePageActivity.this, AddCart.class);
+                startActivity(intent);
+            }
+        });
+
 
         //spinner
         String[] options = {"Option 1", "Option 2", "Option 3"};
@@ -83,6 +109,8 @@ public class HomePageActivity extends AppCompatActivity {
         itemList2.add(new RestauItem(R.drawable.buncha, "Text 3a", "Text 3b"));
         RestauItemAdapter adapter2 = new RestauItemAdapter(itemList2);
         recyclerView2.setAdapter(adapter2);
+
+
 
     }
 }
