@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +17,7 @@ import com.study.fooddeliveryapplication.adapter.ListCartItemAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddCart  extends AppCompatActivity {
+public class AddCartActivity extends AppCompatActivity {
 
     private RecyclerView rvListItem;
     private TextView txtAddPayment;
@@ -47,7 +46,7 @@ public class AddCart  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(AddCart.this, HomePageActivity.class);
+                Intent intent = new Intent(AddCartActivity.this, HomePageActivity.class);
                 startActivity(intent);
 
             }

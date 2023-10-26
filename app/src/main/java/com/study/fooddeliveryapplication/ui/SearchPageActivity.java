@@ -1,7 +1,6 @@
 package com.study.fooddeliveryapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,7 +46,7 @@ public class SearchPageActivity extends AppCompatActivity {
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SearchPageActivity.this, AddCart.class);
+                Intent intent = new Intent(SearchPageActivity.this, AddCartActivity.class);
                 startActivity(intent);
             }
         });

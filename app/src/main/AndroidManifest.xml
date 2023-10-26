@@ -13,7 +13,7 @@
         android:theme="@style/Theme.FoodDeliveryApplication"
         tools:targetApi="33">
         <activity
-            android:name=".ui.AddCart"
+            android:name=".ui.AddCartActivity"
             android:exported="false" >
 
         </activity>
@@ -28,7 +28,7 @@
             android:name=".ui.PaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Food_details"
+            android:name=".ui.FoodDetailsActivity"
             android:exported="false" >
         </activity>
         <activity

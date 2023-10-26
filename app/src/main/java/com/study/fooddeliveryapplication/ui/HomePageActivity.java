@@ -12,7 +12,6 @@ import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -52,7 +51,7 @@ public class HomePageActivity extends AppCompatActivity {
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomePageActivity.this, AddCart.class);
+                Intent intent = new Intent(HomePageActivity.this, AddCartActivity.class);
                 startActivity(intent);
             }
         });

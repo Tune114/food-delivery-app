@@ -14,7 +14,6 @@ import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.ListCardAdapter;
 import com.study.fooddeliveryapplication.adapter.ListCardAddAdapter;
 import com.study.fooddeliveryapplication.model.CardForPayment;
-import com.study.fooddeliveryapplication.ui.AddCardActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +44,7 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(PaymentActivity.this, AddCart.class);
+                Intent intent = new Intent(PaymentActivity.this, AddCartActivity.class);
                 startActivity(intent);
 
             }

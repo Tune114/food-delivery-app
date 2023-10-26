@@ -2,10 +2,12 @@ package com.study.fooddeliveryapplication.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +30,8 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestFo
 
     ImageButton back_btn;
 
+    CardView card_view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,7 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestFo
                startActivity(intent);
            }
        });
+
 
         // Restaurant categories
         List<Category> categories=new ArrayList<>();
