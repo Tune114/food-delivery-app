@@ -32,7 +32,7 @@
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold"/>
 
         </LinearLayout>
@@ -122,14 +122,14 @@
                 android:layout_height="wrap_content"
                 android:text="Bún đậu mắm tôm"
                 android:textColor="@color/black"
-                android:textSize="35sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="30dp"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Bún đậu mắm tôm là một món ăn truyền thống của Việt Nam, kết hợp giữa bún (mì sợi), đậu hũ non và mắm tôm. Món ăn này có hương vị đậm đà và thơm ngon, thường được kèm theo rau sống và gia vị tạo nên sự hấp dẫn."
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="5dp"/>
@@ -143,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4.7"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:drawableLeft="@drawable/ic_star"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/black"
@@ -152,7 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Free"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:drawableLeft="@drawable/ic_delivery"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/black"
@@ -161,7 +161,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="20 phút"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:drawableLeft="@drawable/ic_time"
                     android:backgroundTint="@color/white"
                     android:textColor="@color/black"
@@ -176,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:text="Nguyên liệu gồm:"
                     android:textColor="@color/black"
-                    android:textSize="25sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"/>
@@ -192,7 +192,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Bún"
-                            android:textSize="18sp"
+                            android:textSize="13sp"
                             android:backgroundTint="@color/blue"
                             android:textColor="@color/black"
                             android:background="@drawable/round_button"
@@ -204,7 +204,7 @@
                             android:layout_height="wrap_content"
                             android:text="Đậu rán"
                             android:textStyle="bold"
-                            android:textSize="18sp"
+                            android:textSize="13sp"
                             android:background="@drawable/round_button"
                             android:backgroundTint="@color/blue"
                             android:textColor="@color/black"
@@ -216,7 +216,7 @@
                             android:background="@drawable/round_button"
                             android:text="Thịt luộc"
                             android:textStyle="bold"
-                            android:textSize="18sp"
+                            android:textSize="13sp"
                             android:backgroundTint="@color/blue"
                             android:textColor="@color/black"
                             android:layout_marginLeft="10dp"
@@ -227,7 +227,7 @@
                             android:textStyle="bold"
                             android:background="@drawable/round_button"
                             android:text="Chả cốm"
-                            android:textSize="18sp"
+                            android:textSize="13sp"
                             android:backgroundTint="@color/blue"
                             android:textColor="@color/black"
                             android:layout_marginLeft="10dp"
@@ -237,7 +237,7 @@
                             android:layout_height="wrap_content"
                             android:text="Chả mỡ"
                             android:background="@drawable/round_button"
-                            android:textSize="18sp"
+                            android:textSize="13sp"
                             android:textStyle="bold"
                             android:backgroundTint="@color/blue"
                             android:textColor="@color/black"
@@ -247,7 +247,7 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/round_button"
                             android:text="Mắm tôm"
-                            android:textSize="18sp"
+                            android:textSize="13sp"
                             android:textStyle="bold"
                             android:backgroundTint="@color/blue"
                             android:textColor="@color/black"
@@ -258,7 +258,7 @@
                             android:textStyle="bold"
                             android:text="Rau sống"
                             android:background="@drawable/round_button"
-                            android:textSize="18sp"
+                            android:textSize="13sp"
                             android:backgroundTint="@color/blue"
                             android:textColor="@color/black"
                             android:layout_marginLeft="10dp"/>
@@ -268,7 +268,7 @@
                             android:text="Dưa chuột"
                             android:background="@drawable/round_button"
                             android:textStyle="bold"
-                            android:textSize="18sp"
+                            android:textSize="13sp"
                             android:backgroundTint="@color/blue"
                             android:textColor="@color/black"
                             android:layout_marginLeft="10dp"/>
@@ -286,7 +286,7 @@
                     android:text="Size:"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="25sp"
+                    android:textSize="16sp"
                     android:layout_marginLeft="20dp"/>
                 <Button
                     android:id="@+id/btn_size_nho"
@@ -294,7 +294,7 @@
                     android:layout_height="wrap_content"
                     android:text="Nhỏ"
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:backgroundTint="@color/Vang_nhat"
                     android:textColor="@color/black"
                     android:layout_marginLeft="10dp"
@@ -305,7 +305,7 @@
                     android:layout_height="wrap_content"
                     android:text="Vừa"
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:backgroundTint="@color/Vang_nhat"
                     android:textColor="@color/black"
                     android:layout_marginLeft="10dp"
@@ -316,7 +316,7 @@
                     android:layout_height="wrap_content"
                     android:text="Lớn"
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:backgroundTint="@color/Vang_nhat"
                     android:textColor="@color/black"
                     android:layout_marginLeft="10dp"
@@ -327,14 +327,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="15dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đơn giá:"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="16sp"
                 android:layout_marginLeft="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -343,7 +343,7 @@
                 android:text="25000"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="16sp"
                 android:layout_marginLeft="50dp"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -351,26 +351,27 @@
                 android:text="VNĐ"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="16sp"
                 android:layout_marginLeft="10dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="20dp">
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Số lượng:"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="25sp"/>
+                android:textSize="16sp"/>
 
             <Button
                 android:id="@+id/btn_minus"
-                android:layout_width="53dp"
-                android:layout_height="53dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/button_change_salary"
@@ -378,22 +379,23 @@
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:paddingLeft="12dp"
+                android:paddingLeft="2dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"/>
+
             <TextView
                 android:id="@+id/txt_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:layout_marginLeft="20dp"
                 android:text="0"
-                android:textSize="25sp"
-                android:layout_marginLeft="20dp"/>
+                android:textColor="@color/black"
+                android:textSize="17sp" />
 
             <Button
                 android:id="@+id/btn_plus"
-                android:layout_width="55dp"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginLeft="30dp"
                 android:text="+"
                 android:textColor="@color/black"
@@ -405,13 +407,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="20dp">
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tạm tính:"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="16sp"
                 android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -420,7 +424,7 @@
                 android:text="0"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="25sp"
+                android:textSize="16sp"
                 android:layout_marginLeft="50dp"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -428,7 +432,7 @@
                 android:text="VNĐ"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="16sp"
                 android:layout_marginLeft="10dp"/>
         </LinearLayout>
         <LinearLayout
@@ -439,7 +443,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="30dp"
                 android:layout_gravity="center">
                 <Button
                     android:id="@+id/add_to_cart"
@@ -449,7 +452,7 @@
                     android:drawableLeft="@drawable/ic_xehang"
                     android:layout_gravity="center"
                     android:textStyle="bold"
-                    android:textSize="28sp"
+                    android:textSize="18sp"
                     android:textColor="@color/black"
                     android:backgroundTint="@color/Xanh_navi"/>
             </androidx.cardview.widget.CardView>
@@ -466,7 +469,7 @@
                 android:layout_height="wrap_content"
                 android:text="Bình luận:"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"/>
