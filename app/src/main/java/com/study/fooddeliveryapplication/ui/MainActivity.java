@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         imageView = (ImageView) findViewById(R.id.imageView);
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, AboutUsActivity.class);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
