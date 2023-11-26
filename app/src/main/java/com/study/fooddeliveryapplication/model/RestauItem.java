@@ -1,26 +1,38 @@
 package com.study.fooddeliveryapplication.model;
 
 public class RestauItem {
-    private int imageResource;
-    private String text1;
-    private String text2;
+    private String RestImage,RestName,RestDescrip;
 
-    public RestauItem(int imageResource, String text1, String text2) {
-        this.imageResource = imageResource;
-        this.text1 = text1;
-        this.text2 = text2;
+    public RestauItem(){}
+
+    public RestauItem(String restImage, String restName, String restDescrip) {
+        RestImage = restImage;
+        RestName = restName;
+        RestDescrip = restDescrip;
     }
 
-    public int getImageResource() {
-        return imageResource;
+    public String getRestImage() {
+        return RestImage;
     }
 
-    public String getText1() {
-        return text1;
+    public void setRestImage(String restImage) {
+        RestImage = restImage;
     }
 
-    public String getText2() {
-        return text2;
+    public String getRestName() {
+        return RestName;
+    }
+
+    public void setRestName(String restName) {
+        RestName = restName;
+    }
+
+    public String getRestDescrip() {
+        return RestDescrip;
+    }
+
+    public void setRestDescrip(String restDescrip) {
+        RestDescrip = restDescrip;
     }
 }
 

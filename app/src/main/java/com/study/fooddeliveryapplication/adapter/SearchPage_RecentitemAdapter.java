@@ -1,66 +1,56 @@
 package com.study.fooddeliveryapplication.adapter;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.SearchPage_RecentItem;
+import com.study.fooddeliveryapplication.ui.FoodDetailsActivity;
 
-import java.util.List;
+public class SearchPage_RecentitemAdapter extends FirebaseRecyclerAdapter<SearchPage_RecentItem,SearchPage_RecentitemAdapter.myViewHolder> {
 
-public class SearchPage_RecentitemAdapter extends RecyclerView.Adapter<SearchPage_RecentitemAdapter.ViewHolder> {
-    private final List<SearchPage_RecentItem> itemList;
-
-    // Constructor
-    public SearchPage_RecentitemAdapter(List<SearchPage_RecentItem> itemList) {
-        this.itemList = itemList;
+    public SearchPage_RecentitemAdapter(@NonNull FirebaseRecyclerOptions<SearchPage_RecentItem> options) {
+        super(options);
     }
 
-    private int selectedPosition = RecyclerView.NO_POSITION;
+    @Override
+    protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull SearchPage_RecentItem SearchPage_RecentItem) {
+        holder.RecentItemName.setText(SearchPage_RecentItem.getRecentItemName());
 
-    // ViewHolder class
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView textView;
+        holder.itemView.setOnClickListener(view -> {
+            String RecentItemName = SearchPage_RecentItem.getRecentItemName();
 
-        public ViewHolder(View view) {
-            super(view);
-            textView = view.findViewById(R.id.textView);
+            Log.d("SearchPage_RecentItem", RecentItemName);
 
+            Intent intent = new Intent(view.getContext(), FoodDetailsActivity.class);
 
-        }
+            intent.putExtra("RecentItemName", RecentItemName);
+
+            view.getContext().startActivity(intent);
+        });
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.search_page_recent_item, parent, false);
-        return new ViewHolder(view);
+    public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_page_recent_item,parent,false);
+        return new myViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        SearchPage_RecentItem item = itemList.get(position);
-        holder.textView.setText(item.getText());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int adapterPosition = holder.getAdapterPosition();
-                SearchPage_RecentItem selectedItem = itemList.get(adapterPosition);
-                String info = "You Picked: " + selectedItem.getText();
-                Toast.makeText(view.getContext(), info, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+    static class myViewHolder extends RecyclerView.ViewHolder{
+        TextView RecentItemName;
 
-    @Override
-    public int getItemCount() {
-        return itemList.size();
+        public myViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            RecentItemName = (TextView)itemView.findViewById(R.id.tvRecentItemName);
+        }
     }
 }

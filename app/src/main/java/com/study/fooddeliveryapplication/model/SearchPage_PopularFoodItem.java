@@ -1,23 +1,36 @@
 package com.study.fooddeliveryapplication.model;
 
 public class SearchPage_PopularFoodItem {
-    private int imageResource;
-    private String text1;
-    private String text2;
+    private String PopularFoodName,PopularFoodResName,PopularFoodImage;
 
-    public SearchPage_PopularFoodItem(int imageResource, String text1, String text2 ) {
-        this.imageResource = imageResource;
-        this.text1 = text1;
-        this.text2 = text2;
+    public SearchPage_PopularFoodItem(){}
+    public SearchPage_PopularFoodItem(String popularFoodName, String popularFoodResName, String popularFoodImage) {
+        PopularFoodName = popularFoodName;
+        PopularFoodResName = popularFoodResName;
+        PopularFoodImage = popularFoodImage;
     }
 
-    public int getImageResource() {
-        return imageResource;
+    public String getPopularFoodName() {
+        return PopularFoodName;
     }
 
-    public String getText1() {
-        return text1;
+    public void setPopularFoodName(String popularFoodName) {
+        PopularFoodName = popularFoodName;
     }
-    public String getText2() {return text2;}
 
+    public String getPopularFoodResName() {
+        return PopularFoodResName;
+    }
+
+    public void setPopularFoodResName(String popularFoodResName) {
+        PopularFoodResName = popularFoodResName;
+    }
+
+    public String getPopularFoodImage() {
+        return PopularFoodImage;
+    }
+
+    public void setPopularFoodImage(String popularFoodImage) {
+        PopularFoodImage = popularFoodImage;
+    }
 }

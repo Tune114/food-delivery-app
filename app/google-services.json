@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "223079269243",
+    "firebase_url": "https://food-delivery-application-test-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "food-delivery-application-test",
+    "storage_bucket": "food-delivery-application-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223079269243:android:c43a774538fa5d953f73de",
+        "android_client_info": {
+          "package_name": "com.study.fooddeliveryapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_ihSGBzwrS_R4RQ4KQ9_t-YxNqbAgHyU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

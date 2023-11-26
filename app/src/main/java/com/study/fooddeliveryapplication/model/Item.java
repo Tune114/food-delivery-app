@@ -1,29 +1,29 @@
 package com.study.fooddeliveryapplication.model;
 
 public class Item {
-    private int imageResource;
-    private String text;
-    private boolean isSelected;
+    private String FoodImage;
+    private String FoodName;
 
-    public Item(int imageResource, String text) {
-        this.imageResource = imageResource;
-        this.text = text;
-        this.isSelected = false;
+    public Item(){}
+
+    public Item(String foodImage, String foodName) {
+        FoodImage = foodImage;
+        FoodName = foodName;
     }
 
-    public int getImageResource() {
-        return imageResource;
+    public String getFoodImage() {
+        return FoodImage;
     }
 
-    public String getText() {
-        return text;
+    public void setFoodImage(String foodImage) {
+        FoodImage = foodImage;
     }
 
-    public boolean isSelected() {
-        return isSelected;
+    public String getFoodName() {
+        return FoodName;
     }
 
-    public void setSelected(boolean selected) {
-        isSelected = selected;
+    public void setFoodName(String foodName) {
+        FoodName = foodName;
     }
 }

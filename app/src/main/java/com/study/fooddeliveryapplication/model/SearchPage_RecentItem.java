@@ -1,13 +1,17 @@
 package com.study.fooddeliveryapplication.model;
 
 public class SearchPage_RecentItem {
-    private final String text;
-
-    public SearchPage_RecentItem( String text) {
-        this.text = text;
+    private String RecentItemName;
+    public SearchPage_RecentItem(){};
+    public SearchPage_RecentItem(String recentItemName) {
+        RecentItemName = recentItemName;
     }
 
-    public String getText() {
-        return text;
+    public String getRecentItemName() {
+        return RecentItemName;
+    }
+
+    public void setRecentItemName(String recentItemName) {
+        RecentItemName = recentItemName;
     }
 }

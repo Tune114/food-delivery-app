@@ -1,27 +1,37 @@
 package com.study.fooddeliveryapplication.model;
 
 public class SearchPage_SuggestRestauItem {
-    private int imageResource;
-    private String text;
-    private String num;
+    private String SuggestRestItemName,SuggestRestItemImage,SuggestRestItemStar;
 
-    public SearchPage_SuggestRestauItem(int imageResource, String text, String num) {
-        this.imageResource = imageResource;
-        this.text = text;
-        this.num = num;
+    public SearchPage_SuggestRestauItem(){}
+
+    public SearchPage_SuggestRestauItem(String suggestRestItemName, String suggestRestItemImage, String suggestRestItemStar) {
+        SuggestRestItemName = suggestRestItemName;
+        SuggestRestItemImage = suggestRestItemImage;
+        SuggestRestItemStar = suggestRestItemStar;
     }
 
-    public int getImageResource() {
-        return imageResource;
+    public String getSuggestRestItemName() {
+        return SuggestRestItemName;
     }
 
-    public String getText() {
-        return text;
+    public void setSuggestRestItemName(String suggestRestItemName) {
+        SuggestRestItemName = suggestRestItemName;
     }
 
-    public String getNum() {
-        return num;
+    public String getSuggestRestItemImage() {
+        return SuggestRestItemImage;
     }
 
+    public void setSuggestRestItemImage(String suggestRestItemImage) {
+        SuggestRestItemImage = suggestRestItemImage;
+    }
 
+    public String getSuggestRestItemStar() {
+        return SuggestRestItemStar;
+    }
+
+    public void setSuggestRestItemStar(String suggestRestItemStar) {
+        SuggestRestItemStar = suggestRestItemStar;
+    }
 }

@@ -1,77 +1,69 @@
 package com.study.fooddeliveryapplication.adapter;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.Item;
+import com.study.fooddeliveryapplication.ui.FoodDetailsActivity;
 
-import java.util.List;
 
-public class itemAdapter extends RecyclerView.Adapter<itemAdapter.ViewHolder> {
-    private final List<Item> itemList;
-
-    // Constructor
-    public itemAdapter(List<Item> itemList) {
-        this.itemList = itemList;
+public class itemAdapter extends FirebaseRecyclerAdapter<Item,itemAdapter.myViewHolder> {
+    public itemAdapter(@NonNull FirebaseRecyclerOptions<Item> options) {
+        super(options);
     }
-
-    private int selectedPosition = RecyclerView.NO_POSITION;
-
-    // ViewHolder class
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imageView;
-        public TextView textView;
-
-        public ViewHolder(View view) {
-            super(view);
-            imageView = view.findViewById(R.id.imageView);
-            textView = view.findViewById(R.id.textView);
-        }
-
-    }
-
-    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_layout, parent, false);
-        return new ViewHolder(view);
-    }
+    protected void onBindViewHolder(@NonNull itemAdapter.myViewHolder holder, int position, @NonNull Item item) {
+        holder.FoodName.setText(item.getFoodName());
+        Glide.with(holder.FoodImage.getContext())
+                .load(item.getFoodImage())
+                .placeholder(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark)
+                .circleCrop()
+                .error(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark)
+                .into(holder.FoodImage);
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Item item = itemList.get(position);
-        holder.imageView.setImageResource(item.getImageResource());
-        holder.textView.setText(item.getText());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int adapterPosition = holder.getAdapterPosition();
-                Item item = itemList.get(adapterPosition);
+        holder.itemView.setOnClickListener(view -> {
+            String foodName = item.getFoodName();
+            String imageUrl = item.getFoodImage();
 
-                item.setSelected(!item.isSelected());
+            Log.d("Itemview", foodName + " " + imageUrl);
 
-                if (item.isSelected()) {
-                    holder.itemView.setBackgroundResource(R.drawable.item_rounded_background);
-                    Toast.makeText(view.getContext(), "You Picked " + item.getText() , Toast.LENGTH_SHORT).show();
-                } else {
-                    holder.itemView.setBackgroundResource(R.drawable.item_rounded_background_normal);
-                    Toast.makeText(view.getContext(), "You UnPicked " + item.getText(), Toast.LENGTH_SHORT).show();
-                }
-            }
+            Intent intent = new Intent(view.getContext(), FoodDetailsActivity.class);
+
+            intent.putExtra("foodName", foodName);
+            intent.putExtra("imageUrl", imageUrl);
+
+            view.getContext().startActivity(intent);
         });
     }
-
+    @NonNull
     @Override
-    public int getItemCount() {
-        return itemList.size();
+    public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout,parent,false);
+        return new myViewHolder(view);
+    }
+
+    static class myViewHolder extends RecyclerView.ViewHolder{
+        TextView FoodName;
+        ImageView FoodImage;
+
+        public myViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            FoodName = itemView.findViewById(R.id.tvHPFoodItemsName);
+            FoodImage = itemView.findViewById(R.id.ivHPFoodItemsImage);
+        }
     }
 }
+
+
+

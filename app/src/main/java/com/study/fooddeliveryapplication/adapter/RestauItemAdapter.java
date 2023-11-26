@@ -1,93 +1,71 @@
 package com.study.fooddeliveryapplication.adapter;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.RestauItem;
-import com.study.fooddeliveryapplication.ui.HomePageActivity;
 import com.study.fooddeliveryapplication.ui.RestaurantDetails;
 
-import java.util.List;
-
-public class RestauItemAdapter extends RecyclerView.Adapter<RestauItemAdapter.ViewHolder>  {
-    private final List<RestauItem> itemList;
-
-    public RestauItemAdapter(List<RestauItem> itemList) {
-        this.itemList = itemList;
+public class RestauItemAdapter extends FirebaseRecyclerAdapter<RestauItem,RestauItemAdapter.myViewHolder> {
+    public RestauItemAdapter(@NonNull FirebaseRecyclerOptions<RestauItem> options) {
+        super(options);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imageView;
-        public TextView textView1;
-        public TextView textView2;
+    @Override
+    protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull RestauItem RestauItem) {
+        holder.RestName.setText(RestauItem.getRestName());
+        holder.RestDescrip.setText(RestauItem.getRestDescrip());
+        Glide.with(holder.RestImage.getContext())
+                .load(RestauItem.getRestImage())
+                .placeholder(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark)
+                .error(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark)
+                .into(holder.RestImage);
 
-        public ViewHolder(View view) {
-            super(view);
-            imageView = view.findViewById(R.id.imageViewRes);
-            textView1 = view.findViewById(R.id.textView1Res);
-            textView2 = view.findViewById(R.id.textView2Res);
-        }
+        holder.itemView.setOnClickListener(view -> {
+            String RestName = RestauItem.getRestName();
+            String RestDescrip = RestauItem.getRestDescrip();
+            String RestImage = RestauItem.getRestImage();
+
+            Log.d("RestauItem", RestName + " " + RestDescrip + " "+ RestImage);
+
+            Intent intent = new Intent(view.getContext(), RestaurantDetails.class);
+
+            intent.putExtra("RestName", RestName);
+            intent.putExtra("RestDescrip", RestDescrip);
+            intent.putExtra("RestImage", RestImage);
+
+            view.getContext().startActivity(intent);
+        });
     }
 
     @NonNull
     @Override
-    public RestauItemAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.restau_item, parent, false);
-        return new ViewHolder(view);
+    public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.restau_item,parent,false);
+        return new myViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        RestauItem restauItem = itemList.get(position);
-        holder.imageView.setImageResource(restauItem.getImageResource());
-        holder.textView1.setText(restauItem.getText1());
-        holder.textView2.setText(restauItem.getText2());
+    static class myViewHolder extends RecyclerView.ViewHolder{
+        TextView RestName,RestDescrip;
+        ImageView RestImage;
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int adapterPosition = holder.getAdapterPosition();
-                RestauItem selectedItem = itemList.get(adapterPosition);
-                String info = "You Picked: " + selectedItem.getText1();
-                Toast.makeText(view.getContext(), info, Toast.LENGTH_SHORT).show();
-            }
-        });
+        public myViewHolder(@NonNull View itemView) {
+            super(itemView);
 
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Xử lý sự kiện khi ImageView được click
-                int adapterPosition = holder.getAdapterPosition();
-                RestauItem selectedItem = itemList.get(adapterPosition);
-                String info = "Bạn đã chọn: " + selectedItem.getText1();
-                Toast.makeText(view.getContext(), info, Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(view.getContext(), RestaurantDetails.class);
-                Context context = view.getContext();
-                if (context instanceof Activity) {
-                    ((Activity)context).startActivity(intent);
-                }
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return itemList.size();
+            RestName = (TextView)itemView.findViewById(R.id.textView1Res);
+            RestDescrip = (TextView) itemView.findViewById(R.id.textView2Res);
+            RestImage =  itemView.findViewById(R.id.imageViewRes);
+        }
     }
 }
 

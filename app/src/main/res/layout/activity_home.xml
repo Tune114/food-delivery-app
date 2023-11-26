@@ -100,7 +100,7 @@
         android:textSize="16sp"
         />
     <TextView
-        android:id="@+id/et_seachBar"
+        android:id="@+id/et_hp_seachBar"
         android:layout_width="327dp"
         android:layout_height="62dp"
         android:layout_alignParentStart="true"
@@ -111,6 +111,7 @@
         android:textColor="@color/searchTextColor"
         android:textSize="16sp"
         android:paddingTop="20dp"
+        android:paddingBottom="16dp"
         android:drawableStart="@drawable/ic_search_foreground"
         android:drawablePadding="1dp"
         android:background="@drawable/custom_search"
