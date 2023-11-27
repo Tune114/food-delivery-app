@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="72dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_back_background"
+                    android:src="@drawable/left_arrow" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="395dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Add Card"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="70dp"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:id="@+id/idCardName"
+                    style="@style/CommonTextStyleInAddCardLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="CARD HOLDER NAME"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/inputCardName"
+                    android:layout_width="363dp"
+                    android:layout_height="wrap_content"
+                    android:ems="15"
+                    android:hint="your name here"
+                    android:textColorHint="@color/hint_text"
+                    android:inputType="text"
+                    android:drawableStart="@drawable/baseline_person_24"
+                    android:layout_marginBottom="8dp"
+                    android:drawablePadding="10dp"/>
+
+                <TextView
+                    android:id="@+id/idCardNumber"
+                    style="@style/CommonTextStyleInAddCardLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="8dp"
+                    android:drawablePadding="10dp"
+                    android:text="CARD NUMBER"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/editTextText3"
+                    android:layout_width="363dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:drawableStart="@drawable/baseline_credit_card_24"
+                    android:layout_marginBottom="8dp"
+                    android:hint="enter your card number here"
+                    android:drawablePadding="10dp"
+                    android:textColorHint="@color/hint_text" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="180dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/idExpireDate"
+                            style="@style/CommonTextStyleInAddCardLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="EXPIRE DATE" />
+
+                        <EditText
+                            android:id="@+id/inputExDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="mm/yy"
+                            android:inputType="text"
+                            android:paddingLeft="40dp"
+                            android:textColorHint="@color/hint_text" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="171dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/idCVC"
+                            style="@style/CommonTextStyleInAddCardLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="CVC" />
+
+                        <EditText
+                            android:id="@+id/editTextText5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="CVC"
+                            android:inputType="text"
+                            android:paddingLeft="40dp"
+                            android:textColorHint="@color/hint_text" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ADD"
+                android:background="@drawable/custom_button"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

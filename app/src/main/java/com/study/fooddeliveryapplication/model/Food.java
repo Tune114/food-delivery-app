@@ -4,8 +4,10 @@ public class Food {
     private String name;
     private String description;
     private String price;
+    private String image;
 
-    private int image;
+    public Food() {
+    }
 
     public Food(String name, String description, String price) {
         this.name = name;
@@ -13,11 +15,12 @@ public class Food {
         this.price = price;
     }
 
-    public Food(String name, String description, String price, int image) {
+
+    public Food(String name, String description, String price, String image) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.image=image;
+        this.image = image;
     }
 
     public String getName() {
@@ -44,11 +47,11 @@ public class Food {
         this.price = price;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }
