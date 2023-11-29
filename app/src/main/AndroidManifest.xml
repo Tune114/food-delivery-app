@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -15,20 +15,13 @@
         android:theme="@style/Theme.FoodDeliveryApplication"
         tools:targetApi="33">
         <activity
-<<<<<<< HEAD
             android:name=".ui.SearchPageActivity_Data"
             android:exported="false" />
         <activity
             android:name=".ui.AboutUsActivity"
-            android:exported="false"></activity>
-=======
-            android:name=".ui.AboutUsActivity"
-            android:exported="false" >
-
-
+            android:exported="false">
         </activity>
 
->>>>>>> ttu
         <activity
             android:name=".ui.AddCartActivity"
             android:exported="false"></activity>
@@ -43,7 +36,6 @@
             android:exported="false"></activity>
         <activity
             android:name=".ui.RestaurantDetails"
-<<<<<<< HEAD
             android:exported="false"></activity>
         <activity
             android:name=".ui.VerificationActivity"
@@ -62,43 +54,15 @@
             android:exported="false"></activity>
         <activity
             android:name=".ui.HomePageActivity"
-=======
->>>>>>> ttu
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity
             android:name=".ui.MainActivity"
             android:exported="false"></activity>
-=======
-
-        <activity
-            android:name=".ui.VerificationActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".ui.ForgotPassActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".ui.SignupActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".ui.LoginActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".ui.SearchPageActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".ui.HomePageActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="false">
-        </activity>
->>>>>>> ttu
     </application>
 
 </manifest>
