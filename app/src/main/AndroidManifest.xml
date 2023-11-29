@@ -33,7 +33,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.FoodDetailsActivity"
-            android:exported="false"></activity>
+            android:exported="false">
+        </activity>
         <activity
             android:name=".ui.RestaurantDetails"
             android:exported="false"></activity>

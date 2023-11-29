@@ -65,4 +65,3 @@ public class itemAdapter extends FirebaseRecyclerAdapter<Item,itemAdapter.myView
     }
 }
 
-

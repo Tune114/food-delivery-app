@@ -97,36 +97,36 @@ public class ForgotPassActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
         databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (snapshot.hasChild(phone)){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.hasChild(phone)){
 
-                        String getPass = snapshot.child(phone).child("password").getValue(String.class);
+                    String getPass = snapshot.child(phone).child("password").getValue(String.class);
 
-                        String otp = createRandomNumber();
-                        SmsManager smsManager = SmsManager.getDefault();
-                        ArrayList<String> parts = smsManager.divideMessage(otp+": "+mess);
-                        String phoneNumber = inputphone.getText().toString();
-                        smsManager.sendMultipartTextMessage(phoneNumber,null,parts,null,null);
-                        Toast.makeText(getApplicationContext(),otp,Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(ForgotPassActivity.this, VerificationActivity.class);
-                        i.putExtra("OTP",otp);
-                        i.putExtra("phone",phone);
-                        i.putExtra("yourpass",getPass);
-                        startActivity(i);
+                    String otp = createRandomNumber();
+                    SmsManager smsManager = SmsManager.getDefault();
+                    ArrayList<String> parts = smsManager.divideMessage(otp+": "+mess);
+                    String phoneNumber = inputphone.getText().toString();
+                    smsManager.sendMultipartTextMessage(phoneNumber,null,parts,null,null);
+                    Toast.makeText(getApplicationContext(),otp,Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(ForgotPassActivity.this, VerificationActivity.class);
+                    i.putExtra("OTP",otp);
+                    i.putExtra("phone",phone);
+                    i.putExtra("yourpass",getPass);
+                    startActivity(i);
 
 
 
-                    }else{
-                        Toast.makeText(getApplicationContext(),"Thông tin số điện thoại chưa được đăng ký!",Toast.LENGTH_SHORT).show();
-                    }
+                }else{
+                    Toast.makeText(getApplicationContext(),"Thông tin số điện thoại chưa được đăng ký!",Toast.LENGTH_SHORT).show();
                 }
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
+            }
+        });
     }
 
 
