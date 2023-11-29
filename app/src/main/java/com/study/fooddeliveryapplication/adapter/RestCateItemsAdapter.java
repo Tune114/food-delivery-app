@@ -1,8 +1,5 @@
 package com.study.fooddeliveryapplication.adapter;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.Category;
 import com.study.fooddeliveryapplication.model.Food;
-import com.study.fooddeliveryapplication.ui.FoodDetailsActivity;
-import com.study.fooddeliveryapplication.ui.RestaurantDetails;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RestCateItemsAdapter extends RecyclerView.Adapter<RestCateItemsAdapter.RestCateItemsViewHolder> {
 
-    private UpdateRestFoodItems updateRestFoodItems;
+    private UpdateRestInfor updateRestFoodItems;
     private List<Category> categories;
     private List<Food> foods;
     private int categoryIndex = 0;
@@ -33,7 +28,7 @@ public class RestCateItemsAdapter extends RecyclerView.Adapter<RestCateItemsAdap
     }
 
 
-    public RestCateItemsAdapter(UpdateRestFoodItems updateRestFoodItems, List<Category> categories) {
+    public RestCateItemsAdapter(UpdateRestInfor updateRestFoodItems, List<Category> categories) {
         this.updateRestFoodItems = updateRestFoodItems;
         this.categories = categories;
         this.foods = new ArrayList<>();
@@ -46,6 +41,41 @@ public class RestCateItemsAdapter extends RecyclerView.Adapter<RestCateItemsAdap
         return new RestCateItemsViewHolder(view);
     }
 
+//    public List<Food> getFoodsByCategory(String category){
+//        List<Food> foodsList=new ArrayList<>();
+//        DatabaseReference databaseReference= databaseReference= FirebaseDatabase.getInstance().getReference().child("restaurants");
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//            main:   for(DataSnapshot ds:snapshot.getChildren()){
+//                        DataSnapshot categoriesSnapshot = ds.child("categories");
+//                        for(DataSnapshot cateDs:categoriesSnapshot.getChildren()){
+//                            String categoryName=cateDs.child("category_name").getValue(String.class);
+//                            if(categoryName.equals(category)){
+//                                DataSnapshot foodsSnapshot = cateDs.child("foods");
+//                                for(DataSnapshot foodDs:foodsSnapshot.getChildren()){
+//                                    Food food=foodDs.getValue(Food.class);
+//                                    foodsList.add(food);
+//                                }
+//                                break main;
+//                            }
+//                        }
+//                    }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//        return foodsList;
+//    }
+
+    public void unSelectAll(){
+        for(int i=0;i<categories.size();i++){
+            categories.get(i).setSelected(false);
+        }
+    }
+
     @Override
     public void onBindViewHolder(@NonNull RestCateItemsViewHolder holder, int position) {
         holder.button.setText(categories.get(position).getName());
@@ -54,51 +84,23 @@ public class RestCateItemsAdapter extends RecyclerView.Adapter<RestCateItemsAdap
             @Override
             public void onClick(View view) {
                 categoryIndex = holder.getAdapterPosition();
-                List<Food> foods = new ArrayList<>();
+                List<Food> foods=categories.get(categoryIndex).getFoods();
+                updateRestFoodItems.callBack(foods);
+                unSelectAll();
+                categories.get(categoryIndex).setSelected(true);
                 notifyDataSetChanged();
-                if (categoryIndex == 0) {
-                    foods.add(new Food("Burger king", "Spicy", "40$", R.drawable.burgers));
-                    foods.add(new Food("Burger king", "Spicy", "40$", R.drawable.burgers));
-                    foods.add(new Food("Burger king", "Spicy", "40$", R.drawable.burgers));
-                    foods.add(new Food("Burger king", "Spicy", "40$", R.drawable.burgers));
-                    updateRestFoodItems.callBack(categoryIndex, foods);
-                } else if (categoryIndex == 1) {
-                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
-                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
-                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
-                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
-                    updateRestFoodItems.callBack(categoryIndex, foods);
-                } else if (categoryIndex == 2) {
-                    foods.add(new Food("Medium BBQ", "For family", "399$", R.drawable.bbq));
-                    foods.add(new Food("Medium BBQ", "For family", "399$", R.drawable.bbq));
-                    foods.add(new Food("Medium BBQ", "For family", "399$", R.drawable.bbq));
-                    foods.add(new Food("Medium BBQ", "For family", "399$", R.drawable.bbq));
-                    updateRestFoodItems.callBack(categoryIndex, foods);
-                } else if (categoryIndex == 3) {
-                    foods.add(new Food("Hot pot", "So hot!!", "199$", R.drawable.hotpot));
-                    foods.add(new Food("Hot pot", "So hot!!", "199$", R.drawable.hotpot));
-                    foods.add(new Food("Medium BBQ", "For family", "399$", R.drawable.bbq));
-                    foods.add(new Food("Medium BBQ", "For family", "399$", R.drawable.bbq));
-                    updateRestFoodItems.callBack(categoryIndex, foods);
-                } else if (categoryIndex == 4) {
-                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
-                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
-                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
-                    foods.add(new Food("Seafood Pizza", "Perfect", "99$", R.drawable.pizza));
-                    updateRestFoodItems.callBack(categoryIndex, foods);
-                }
+                updateRestFoodItems.updateCategoryLabel(categories.get(categoryIndex).getFoods().size(),
+                        categories.get(categoryIndex).getName());
             }
         });
 
-
-        if(categoryIndex == position){
+        if(categories.get(position).isSelected()){
             holder.button.setBackgroundResource(R.drawable.custom_btn_selected);
             holder.button.setTextColor(Color.parseColor("#FF000000"));
         }else{
             holder.button.setBackgroundResource(R.drawable.custom_btn_unselected);
             holder.button.setTextColor(Color.parseColor("#FFFFFFFF"));
         }
-
     }
 
     @Override

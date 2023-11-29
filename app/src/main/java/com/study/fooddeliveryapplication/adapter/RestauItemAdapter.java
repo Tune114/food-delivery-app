@@ -69,4 +69,3 @@ public class RestauItemAdapter extends FirebaseRecyclerAdapter<RestauItem,Restau
     }
 }
 
-

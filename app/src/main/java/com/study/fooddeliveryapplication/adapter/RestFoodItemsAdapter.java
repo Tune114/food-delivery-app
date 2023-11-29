@@ -8,15 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.Food;
 import com.study.fooddeliveryapplication.ui.FoodDetailsActivity;
-import com.study.fooddeliveryapplication.ui.RestaurantDetails;
 
 import java.util.List;
 
@@ -30,16 +29,20 @@ public class RestFoodItemsAdapter extends RecyclerView.Adapter<RestFoodItemsAdap
 
     @NonNull
     @Override
-    public RestFoodItemsAdapter.RestFoodItemsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RestFoodItemsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new RestFoodItemsViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.rest_food_items,parent,false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RestFoodItemsAdapter.RestFoodItemsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RestFoodItemsViewHolder holder, int position) {
         holder.name.setText(foods.get(position).getName());
         holder.description.setText(foods.get(position).getDescription());
         holder.price.setText(foods.get(position).getPrice());
-        holder.image.setImageResource(foods.get(position).getImage());
+        Glide.with(holder.image.getContext())
+                .load(foods.get(position).getImage())
+                .placeholder(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark)
+                .error(com.google.firebase.database.R.drawable.common_google_signin_btn_icon_dark)
+                .into(holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +66,6 @@ public class RestFoodItemsAdapter extends RecyclerView.Adapter<RestFoodItemsAdap
         private TextView name;
         private TextView description;
         private TextView price;
-
         private ImageView image;
 
         public RestFoodItemsViewHolder(@NonNull View itemView) {
