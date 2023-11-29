@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:clickable="true"
-    android:focusable="true"
     android:elevation="10dp"
     >
 
@@ -12,13 +10,11 @@
         android:layout_width="60dp"
         android:layout_height="50dp"
         app:cardCornerRadius="5dp"
-        android:clickable="true"
         android:elevation="10dp"
-        android:focusable="true"
         android:layout_marginTop="10dp"
         >
         <ImageView
-            android:id="@+id/imageViewRes"
+            android:id="@+id/ivSuggestRestItemImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/pho"
@@ -27,7 +23,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textViewSuggestRes"
+        android:id="@+id/tvSuggestRestItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -52,7 +48,7 @@
         />
 
     <TextView
-        android:id="@+id/textViewStar"
+        android:id="@+id/tvSuggestRestItemStar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

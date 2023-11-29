@@ -13,13 +13,19 @@
         android:theme="@style/Theme.FoodDeliveryApplication"
         tools:targetApi="33">
         <activity
-            android:name=".AddCart"
+            android:name=".ui.AddCardActivity"
             android:exported="false" />
         <activity
-            android:name=".AddCardActivity"
-            android:exported="false" />
+            android:name=".ui.AddCartActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
-            android:name=".PaymentActivity"
+            android:name=".ui.PaymentActivity"
             android:exported="false" />
         <activity
             android:name=".Food_details"
@@ -48,11 +54,7 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

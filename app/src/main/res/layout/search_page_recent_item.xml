@@ -12,7 +12,7 @@
     >
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvRecentItemName"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:paddingTop="20dp"
@@ -20,7 +20,6 @@
         android:layout_height="wrap_content"
         android:text="Sample Text"
         android:textSize="16sp"
-        android:clickable="true"
-        android:focusable="true" />
+        />
 
 </androidx.cardview.widget.CardView>

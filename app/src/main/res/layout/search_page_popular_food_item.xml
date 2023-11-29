@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="160dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:clickable="true"
-    android:focusable="true"
     android:elevation="10dp"
     >
     <androidx.cardview.widget.CardView
@@ -17,7 +15,7 @@
         app:cardCornerRadius="15dp"
         >
         <ImageView
-            android:id="@+id/imageViewRes"
+            android:id="@+id/ivPopularFoodImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/pho"
@@ -26,7 +24,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvPopularFoodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -40,7 +38,7 @@
         />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvPopularFoodResName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
