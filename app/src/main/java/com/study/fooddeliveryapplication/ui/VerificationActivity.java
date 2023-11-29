@@ -20,12 +20,14 @@ import com.google.android.gms.tasks.Task;
 import com.study.fooddeliveryapplication.R;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class VerificationActivity extends AppCompatActivity {
     EditText inputcode1,inputcode2,inputcode3,inputcode4,inputcode5,inputcode6;
     ImageView backpagefgpass;
-    TextView getphone;
+    TextView getphone , resend;
     String mess = "is your password ";
+    String otp = createRandomNumber();
     String yourpass;
     Button btnxacnhan;
     @Override
@@ -34,6 +36,7 @@ public class VerificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_verification);
 
         backpagefgpass = (ImageView) findViewById(R.id.backpagefgpass);
+        resend = (TextView) findViewById(R.id.Resend);
         inputcode1 = (EditText) findViewById(R.id.inputcode1);
         inputcode2 = (EditText) findViewById(R.id.inputcode2);
         inputcode3 = (EditText) findViewById(R.id.inputcode3);
@@ -63,13 +66,13 @@ public class VerificationActivity extends AppCompatActivity {
                 String code = inputcode1.getText().toString() + inputcode2.getText().toString() + inputcode3.getText().toString() +
                         inputcode4.getText().toString() + inputcode5.getText().toString() + inputcode6.getText().toString() ;
 
-                if(code.equals(OTP)){
+                if(code.equals(OTP) || code.equals(otp)){
                     SmsManager smsManager = SmsManager.getDefault();
                     ArrayList<String> parts = smsManager.divideMessage(yourpass+": "+mess);
 
                     smsManager.sendMultipartTextMessage(phone,null,parts,null,null);
                     Toast.makeText(getApplicationContext(),"Your password is: "+yourpass,Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(VerificationActivity.this, VerificationActivity.class);
+                    Intent i = new Intent(VerificationActivity.this, LoginActivity.class);
                     startActivity(i);
                 }else{
                     Toast.makeText(getApplicationContext(),"mã OTP không chính xác!",Toast.LENGTH_SHORT).show();
@@ -84,6 +87,25 @@ public class VerificationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        resend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SmsManager smsManager = SmsManager.getDefault();
+                ArrayList<String> parts = smsManager.divideMessage(otp+": "+mess);
+                String phoneNumber = phone;
+                smsManager.sendMultipartTextMessage(phoneNumber,null,parts,null,null);
+                Toast.makeText(getApplicationContext(),otp,Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    private String createRandomNumber() {
+        int randomNumber = new Random().nextInt(999999);
+        String formattedNumber = String.format("%06d", randomNumber);
+
+        return formattedNumber;
     }
 
     private void setUpOTPInput(){
