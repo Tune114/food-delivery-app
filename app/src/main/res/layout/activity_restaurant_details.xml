@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#EFE8E8">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -175,7 +175,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:background="#F6F5F5"
+                    android:background="@color/white"
                     android:scrollbars="none">
 
                     <RelativeLayout
@@ -186,7 +186,7 @@
                             android:id="@+id/rest_cate_items"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#F6F5F5" />
+                            android:background="@color/white" />
 
                     </RelativeLayout>
 
@@ -203,12 +203,15 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/category_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:text="Burger (10)"
                     android:textColor="@color/dark_blue"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"

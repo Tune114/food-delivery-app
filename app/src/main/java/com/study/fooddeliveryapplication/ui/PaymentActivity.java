@@ -17,11 +17,23 @@ import com.study.fooddeliveryapplication.model.CardForPayment;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.TextView;
+
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
+import com.study.fooddeliveryapplication.R;
+import com.study.fooddeliveryapplication.adapter.ListCardAdapter;
+import com.study.fooddeliveryapplication.adapter.ListCardAddAdapter;
+import com.study.fooddeliveryapplication.model.ModelCard;
+import com.study.fooddeliveryapplication.model.ModelCardPayment;
 
 public class PaymentActivity extends AppCompatActivity {
     private RecyclerView rvListCardItem, rvListCardAdd;
     private Button btnAddNewCard;
 
+    private ListCardAdapter listCardAdapter;
+    private ListCardAddAdapter listCardAddAdapter;
+    private TextView txPayable;
     private ImageView btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +41,26 @@ public class PaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
 
         SeedData();
+        // listCardItem
+        rvListCardItem = findViewById(R.id.listCardItem);
+        rvListCardItem.setHasFixedSize(true);
+        rvListCardItem.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false));
+        FirebaseRecyclerOptions<ModelCard> card =
+                new FirebaseRecyclerOptions.Builder<ModelCard>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Card"), ModelCard.class)
+                        .build();
+        listCardAdapter = new ListCardAdapter(card);
+        rvListCardItem.setAdapter(listCardAdapter);
+        // listCardAdd
+        rvListCardAdd = findViewById(R.id.listCardAdd);
+        rvListCardAdd.setLayoutManager(new LinearLayoutManager(this ));
+        FirebaseRecyclerOptions<ModelCardPayment> cardAdded =
+                new FirebaseRecyclerOptions.Builder<ModelCardPayment>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("CardForPayment"),ModelCardPayment.class)
+                        .build();
+        listCardAddAdapter = new ListCardAddAdapter(cardAdded);
+        rvListCardAdd.setAdapter(listCardAddAdapter);
+        // Listener
 
         btnAddNewCard = findViewById(R.id.btnAddNewCard);
         btnAddNewCard.setOnClickListener(new View.OnClickListener() {
@@ -84,4 +116,22 @@ public class PaymentActivity extends AppCompatActivity {
         ListCardAddAdapter listCardAddAdapter = new ListCardAddAdapter(listCardAdd);
         rvListCardAdd.setAdapter(listCardAddAdapter);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        listCardAdapter.startListening();
+        listCardAddAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        listCardAdapter.stopListening();
+        listCardAddAdapter.stopListening();
+    }
+
+
+
+
 }

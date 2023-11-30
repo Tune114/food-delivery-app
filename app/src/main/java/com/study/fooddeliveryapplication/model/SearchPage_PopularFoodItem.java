@@ -1,9 +1,11 @@
 package com.study.fooddeliveryapplication.model;
 
 public class SearchPage_PopularFoodItem {
-    private String PopularFoodName,PopularFoodResName,PopularFoodImage;
+    private String PopularFoodName, PopularFoodResName, PopularFoodImage;
 
-    public SearchPage_PopularFoodItem(){}
+    public SearchPage_PopularFoodItem() {
+    }
+
     public SearchPage_PopularFoodItem(String popularFoodName, String popularFoodResName, String popularFoodImage) {
         PopularFoodName = popularFoodName;
         PopularFoodResName = popularFoodResName;
