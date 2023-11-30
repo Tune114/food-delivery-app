@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,12 +39,17 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
     private List<Food> foods;
     private RestCateItemsAdapter categoryAdapter;
     private TextView categoryLabel;
+    private ImageView resImage;
+    private TextView resName;
+    private TextView resDescrip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_details);
 
+        Intent intent=getIntent();
+        String restName=intent.getStringExtra("RestName");
 
         back_btn = (ImageButton) findViewById(R.id.back_button);
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +62,9 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
         });
 
         categoryLabel = findViewById(R.id.category_label);
+        resImage=findViewById(R.id.rest_image);
+        resName=findViewById(R.id.rest_name);
+        resDescrip=findViewById(R.id.rest_descrip);
 
         categories=new ArrayList<>();
 
@@ -70,22 +80,37 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 categories.clear();
                 for(DataSnapshot ds:snapshot.getChildren()){
-                    String restaurantName=ds.child("name").getValue(String.class);
+                    String restaurantName=ds.child("RestName").getValue(String.class);
+                    if(restaurantName.equals(restName)){
 
-                    DataSnapshot categoriesSnapshot = ds.child("categories");
-                    for(DataSnapshot cateDs:categoriesSnapshot.getChildren()){
-                        foods=new ArrayList<>();
-                        String categoryName=cateDs.child("category_name").getValue(String.class);
-                        Category category=new Category(categoryName);
+                        String restaurantImage=ds.child("RestImage").getValue(String.class);
+                        String restaurantDescription=ds.child("RestDescrip").getValue(String.class);
 
-                        DataSnapshot foodsSnapshot = cateDs.child("foods");
-                        for(DataSnapshot foodDs:foodsSnapshot.getChildren()){
-                            Food food=foodDs.getValue(Food.class);
-                            food.setRestaurantName(restaurantName);
-                            foods.add(food);
+                        resName.setText(restaurantName);
+                        resDescrip.setText(restaurantDescription);
+
+                        Glide.with(resImage.getContext())
+                                .load(restaurantImage)
+                                .placeholder(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark)
+                                .error(com.google.firebase.database.R.drawable.common_google_signin_btn_icon_dark)
+                                .into(resImage);
+
+                        DataSnapshot categoriesSnapshot = ds.child("categories");
+                        for(DataSnapshot cateDs:categoriesSnapshot.getChildren()){
+                            foods=new ArrayList<>();
+                            String categoryName=cateDs.child("category_name").getValue(String.class);
+                            Category category=new Category(categoryName);
+
+                            DataSnapshot foodsSnapshot = cateDs.child("foods");
+                            for(DataSnapshot foodDs:foodsSnapshot.getChildren()){
+                                Food food=foodDs.getValue(Food.class);
+                                food.setRestaurantName(restaurantName);
+                                foods.add(food);
+                            }
+                            category.setFoods(foods);
+                            categories.add(category);
                         }
-                        category.setFoods(foods);
-                        categories.add(category);
+                        break;
                     }
                 }
                 categories.get(0).setSelected(true);
