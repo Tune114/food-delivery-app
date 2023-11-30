@@ -2,6 +2,7 @@ package com.study.fooddeliveryapplication.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -30,6 +31,20 @@ import com.study.fooddeliveryapplication.adapter.FoodListAdapter;
 import com.study.fooddeliveryapplication.adapter.IngredientListAdapter;
 import com.study.fooddeliveryapplication.model.FoodItem;
 import com.study.fooddeliveryapplication.model.IngredientItem;
+=======
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.util.Pair;
+
+import com.study.fooddeliveryapplication.R;
+import com.study.fooddeliveryapplication.adapter.CommentAdapter;
+>>>>>>> master
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +64,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private Button btnMinus;
     private int quantity = 0;
     private int price = 0;
+<<<<<<< HEAD
 
     private ImageButton btnBack;
     private ArrayList<FoodItem> foodList;
@@ -59,6 +75,10 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private IngredientListAdapter xadapter;
     private List<IngredientItem> xingredientList;
 
+=======
+    private ImageButton btnBack;
+    private Button btnAddToCart;
+>>>>>>> master
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -71,6 +91,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
         data.add(new Pair<>("Phạm Tấn Tú\nTạm ổn", "icon_ava"));
         data.add(new Pair<>("Trần Đình Thọ\nSẽ mua lại lần sau", "logo_valorant"));
 
+<<<<<<< HEAD
 
         ListView listView = findViewById(R.id.list_comment);
         CommentAdapter adapter = new CommentAdapter(this, data);
@@ -137,6 +158,11 @@ public class FoodDetailsActivity extends AppCompatActivity {
         ImageView imageFood = findViewById(R.id.image_food);
         TextView dishName = findViewById(R.id.dish_name);
         TextView dishInfo = findViewById(R.id.dish_info);
+=======
+        ListView listView = findViewById(R.id.list_comment);
+        CommentAdapter adapter = new CommentAdapter(this, data);
+        listView.setAdapter(adapter);
+>>>>>>> master
         btnLove = findViewById(R.id.btn_love);
         textLoveCount = findViewById(R.id.text_love_count);
         btnSizeNho = findViewById(R.id.btn_size_nho);
@@ -148,15 +174,24 @@ public class FoodDetailsActivity extends AppCompatActivity {
         btnPlus = findViewById(R.id.btn_plus);
         btnMinus = findViewById(R.id.btn_minus);
         btnBack = findViewById(R.id.button_back);
+<<<<<<< HEAD
 
         btnSizeNho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 textPrice.setText("50000");
+=======
+        btnAddToCart=findViewById(R.id.add_to_cart);
+        btnSizeNho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textPrice.setText("25000");
+>>>>>>> master
                 calculateSumPrice();
             }
         });
 
+<<<<<<< HEAD
 
 
         DatabaseReference dishesRef = FirebaseDatabase.getInstance().getReference().child("dish").child("dish1");
@@ -187,6 +222,12 @@ public class FoodDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textPrice.setText("55000");
+=======
+        btnSizeVua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textPrice.setText("30000");
+>>>>>>> master
                 calculateSumPrice();
             }
         });
@@ -194,7 +235,11 @@ public class FoodDetailsActivity extends AppCompatActivity {
         btnSizeLon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 textPrice.setText("60000");
+=======
+                textPrice.setText("35000");
+>>>>>>> master
                 calculateSumPrice();
             }
         });
@@ -207,7 +252,10 @@ public class FoodDetailsActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -230,6 +278,17 @@ public class FoodDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+<<<<<<< HEAD
+=======
+        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                Intent intent = new Intent(FoodDetailsActivity.this, AddCartActivity.class);
+                startActivity(intent);
+            }
+        });
+>>>>>>> master
 
     }
 
@@ -252,6 +311,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
             calculateSumPrice();
         }
     }
+<<<<<<< HEAD
     private void addFoodItem(String name, Drawable imageDrawable) {
         FoodItem newItem = new FoodItem();
         newItem.setName(name);
@@ -259,6 +319,9 @@ public class FoodDetailsActivity extends AppCompatActivity {
         mFoodList.add(newItem);
         mFoodListAdapter.notifyDataSetChanged();
     }
+=======
+
+>>>>>>> master
     private void calculateSumPrice() {
         price = Integer.parseInt(textPrice.getText().toString());
         int sumPrice = price * quantity;

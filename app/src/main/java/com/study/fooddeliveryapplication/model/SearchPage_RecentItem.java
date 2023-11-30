@@ -14,4 +14,8 @@ public class SearchPage_RecentItem {
     public void setRecentItemName(String recentItemName) {
         RecentItemName = recentItemName;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

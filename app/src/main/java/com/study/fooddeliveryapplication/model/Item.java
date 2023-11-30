@@ -26,4 +26,8 @@ public class Item {
     public void setFoodName(String foodName) {
         FoodName = foodName;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

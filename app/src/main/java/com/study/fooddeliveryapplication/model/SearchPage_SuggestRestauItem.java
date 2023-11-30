@@ -34,4 +34,8 @@ public class SearchPage_SuggestRestauItem {
     public void setSuggestRestItemStar(String suggestRestItemStar) {
         SuggestRestItemStar = suggestRestItemStar;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

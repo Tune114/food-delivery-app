@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.INTERNET" />
+=======
+    <uses-permission android:name="android.permission.SEND_SMS" />
+>>>>>>> master
 
     <application
         android:allowBackup="true"
@@ -19,7 +23,12 @@
             android:exported="false" />
         <activity
             android:name=".ui.AboutUsActivity"
+<<<<<<< HEAD
             android:exported="false"></activity>
+=======
+            android:exported="false">
+        </activity>
+>>>>>>> master
         <activity
             android:name=".ui.AddCartActivity"
             android:exported="false"></activity>
@@ -31,17 +40,26 @@
             android:exported="false" />
         <activity
             android:name=".ui.FoodDetailsActivity"
+<<<<<<< HEAD
+=======
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".ui.RestaurantDetails"
+>>>>>>> master
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".ui.RestaurantDetails"
             android:exported="false"></activity>
         <activity
+=======
+>>>>>>> master
             android:name=".ui.VerificationActivity"
             android:exported="false"></activity>
         <activity
@@ -58,7 +76,11 @@
             android:exported="false"></activity>
         <activity
             android:name=".ui.HomePageActivity"
+<<<<<<< HEAD
             android:exported="false">
+=======
+            android:exported="true">
+>>>>>>> master
         </activity>
         <activity
             android:name=".ui.MainActivity"

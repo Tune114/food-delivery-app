@@ -33,4 +33,8 @@ public class SearchPage_PopularFoodItem {
     public void setPopularFoodImage(String popularFoodImage) {
         PopularFoodImage = popularFoodImage;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master
