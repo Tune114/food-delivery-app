@@ -1,34 +1,39 @@
 package com.study.fooddeliveryapplication.ui;
 
-import android.graphics.Color;
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-
+import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.study.fooddeliveryapplication.R;
-import com.study.fooddeliveryapplication.adapters.RestCateItemsAdapter;
-import com.study.fooddeliveryapplication.adapters.RestFoodItemsAdapter;
-import com.study.fooddeliveryapplication.adapters.UpdateRestFoodItems;
+import com.study.fooddeliveryapplication.adapter.RestCateItemsAdapter;
+import com.study.fooddeliveryapplication.adapter.RestFoodItemsAdapter;
+import com.study.fooddeliveryapplication.adapter.UpdateRestFoodItems;
 import com.study.fooddeliveryapplication.model.Category;
 import com.study.fooddeliveryapplication.model.Food;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantDetails extends AppCompatActivity implements UpdateRestFoodItems{
 
     private RecyclerView categoriesRecyclerView;
-
     private RecyclerView foodRecyclerView;
-
+    ImageButton back_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_details);
+
+       back_btn = (ImageButton) findViewById(R.id.back_button);
+       back_btn.setOnClickListener(view -> {
+           finish();
+           Intent intent = new Intent(RestaurantDetails.this, HomePageActivity.class);
+           startActivity(intent);
+       });
+
 
         // Restaurant categories
         List<Category> categories=new ArrayList<>();
@@ -54,6 +59,7 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestFo
         callBack(0, foods);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void callBack(int position, List<Food> foods) {
         RestFoodItemsAdapter foodAdapter = new RestFoodItemsAdapter(foods);
@@ -61,5 +67,7 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestFo
         foodRecyclerView.setAdapter(foodAdapter);
         foodRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }
+
+
 
 }
