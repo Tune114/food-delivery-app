@@ -1,45 +1,14 @@
 {
   "project_info": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "project_number": "223079269243",
-    "firebase_url": "https://food-delivery-application-test-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "food-delivery-application-test",
-    "storage_bucket": "food-delivery-application-test.appspot.com"
-=======
     "project_number": "988594206849",
+    "firebase_url": "https://food-delivery-de0f8-default-rtdb.firebaseio.com",
     "project_id": "food-delivery-de0f8",
     "storage_bucket": "food-delivery-de0f8.appspot.com"
->>>>>>> ttu
-=======
-    "project_number": "392994648271",
-    "project_id": "login-8f44c",
-    "storage_bucket": "login-8f44c.appspot.com"
->>>>>>> vthang
-=======
-    "project_number": "269914647600",
-    "firebase_url": "https://food-delivery-applicatio-efd20-default-rtdb.firebaseio.com",
-    "project_id": "food-delivery-applicatio-efd20",
-    "storage_bucket": "food-delivery-applicatio-efd20.appspot.com"
->>>>>>> dinhtho
   },
   "client": [
     {
       "client_info": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "mobilesdk_app_id": "1:223079269243:android:c43a774538fa5d953f73de",
-=======
         "mobilesdk_app_id": "1:988594206849:android:368b7f01c3485ef2e23580",
->>>>>>> ttu
-=======
-        "mobilesdk_app_id": "1:392994648271:android:4464e35a77a5eebde447ba",
->>>>>>> vthang
-=======
-        "mobilesdk_app_id": "1:269914647600:android:1d3e17262c0a89c1b6d1f5",
->>>>>>> dinhtho
         "android_client_info": {
           "package_name": "com.study.fooddeliveryapplication"
         }
@@ -47,19 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-          "current_key": "AIzaSyB_ihSGBzwrS_R4RQ4KQ9_t-YxNqbAgHyU"
-=======
           "current_key": "AIzaSyANvDX8sYcjuHAvhqK6luHw0OxVw4NPSbg"
->>>>>>> ttu
-=======
-          "current_key": "AIzaSyDmr37Y-huKtI-yx6pt3dlQoyMz0agKIjk"
->>>>>>> vthang
-=======
-          "current_key": "AIzaSyDCBUi-w3hGZCc6QcDrjMJf2BywVK4L3Jg"
->>>>>>> dinhtho
         }
       ],
       "services": {

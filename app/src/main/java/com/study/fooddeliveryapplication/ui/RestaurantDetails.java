@@ -81,6 +81,7 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
                         DataSnapshot foodsSnapshot = cateDs.child("foods");
                         for(DataSnapshot foodDs:foodsSnapshot.getChildren()){
                             Food food=foodDs.getValue(Food.class);
+                            food.setRestaurantName(restaurantName);
                             foods.add(food);
                         }
                         category.setFoods(foods);
@@ -111,5 +112,7 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
     public void updateCategoryLabel(int size,String categoryName) {
         categoryLabel.setText(categoryName+" ("+size+")");
     }
+
+
 
 }

@@ -21,7 +21,6 @@
             android:name=".ui.AboutUsActivity"
             android:exported="false">
         </activity>
-
         <activity
             android:name=".ui.AddCartActivity"
             android:exported="false"></activity>
@@ -37,7 +36,12 @@
         </activity>
         <activity
             android:name=".ui.RestaurantDetails"
-            android:exported="false"></activity>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.VerificationActivity"
             android:exported="false"></activity>
@@ -56,10 +60,6 @@
         <activity
             android:name=".ui.HomePageActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.MainActivity"
