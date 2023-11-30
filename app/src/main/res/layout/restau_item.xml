@@ -5,24 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="start"
-<<<<<<< HEAD
     android:elevation="15dp">
-=======
-    android:elevation="15dp"
-    android:clickable="true"
-    android:focusable="true">
->>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:cardCornerRadius="20dp"
-<<<<<<< HEAD
         android:elevation="10dp"
-=======
-        android:clickable="true"
-        android:elevation="10dp"
-        android:focusable="true"
->>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
@@ -33,11 +21,6 @@
             android:layout_height="match_parent"
             android:src="@drawable/pho"
             android:scaleType="fitXY"
-<<<<<<< HEAD
-=======
-            android:clickable="true"
-            android:focusable="true"
->>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
             />
     </androidx.cardview.widget.CardView>
 

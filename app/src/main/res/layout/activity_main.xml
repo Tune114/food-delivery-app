@@ -18,10 +18,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo"
         tools:ignore="MissingConstraints" />
-<<<<<<< HEAD
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-=======
-</androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca

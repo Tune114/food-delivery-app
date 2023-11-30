@@ -3,11 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="160dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-<<<<<<< HEAD
-=======
-    android:clickable="true"
-    android:focusable="true"
->>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
     android:elevation="10dp"
     >
     <androidx.cardview.widget.CardView
@@ -20,11 +15,7 @@
         app:cardCornerRadius="15dp"
         >
         <ImageView
-<<<<<<< HEAD
             android:id="@+id/ivPopularFoodImage"
-=======
-            android:id="@+id/imageViewRes"
->>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/pho"
@@ -33,11 +24,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-<<<<<<< HEAD
         android:id="@+id/tvPopularFoodName"
-=======
-        android:id="@+id/textView1"
->>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -51,11 +38,7 @@
         />
 
     <TextView
-<<<<<<< HEAD
         android:id="@+id/tvPopularFoodResName"
-=======
-        android:id="@+id/textView2"
->>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

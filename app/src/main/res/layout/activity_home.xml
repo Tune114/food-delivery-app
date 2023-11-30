@@ -99,39 +99,24 @@
         android:lineSpacingExtra="7sp"
         android:textSize="16sp"
         />
-<<<<<<< HEAD
     <TextView
         android:id="@+id/et_hp_seachBar"
-=======
-    <EditText
-        android:id="@+id/et_seachBar"
->>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
         android:layout_width="327dp"
         android:layout_height="62dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="24dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="165dp"
-<<<<<<< HEAD
         android:text="Search dishes,restaurants"
         android:textColor="@color/searchTextColor"
         android:textSize="16sp"
         android:paddingTop="20dp"
         android:paddingBottom="16dp"
-=======
-        android:hint="Search dishes,restaurants "
-        android:textColor="@color/searchTextColor"
-        android:textSize="16sp"
->>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
         android:drawableStart="@drawable/ic_search_foreground"
         android:drawablePadding="1dp"
         android:background="@drawable/custom_search"
         android:elevation="0.3dp"
-<<<<<<< HEAD
         />
-=======
-        android:autofillHints="" />
->>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
     <TextView
         android:id="@+id/tv_all_categor"
         android:layout_width="132dp"
