@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "964032428166",
+    "firebase_url": "https://food-delivery-cminh-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "food-delivery-cminh",
+    "storage_bucket": "food-delivery-cminh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964032428166:android:c9481026917c1050cc7907",
+        "android_client_info": {
+          "package_name": "com.study.fooddeliveryapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQfGwClAIFmQCKi7gGKQfGulekSymO0b0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
