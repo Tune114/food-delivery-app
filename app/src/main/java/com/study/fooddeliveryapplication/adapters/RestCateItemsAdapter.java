@@ -1,6 +1,8 @@
-package com.study.fooddeliveryapplication.adapters;
+package com.study.fooddeliveryapplication.adapter;
 
-import android.content.Context;
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +11,13 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.Category;
 import com.study.fooddeliveryapplication.model.Food;
+import com.study.fooddeliveryapplication.ui.FoodDetailsActivity;
+import com.study.fooddeliveryapplication.ui.RestaurantDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +28,10 @@ public class RestCateItemsAdapter extends RecyclerView.Adapter<RestCateItemsAdap
     private List<Category> categories;
     private List<Food> foods;
     private int categoryIndex = 0;
-    private boolean check=true;
     public RestCateItemsAdapter(List<Category> categories) {
         this.categories = categories;
     }
+
 
     public RestCateItemsAdapter(UpdateRestFoodItems updateRestFoodItems, List<Category> categories) {
         this.updateRestFoodItems = updateRestFoodItems;
@@ -110,7 +113,7 @@ public class RestCateItemsAdapter extends RecyclerView.Adapter<RestCateItemsAdap
 
         public RestCateItemsViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.cate_card_view);
+            cardView = itemView.findViewById(R.id.food_card_view);
             button = itemView.findViewById(R.id.category_items_btn);
         }
     }
