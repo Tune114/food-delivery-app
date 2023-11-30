@@ -1,10 +1,19 @@
 package com.study.fooddeliveryapplication.ui;
 
+<<<<<<< HEAD
+=======
 import androidx.annotation.NonNull;
+>>>>>>> master
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+=======
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +28,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+>>>>>>> master
 import com.study.fooddeliveryapplication.R;
 
 public class LoginActivity extends AppCompatActivity {
     TextView tvforgotpass,tvsignup;
+<<<<<<< HEAD
+    Button btnsignup;
+=======
     EditText phoneedit,passwordedit;
     Button btnlogin;
+>>>>>>> master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +46,9 @@ public class LoginActivity extends AppCompatActivity {
 
         tvforgotpass = (TextView) findViewById(R.id.tvforgotpass);
         tvsignup = (TextView) findViewById(R.id.tvsignup);
+<<<<<<< HEAD
+        btnsignup = (Button)findViewById(R.id.signupbtn);
+=======
         phoneedit = (EditText) findViewById(R.id.phone);
         passwordedit = (EditText) findViewById(R.id.password);
         btnlogin = (Button) findViewById(R.id.btnlogin) ;
@@ -42,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                 Login();
             }
         });
+>>>>>>> master
 
         tvforgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +76,17 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+<<<<<<< HEAD
+
+        btnsignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+=======
     }
 
     private void Login(){
@@ -104,5 +133,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         }
+>>>>>>> master
     }
 }

@@ -68,7 +68,11 @@
                     android:textStyle="bold" />
 
                 <EditText
+<<<<<<< HEAD
+                    android:id="@+id/inputCardName"
+=======
                     android:id="@+id/inputCardHolderName"
+>>>>>>> master
                     android:layout_width="363dp"
                     android:layout_height="wrap_content"
                     android:ems="15"
@@ -91,7 +95,11 @@
                     android:textSize="20dp" />
 
                 <EditText
+<<<<<<< HEAD
+                    android:id="@+id/editTextText3"
+=======
                     android:id="@+id/inputCardNumber"
+>>>>>>> master
                     android:layout_width="363dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -145,7 +153,11 @@
                             android:text="CVC" />
 
                         <EditText
+<<<<<<< HEAD
+                            android:id="@+id/editTextText5"
+=======
                             android:id="@+id/inputCvc"
+>>>>>>> master
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ems="10"
@@ -159,7 +171,11 @@
             </LinearLayout>
 
             <Button
+<<<<<<< HEAD
+                android:id="@+id/button"
+=======
                 android:id="@+id/btnComfirmNewCard"
+>>>>>>> master
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ADD"

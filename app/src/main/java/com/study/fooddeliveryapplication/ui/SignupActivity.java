@@ -1,10 +1,28 @@
 package com.study.fooddeliveryapplication.ui;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 import androidx.annotation.NonNull;
+>>>>>>> master
+=======
+import androidx.annotation.NonNull;
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
+<<<<<<< HEAD
+import android.view.View;
+import android.widget.TextView;
+
+=======
+=======
+import android.view.View;
+import android.widget.TextView;
+
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -19,23 +37,44 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+<<<<<<< HEAD
+>>>>>>> master
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 import com.study.fooddeliveryapplication.R;
 
 public class SignupActivity extends AppCompatActivity {
     TextView tvHaveacc;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
     EditText editphone,editemail,epassword,editrepass;
     Button btnsignup;
+>>>>>>> master
+=======
+    EditText editphone,editemail,epassword,editrepass;
+    Button btnsignup;
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
         tvHaveacc = (TextView) findViewById(R.id.tvHaveacc);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
         editphone = (EditText) findViewById(R.id.editTextPhone);
         epassword = (EditText) findViewById(R.id.editTextPassword);
         editemail = (EditText) findViewById(R.id.editTextEmail);
         editrepass = (EditText) findViewById(R.id.editTextRePassword);
         btnsignup = (Button) findViewById(R.id.btnsignup) ;
+<<<<<<< HEAD
+>>>>>>> master
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
         tvHaveacc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +83,10 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+<<<<<<< HEAD
+<<<<<<< HEAD
+    }
+=======
 
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,4 +134,8 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
+>>>>>>> master
+=======
+    }
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 }

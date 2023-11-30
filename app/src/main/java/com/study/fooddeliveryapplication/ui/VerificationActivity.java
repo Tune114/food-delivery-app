@@ -23,6 +23,8 @@ import java.util.ArrayList;
 
 import com.study.fooddeliveryapplication.R;
 
+import com.study.fooddeliveryapplication.R;
+
 public class VerificationActivity extends AppCompatActivity {
     EditText inputcode1,inputcode2,inputcode3,inputcode4,inputcode5,inputcode6;
     ImageView backpagefgpass;

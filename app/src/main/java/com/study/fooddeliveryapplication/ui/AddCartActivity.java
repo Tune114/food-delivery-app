@@ -4,16 +4,26 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+<<<<<<< HEAD
+import android.widget.ImageView;
+import android.widget.TextView;
+
+=======
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+>>>>>>> master
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+<<<<<<< HEAD
+import com.study.fooddeliveryapplication.R;
+import com.study.fooddeliveryapplication.adapter.ListCartItemAdapter;
+=======
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +36,7 @@ import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.ListCartItemAdapter;
 import com.study.fooddeliveryapplication.model.ModelCart;
 import com.study.fooddeliveryapplication.model.ModelOrder;
+>>>>>>> master
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,18 +44,28 @@ import java.util.List;
 public class AddCartActivity extends AppCompatActivity {
 
     private RecyclerView rvListItem;
+<<<<<<< HEAD
+    private TextView txtAddPayment;
+
+    private ImageView btnBack;
+=======
     private Button btnPlaceOrder;
     private TextView txtAddPayment, txPayable;
     private ListCartItemAdapter listCartItemAdapter;
     private ImageView btnBack;
     private  List<ModelCart> listOrder;
     private ModelOrder modelOrder;
+>>>>>>> master
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mycart);
 
+<<<<<<< HEAD
+        SeedData();
+
+=======
         // listCartItemAdapter
         rvListItem = findViewById(R.id.listCartItem);
         rvListItem.setLayoutManager(new LinearLayoutManager(this ));
@@ -103,6 +124,7 @@ public class AddCartActivity extends AppCompatActivity {
         });
 
         // txtAddPayment
+>>>>>>> master
         txtAddPayment = findViewById(R.id.txtEditPayment);
         txtAddPayment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +134,10 @@ public class AddCartActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
+=======
         // btnBack
+>>>>>>> master
         btnBack= (ImageView)findViewById(R.id.btn_back);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +149,22 @@ public class AddCartActivity extends AppCompatActivity {
 
             }
         });
+<<<<<<< HEAD
+    }
+
+    public void SeedData(){
+        List<String> list = new ArrayList<>();
+
+        list.add("Margherita");
+        list.add("Pepperoni");
+        list.add("Mushroom");
+        rvListItem = findViewById(R.id.listCartItem);
+        rvListItem.setLayoutManager(new LinearLayoutManager(this ));
+        ListCartItemAdapter listCartItemAdapter = new ListCartItemAdapter(list);
+        rvListItem.setAdapter(listCartItemAdapter);
+    }
+}
+=======
 
     }
 
@@ -143,3 +184,4 @@ public class AddCartActivity extends AppCompatActivity {
     }
 
 }
+>>>>>>> master

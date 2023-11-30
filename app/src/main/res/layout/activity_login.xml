@@ -104,7 +104,11 @@
     </LinearLayout>
 
     <Button
+<<<<<<< HEAD
+        android:id="@+id/signupbtn"
+=======
         android:id="@+id/btnlogin"
+>>>>>>> master
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

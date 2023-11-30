@@ -1,12 +1,22 @@
 package com.study.fooddeliveryapplication.ui;
 
+<<<<<<< HEAD
+=======
 import androidx.annotation.NonNull;
+>>>>>>> master
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+<<<<<<< HEAD
+import android.widget.ImageView;
+
+import com.study.fooddeliveryapplication.R;
+
+public class AddCardActivity extends AppCompatActivity {
+=======
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +34,7 @@ import java.util.regex.Pattern;
 public class AddCardActivity extends AppCompatActivity {
     private EditText edCardHolderName, edCardNumber, edCvc, edExDate;
     private Button btnAddNewCard;
+>>>>>>> master
 
     private ImageView btnBack;
     @SuppressLint("MissingInflatedId")
@@ -32,6 +43,8 @@ public class AddCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_card);
 
+<<<<<<< HEAD
+=======
         // Take text
         edCardHolderName = (EditText)findViewById(R.id.inputCardHolderName);
         edCardNumber =(EditText)findViewById(R.id.inputCardNumber);
@@ -93,6 +106,7 @@ public class AddCardActivity extends AppCompatActivity {
         });
 
         // btnBack
+>>>>>>> master
         btnBack= (ImageView)findViewById(R.id.btn_back);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +119,8 @@ public class AddCardActivity extends AppCompatActivity {
             }
         });
     }
+<<<<<<< HEAD
+=======
     private static boolean isValidDateFormat(String input) {
         String regex = "^(0[1-9]|1[0-2])/(\\d{2})$";
         Pattern pattern = Pattern.compile(regex);
@@ -112,4 +128,5 @@ public class AddCardActivity extends AppCompatActivity {
 
         return matcher.matches();
     }
+>>>>>>> master
 }
