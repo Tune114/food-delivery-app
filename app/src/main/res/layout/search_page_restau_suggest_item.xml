@@ -3,8 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+<<<<<<< HEAD
+=======
     android:clickable="true"
     android:focusable="true"
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
     android:elevation="10dp"
     >
 
@@ -12,6 +15,13 @@
         android:layout_width="60dp"
         android:layout_height="50dp"
         app:cardCornerRadius="5dp"
+<<<<<<< HEAD
+        android:elevation="10dp"
+        android:layout_marginTop="10dp"
+        >
+        <ImageView
+            android:id="@+id/ivSuggestRestItemImage"
+=======
         android:clickable="true"
         android:elevation="10dp"
         android:focusable="true"
@@ -19,6 +29,7 @@
         >
         <ImageView
             android:id="@+id/imageViewRes"
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/pho"
@@ -27,7 +38,11 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+<<<<<<< HEAD
+        android:id="@+id/tvSuggestRestItemName"
+=======
         android:id="@+id/textViewSuggestRes"
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -52,7 +67,11 @@
         />
 
     <TextView
+<<<<<<< HEAD
+        android:id="@+id/tvSuggestRestItemStar"
+=======
         android:id="@+id/textViewStar"
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

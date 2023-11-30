@@ -14,14 +14,22 @@
         android:layout_width="44dp"
         android:layout_height="44dp"
         app:cardCornerRadius="150dp"
+<<<<<<< HEAD
+        android:elevation="2dp"
+=======
         android:clickable="true"
         android:elevation="2dp"
         android:focusable="true"
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
         >
         <ImageView
+<<<<<<< HEAD
+            android:id="@+id/ivHPFoodItemsImage"
+=======
             android:id="@+id/imageView"
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_search_foreground"
@@ -29,12 +37,21 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+<<<<<<< HEAD
+        android:id="@+id/tvHPFoodItemsName"
+=======
         android:id="@+id/textView"
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
         android:paddingStart="60dp"
         android:paddingEnd="10dp"
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
+        android:text="Sample Text"
+        />
+=======
         android:text="Sample Text" />
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
 
 </androidx.cardview.widget.CardView>

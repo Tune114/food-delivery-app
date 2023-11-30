@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
+    tools:context=".ui.VerificationActivity">
+=======
     tools:context=".VerificationActivity">
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
 
     <ImageView
         android:id="@+id/imageView6"

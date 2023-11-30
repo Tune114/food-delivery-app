@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
+    tools:context=".ui.SearchPageActivity">
+=======
     tools:context=".SearchPageActivity">
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
 
     <androidx.cardview.widget.CardView
         android:layout_width="45dp"
@@ -85,12 +89,22 @@
             />
     </androidx.cardview.widget.CardView>
 
+<<<<<<< HEAD
+    <TextView
+        android:id="@+id/tv_seachBar"
+=======
     <EditText
         android:id="@+id/et_seachBar"
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
         android:layout_width="327dp"
         android:layout_height="62dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="24dp"
+<<<<<<< HEAD
+        android:paddingTop="20dp"
+        android:paddingBottom="16dp"
+=======
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
         android:layout_alignParentTop="true"
         android:layout_marginTop="123dp"
         android:hint="Search dishes,restaurants "
