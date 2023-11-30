@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<<<<<<< HEAD
+    <uses-permission android:name="android.permission.INTERNET" />
+
+=======
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +18,26 @@
         android:theme="@style/Theme.FoodDeliveryApplication"
         tools:targetApi="33">
         <activity
+<<<<<<< HEAD
+            android:name=".ui.SearchPageActivity_Data"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AboutUsActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".ui.AddCartActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".ui.AddCardActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".ui.PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.FoodDetailsActivity"
+            android:exported="true">
+
+=======
             android:name=".Food_details"
             android:exported="true" />
         <activity
@@ -39,12 +64,41 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
+        <activity
+            android:name=".ui.RestaurantDetails"
+            android:exported="false"></activity>
+        <activity
+            android:name=".ui.VerificationActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".ui.ForgotPassActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".ui.SignupActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".ui.SearchPageActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".ui.HomePageActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false"></activity>
+=======
+>>>>>>> ac813fb6b8976458df553e8f68ddd5e59f26d5ca
     </application>
 
 </manifest>
