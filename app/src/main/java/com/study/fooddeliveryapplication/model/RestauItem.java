@@ -1,9 +1,10 @@
 package com.study.fooddeliveryapplication.model;
 
 public class RestauItem {
-    private String RestImage,RestName,RestDescrip;
+    private String RestImage, RestName, RestDescrip;
 
-    public RestauItem(){}
+    public RestauItem() {
+    }
 
     public RestauItem(String restImage, String restName, String restDescrip) {
         RestImage = restImage;
@@ -35,8 +36,12 @@ public class RestauItem {
         RestDescrip = restDescrip;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 =======
 }
 >>>>>>> master
+=======
+}
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7

@@ -1,9 +1,10 @@
 package com.study.fooddeliveryapplication.model;
 
 public class SearchPage_SuggestRestauItem {
-    private String SuggestRestItemName,SuggestRestItemImage,SuggestRestItemStar;
+    private String SuggestRestItemName, SuggestRestItemImage, SuggestRestItemStar;
 
-    public SearchPage_SuggestRestauItem(){}
+    public SearchPage_SuggestRestauItem() {
+    }
 
     public SearchPage_SuggestRestauItem(String suggestRestItemName, String suggestRestItemImage, String suggestRestItemStar) {
         SuggestRestItemName = suggestRestItemName;
@@ -35,7 +36,11 @@ public class SearchPage_SuggestRestauItem {
         SuggestRestItemStar = suggestRestItemStar;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 }
 >>>>>>> master
+=======
+}
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7

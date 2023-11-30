@@ -1,11 +1,18 @@
 package com.study.fooddeliveryapplication.ui;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,28 +20,39 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+<<<<<<< HEAD
 >>>>>>> master
+=======
+
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.RestCateItemsAdapter;
 import com.study.fooddeliveryapplication.adapter.RestFoodItemsAdapter;
 import com.study.fooddeliveryapplication.adapter.UpdateRestFoodItems;
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.study.fooddeliveryapplication.R;
-import com.study.fooddeliveryapplication.adapter.RestCateItemsAdapter;
-import com.study.fooddeliveryapplication.adapter.RestFoodItemsAdapter;
 import com.study.fooddeliveryapplication.adapter.UpdateRestInfor;
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 import com.study.fooddeliveryapplication.model.Category;
 import com.study.fooddeliveryapplication.model.Food;
 import java.util.ArrayList;
@@ -45,8 +63,11 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
     private RecyclerView categoriesRecyclerView;
     private RecyclerView foodRecyclerView;
 <<<<<<< HEAD
+<<<<<<< HEAD
     ImageButton back_btn;
 =======
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
     private ImageButton back_btn;
     private DatabaseReference databaseReference;
     private List<Category> categories;
@@ -54,13 +75,19 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
     private RestCateItemsAdapter categoryAdapter;
     private TextView categoryLabel;
 
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_details);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
        back_btn = (ImageButton) findViewById(R.id.back_button);
        back_btn.setOnClickListener(view -> {
            finish();
@@ -76,7 +103,10 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
         categories.add(new Category("BBQ"));
         categories.add(new Category("Pasta"));
         categories.add(new Category("Noodle"));
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
         back_btn = (ImageButton) findViewById(R.id.back_button);
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +121,10 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
         categoryLabel = findViewById(R.id.category_label);
 
         categories=new ArrayList<>();
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
         categoriesRecyclerView=findViewById(R.id.rest_cate_items);
         foodRecyclerView=findViewById(R.id.rest_cate_foods);
@@ -100,10 +133,11 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
         categoriesRecyclerView.setAdapter(categoryAdapter);
 
         databaseReference=FirebaseDatabase.getInstance().getReference().child("restaurants");
+        List<Category> finalCategories = categories;
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                categories.clear();
+                finalCategories.clear();
                 for(DataSnapshot ds:snapshot.getChildren()){
                     String restaurantName=ds.child("name").getValue(String.class);
 
@@ -120,13 +154,13 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
                             foods.add(food);
                         }
                         category.setFoods(foods);
-                        categories.add(category);
+                        finalCategories.add(category);
                     }
                 }
-                categories.get(0).setSelected(true);
+                finalCategories.get(0).setSelected(true);
                 categoryAdapter.notifyDataSetChanged();
-                callBack(categories.get(0).getFoods());
-                updateCategoryLabel(categories.get(0).getFoods().size(),categories.get(0).getName());
+                callBack(finalCategories.get(0).getFoods());
+                updateCategoryLabel(finalCategories.get(0).getFoods().size(), finalCategories.get(0).getName());
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -143,15 +177,21 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
         foodRecyclerView.setAdapter(foodAdapter);
         foodRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
     @Override
     public void updateCategoryLabel(int size,String categoryName) {
         categoryLabel.setText(categoryName+" ("+size+")");
     }
 
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
 
 }

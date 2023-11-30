@@ -42,6 +42,9 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
     implementation("androidx.core:core-ktx:1.6.0")
     implementation("com.firebaseui:firebase-ui-database:8.0.2")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
@@ -49,7 +52,9 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.squareup.picasso:picasso:2.71828")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+    implementation("com.google.firebase:firebase-analytics")
 }
+<<<<<<< HEAD
 =======
     implementation("com.google.firebase:firebase-analytics")
     implementation("androidx.cardview:cardview:1.0.0")
@@ -59,3 +64,6 @@ dependencies {
 }
 
 >>>>>>> master
+=======
+
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7

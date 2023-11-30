@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.ListCardAdapter;
@@ -18,7 +21,10 @@ import com.study.fooddeliveryapplication.model.CardForPayment;
 
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -28,11 +34,15 @@ import com.study.fooddeliveryapplication.adapter.ListCardAdapter;
 import com.study.fooddeliveryapplication.adapter.ListCardAddAdapter;
 import com.study.fooddeliveryapplication.model.ModelCard;
 import com.study.fooddeliveryapplication.model.ModelCardPayment;
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
 public class PaymentActivity extends AppCompatActivity {
     private RecyclerView rvListCardItem, rvListCardAdd;
     private Button btnAddNewCard;
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -40,15 +50,26 @@ public class PaymentActivity extends AppCompatActivity {
     private ListCardAddAdapter listCardAddAdapter;
     private TextView txPayable;
 >>>>>>> master
+=======
+
+    private ListCardAdapter listCardAdapter;
+    private ListCardAddAdapter listCardAddAdapter;
+    private TextView txPayable;
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
     private ImageView btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         SeedData();
 =======
+=======
+
+        SeedData();
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
         // listCardItem
         rvListCardItem = findViewById(R.id.listCardItem);
         rvListCardItem.setHasFixedSize(true);
@@ -69,7 +90,10 @@ public class PaymentActivity extends AppCompatActivity {
         listCardAddAdapter = new ListCardAddAdapter(cardAdded);
         rvListCardAdd.setAdapter(listCardAddAdapter);
         // Listener
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
         btnAddNewCard = findViewById(R.id.btnAddNewCard);
         btnAddNewCard.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +116,9 @@ public class PaymentActivity extends AppCompatActivity {
         });
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
     public void SeedData(){
         // ListCardAdapter
         List<CardForPayment> listCard = new ArrayList<>();
@@ -126,7 +153,10 @@ public class PaymentActivity extends AppCompatActivity {
         ListCardAddAdapter listCardAddAdapter = new ListCardAddAdapter(listCardAdd);
         rvListCardAdd.setAdapter(listCardAddAdapter);
     }
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
     @Override
     protected void onStart() {
@@ -145,5 +175,8 @@ public class PaymentActivity extends AppCompatActivity {
 
 
 
+<<<<<<< HEAD
 >>>>>>> master
+=======
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 }

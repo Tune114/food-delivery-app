@@ -3,10 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.INTERNET" />
 =======
     <uses-permission android:name="android.permission.SEND_SMS" />
 >>>>>>> master
+=======
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
     <application
         android:allowBackup="true"
@@ -24,11 +33,15 @@
         <activity
             android:name=".ui.AboutUsActivity"
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:exported="false"></activity>
 =======
             android:exported="false">
         </activity>
 >>>>>>> master
+=======
+            android:exported="false"></activity>
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
         <activity
             android:name=".ui.AddCartActivity"
             android:exported="false"></activity>
@@ -41,12 +54,18 @@
         <activity
             android:name=".ui.FoodDetailsActivity"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             android:exported="false">
         </activity>
         <activity
             android:name=".ui.RestaurantDetails"
 >>>>>>> master
+=======
+        android:exported="false"/>
+        <activity
+            android:name=".ui.RestaurantDetails"
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,11 +74,17 @@
         </activity>
         <activity
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:name=".ui.RestaurantDetails"
             android:exported="false"></activity>
         <activity
 =======
 >>>>>>> master
+=======
+            android:name=".ui.RestaurantDetails"
+            android:exported="false"></activity>
+        <activity
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
             android:name=".ui.VerificationActivity"
             android:exported="false"></activity>
         <activity
@@ -77,10 +102,14 @@
         <activity
             android:name=".ui.HomePageActivity"
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:exported="false">
 =======
             android:exported="true">
 >>>>>>> master
+=======
+            android:exported="false">
+>>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
         </activity>
         <activity
             android:name=".ui.MainActivity"
