@@ -55,6 +55,7 @@ public class RestFoodItemsAdapter extends RecyclerView.Adapter<RestFoodItemsAdap
         String price=foods.get(position).getPrice();
         String image=foods.get(position).getImage();
         String restaurantName=foods.get(position).getRestaurantName();
+        String categoryName=foods.get(position).getCategoryName();
 
         holder.name.setText(name);
         holder.description.setText(description);
@@ -69,6 +70,9 @@ public class RestFoodItemsAdapter extends RecyclerView.Adapter<RestFoodItemsAdap
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), FoodDetailsActivity.class);
+                intent.putExtra("restaurantName",restaurantName);
+                intent.putExtra("categoryName",categoryName);
+                intent.putExtra("foodName",name);
                 Context context = view.getContext();
                 if (context instanceof Activity) {
                     ((Activity)context).startActivity(intent);

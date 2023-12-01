@@ -105,6 +105,7 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
                             for(DataSnapshot foodDs:foodsSnapshot.getChildren()){
                                 Food food=foodDs.getValue(Food.class);
                                 food.setRestaurantName(restaurantName);
+                                food.setCategoryName(categoryName);
                                 foods.add(food);
                             }
                             category.setFoods(foods);

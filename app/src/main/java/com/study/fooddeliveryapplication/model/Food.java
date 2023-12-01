@@ -9,6 +9,7 @@ public class Food {
     private String price;
     private String image;
     private String restaurantName;
+    private String categoryName;
 
     public Food() {
     }
@@ -77,5 +78,13 @@ public class Food {
         result.put("restName", restaurantName);
 
         return result;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }
