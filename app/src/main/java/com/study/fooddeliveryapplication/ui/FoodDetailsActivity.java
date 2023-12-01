@@ -8,13 +8,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.Pair;
-
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.CommentAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 

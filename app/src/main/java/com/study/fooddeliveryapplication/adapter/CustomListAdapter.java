@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.Student;
-
 import java.util.ArrayList;
 
 public class CustomListAdapter extends ArrayAdapter<Student> {

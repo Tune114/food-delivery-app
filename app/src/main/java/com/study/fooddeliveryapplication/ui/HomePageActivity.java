@@ -22,13 +22,11 @@ import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.RestauItemAdapter;
 import com.study.fooddeliveryapplication.adapter.CustomSpinnerAdapter;
 import com.study.fooddeliveryapplication.adapter.itemAdapter;
-import com.study.fooddeliveryapplication.model.Item;
 import com.study.fooddeliveryapplication.model.RestauItem;
 
 public class HomePageActivity extends AppCompatActivity {
     TextView et_search, tv_more_res;
     ImageView cart;
-    itemAdapter adapter1;
     RestauItemAdapter adapter2;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -83,17 +81,6 @@ public class HomePageActivity extends AppCompatActivity {
         spannableString.setSpan(new StyleSpan(Typeface.BOLD), startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvhello.setText(spannableString);
 
-        //Custom Items
-        RecyclerView recyclerView1 = findViewById(R.id.recyclerView1);
-        LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView1.setLayoutManager(layoutManager1);
-        FirebaseRecyclerOptions<Item> options1 =
-                new FirebaseRecyclerOptions.Builder<Item>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/HomePage/HomePage_FoodItems"),Item.class)
-                        .build();
-        adapter1 = new itemAdapter(options1);
-        recyclerView1.setAdapter(adapter1);
-
 
         //Custom Restau Items
         RecyclerView recyclerView2 = findViewById(R.id.recyclerView2);
@@ -107,19 +94,15 @@ public class HomePageActivity extends AppCompatActivity {
         recyclerView2.setAdapter(adapter2);
     }
 
-
-
     @Override
     protected void onStart() {
         super.onStart();
-        adapter1.startListening();
         adapter2.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        adapter1.stopListening();
         adapter2.stopListening();
     }
 }
