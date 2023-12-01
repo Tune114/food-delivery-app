@@ -2,13 +2,17 @@ package com.study.fooddeliveryapplication.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,12 +38,15 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
     private RecyclerView categoriesRecyclerView;
     private RecyclerView foodRecyclerView;
     private ImageButton back_btn;
+    DrawerLayout drawerLayout;
+    LinearLayout lnHome, lnCart, lnRestaurant, lnProfile;
     private DatabaseReference databaseReference;
     private List<Category> categories;
     private List<Food> foods;
     private RestCateItemsAdapter categoryAdapter;
     private TextView categoryLabel;
-    private ImageView resImage;
+    ConstraintLayout constraintLayout;
+    private ImageView resImage,show_more_btn;
     private TextView resName;
     private TextView resDescrip;
 
@@ -124,8 +131,57 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
 
             }
         });
-    }
+        // Draw
+        show_more_btn = findViewById(R.id.show_more_btn);
+        drawerLayout = findViewById(R.id.drawLayout);
+        lnHome = findViewById(R.id.home);
+        lnCart = findViewById(R.id.cart);
+        lnProfile = findViewById(R.id.profile);
+        lnRestaurant = findViewById(R.id.restaurant);
+        show_more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.openDrawer(drawerLayout);
+            }
+        });
+        lnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(RestaurantDetails.this, HomePageActivity.class);
+            }
+        });
+        lnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(RestaurantDetails.this, AddCartActivity.class);
 
+            }
+        });
+        lnRestaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(RestaurantDetails.this, RestaurantList.class);
+            }
+        });
+        lnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(RestaurantDetails.this, RestaurantList.class);
+            }
+        });
+        constraintLayout = findViewById(R.id.dontknow);
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("MyApp", "is oke");
+            }
+        });
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        HomePageActivity.closeDrawer(drawerLayout);
+    }
     @Override
     public void callBack(List<Food> foods) {
         RestFoodItemsAdapter foodAdapter = new RestFoodItemsAdapter(foods);

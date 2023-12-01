@@ -2,14 +2,18 @@ package com.study.fooddeliveryapplication.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,8 +28,10 @@ import java.util.regex.Pattern;
 public class AddCardActivity extends AppCompatActivity {
     private EditText edCardHolderName, edCardNumber, edCvc, edExDate;
     private Button btnAddNewCard;
-
-    private ImageView btnBack;
+    DrawerLayout drawerLayout;
+    ConstraintLayout constraintLayout;
+    LinearLayout lnHome, lnCart, lnRestaurant, lnProfile;
+    private ImageView btnBack,show_more_btn;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +110,55 @@ public class AddCardActivity extends AppCompatActivity {
 
             }
         });
+        show_more_btn = findViewById(R.id.show_more_btn);
+        drawerLayout = findViewById(R.id.drawLayout);
+        lnHome = findViewById(R.id.home);
+        lnCart = findViewById(R.id.cart);
+        lnProfile = findViewById(R.id.profile);
+        lnRestaurant = findViewById(R.id.restaurant);
+        show_more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.openDrawer(drawerLayout);
+            }
+        });
+        lnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(AddCardActivity.this, HomePageActivity.class);
+            }
+        });
+        lnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(AddCardActivity.this, AddCartActivity.class);
+
+            }
+        });
+        lnRestaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(AddCardActivity.this, RestaurantList.class);
+            }
+        });
+        lnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(AddCardActivity.this, RestaurantList.class);
+            }
+        });
+        constraintLayout = findViewById(R.id.dontknow);
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("MyApp", "is oke");
+            }
+        });
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        HomePageActivity.closeDrawer(drawerLayout);
     }
     private static boolean isValidDateFormat(String input) {
         String regex = "^(0[1-9]|1[0-2])/(\\d{2})$";

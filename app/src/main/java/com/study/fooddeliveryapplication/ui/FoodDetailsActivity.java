@@ -3,14 +3,18 @@ package com.study.fooddeliveryapplication.ui;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.util.Pair;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.CommentAdapter;
@@ -29,11 +33,14 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private TextView textPrice;
     private TextView txtQuantity;
     private TextView txtSumPrice;
+    DrawerLayout drawerLayout;
+    ConstraintLayout constraintLayout;
+    LinearLayout lnHome, lnCart, lnRestaurant, lnProfile;
     private Button btnPlus;
     private Button btnMinus;
     private int quantity = 0;
     private int price = 0;
-    private ImageButton btnBack;
+    private ImageButton btnBack,show_more_btn;
     private Button btnAddToCart;
 
     @SuppressLint("MissingInflatedId")
@@ -124,9 +131,57 @@ public class FoodDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        show_more_btn = findViewById(R.id.show_more_btn);
+        drawerLayout = findViewById(R.id.drawLayout);
+        lnHome = findViewById(R.id.home);
+        lnCart = findViewById(R.id.cart);
+        lnProfile = findViewById(R.id.profile);
+        lnRestaurant = findViewById(R.id.restaurant);
+        show_more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.openDrawer(drawerLayout);
+            }
+        });
+        lnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, HomePageActivity.class);
+            }
+        });
+        lnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, AddCartActivity.class);
+
+            }
+        });
+        lnRestaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, RestaurantList.class);
+            }
+        });
+        lnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, RestaurantList.class);
+            }
+        });
+        constraintLayout = findViewById(R.id.dontknow);
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("MyApp", "is oke");
+            }
+        });
 
     }
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        HomePageActivity.closeDrawer(drawerLayout);
+    }
 
     public void onLoveButtonClick(View view) {
         loveCount++;

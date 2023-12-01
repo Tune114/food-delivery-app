@@ -1,16 +1,23 @@
 package com.study.fooddeliveryapplication.ui;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,9 +41,13 @@ public class AddCartActivity extends AppCompatActivity {
 
     private RecyclerView rvListItem;
     private Button btnPlaceOrder;
+    ConstraintLayout constraintLayout;
+    private EditText edAddress;
     private TextView txtAddPayment, txPayable;
     private ListCartItemAdapter listCartItemAdapter;
-    private ImageView btnBack;
+    DrawerLayout drawerLayout;
+    LinearLayout lnHome, lnCart, lnRestaurant, lnProfile;
+    private ImageView btnBack, show_more_btn;
     private  List<ModelCart> listOrder;
     private ModelOrder modelOrder;
     @SuppressLint("MissingInflatedId")
@@ -107,7 +118,13 @@ public class AddCartActivity extends AppCompatActivity {
         txtAddPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                edAddress = findViewById(R.id.edAddress);
+                if(edAddress.getText().toString().equals("")){
+                    Toast.makeText(AddCartActivity.this, "Address is empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Intent intent = new Intent(view.getContext(), PaymentActivity.class);
+                intent.putExtra("address", edAddress.getText().toString());
                 startActivity(intent);
             }
         });
@@ -124,9 +141,58 @@ public class AddCartActivity extends AppCompatActivity {
 
             }
         });
+        show_more_btn = findViewById(R.id.show_more_btn);
+        drawerLayout = findViewById(R.id.drawLayout);
+        lnHome = findViewById(R.id.home);
+        lnCart = findViewById(R.id.cart);
+        lnProfile = findViewById(R.id.profile);
+        lnRestaurant = findViewById(R.id.restaurant);
+        show_more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.openDrawer(drawerLayout);
+            }
+        });
+        lnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(AddCartActivity.this, HomePageActivity.class);
+            }
+        });
+        lnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recreate();
 
+            }
+        });
+        lnRestaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(AddCartActivity.this, RestaurantList.class);
+            }
+        });
+        lnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(AddCartActivity.this, RestaurantList.class);
+            }
+        });
+        constraintLayout = findViewById(R.id.dontknow);
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("MyApp", "is oke");
+            }
+        });
     }
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        HomePageActivity.closeDrawer(drawerLayout);
+    }
 
 
     @Override

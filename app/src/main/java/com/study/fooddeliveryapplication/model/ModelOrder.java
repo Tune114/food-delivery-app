@@ -1,12 +1,22 @@
 package com.study.fooddeliveryapplication.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ModelOrder {
+public class ModelOrder  {
     private List<ModelCart> listFood;
     private  String payable;
+
+    public ModelOrder(){
+
+    }
+
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
         result.put("listFood", listFood);
@@ -28,4 +38,5 @@ public class ModelOrder {
     public void setPayable(String payable) {
         this.payable = payable;
     }
+
 }
