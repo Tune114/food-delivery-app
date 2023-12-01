@@ -9,7 +9,9 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -53,11 +55,23 @@ public class UserProflie extends AppCompatActivity {
         addimage = (Button) findViewById(R.id.btnaddimage);
         anh = (ImageView) findViewById(R.id.anh);
 
-        phone.setText(String.format("Phone Number:          "+getIntent().getStringExtra("phone")));
-        email.setText(getIntent().getStringExtra("email"));
-        pass.setText("Your Password:           "+getIntent().getStringExtra("password"));
-        name.setText(getIntent().getStringExtra("name"));
-        address.setText("Address:                      "+getIntent().getStringExtra("address"));
+        //phone.setText(String.format("Phone Number:          "+getIntent().getStringExtra("phone")));
+        //email.setText(getIntent().getStringExtra("email"));
+        //pass.setText("Your Password:           "+getIntent().getStringExtra("password"));
+        //name.setText(getIntent().getStringExtra("name"));
+        //address.setText("Address:                      "+getIntent().getStringExtra("address"));
+        SharedPreferences sharedPreferences = getSharedPreferences("my_app_preferences", Context.MODE_PRIVATE);
+        String phonenumber = sharedPreferences.getString("phone", null);
+        String Name = sharedPreferences.getString("name", null);
+        String Email = sharedPreferences.getString("email", null);
+        String password = sharedPreferences.getString("password", null);
+        String Address = sharedPreferences.getString("address", null);
+
+        phone.setText("Phone Number:          "+phonenumber);
+        email.setText(Email);
+        pass.setText("Your Password:           "+password);
+        address.setText("Address:                      "+Address);
+        name.setText(Name);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override

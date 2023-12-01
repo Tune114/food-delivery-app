@@ -3,7 +3,9 @@ package com.study.fooddeliveryapplication.ui;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,11 +21,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.perf.session.SessionManager;
 import com.study.fooddeliveryapplication.R;
 
 public class LoginActivity extends AppCompatActivity {
     TextView tvforgotpass,tvsignup;
     EditText phoneedit,passwordedit;
+    String phone;
     Button btnlogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,11 +94,19 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(LoginActivity.this, UserProflie.class);
-                            intent.putExtra("phone",phone);
-                            intent.putExtra("password",getPass);
-                            intent.putExtra("email",getmail);
-                            intent.putExtra("name",getname);
-                            intent.putExtra("address",getaddress);
+                            //intent.putExtra("phone",phone);
+                            //intent.putExtra("password",getPass);
+                            //intent.putExtra("email",getmail);
+                            //intent.putExtra("name",getname);
+                            //intent.putExtra("address",getaddress);
+                            SharedPreferences sharedPreferences = getSharedPreferences("my_app_preferences", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("phone",phone);
+                            editor.putString("password",getPass);
+                            editor.putString("email",getmail);
+                            editor.putString("address",getaddress);
+                            editor.putString("name",getname);
+                            editor.apply();
                             startActivity(intent);
                         }
                         else {
