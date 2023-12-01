@@ -11,7 +11,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="34dp"
         android:clickable="true"
         android:elevation="0.3dp"
         android:focusable="true">
@@ -29,7 +29,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="87dp"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="39dp"
         android:text="DELIVER TO"
         android:gravity="top"
         android:textColor="@color/mainColor"
@@ -42,7 +42,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="87dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         />
     <androidx.cardview.widget.CardView
         android:layout_width="45dp"
@@ -51,7 +51,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="306dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="34dp"
         android:clickable="true"
         android:elevation="0.3dp"
         android:focusable="true">
@@ -94,10 +94,10 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="24dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="123dp"
+        android:layout_marginTop="113dp"
         android:text="Hey Quang, are you ok?"
         android:lineSpacingExtra="7sp"
-        android:textSize="16sp"
+        android:textSize="18sp"
         />
     <TextView
         android:id="@+id/et_hp_seachBar"
