@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,12 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantList extends AppCompatActivity {
-
     private List<RestauItem> restauItemList;
     private RestaurantListAdapter restaurantListAdapter;
     private DatabaseReference databaseReference;
     private RecyclerView restaurantRecyclerView;
-
+    ImageButton backbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +56,13 @@ public class RestaurantList extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+        });
+
+        backbtn = (ImageButton) findViewById(R.id.btnback_reslist);
+        backbtn.setOnClickListener(view -> {
+            Intent intent = new Intent(RestaurantList.this,HomePageActivity.class);
+            startActivity(intent);
+            finish();
         });
 
     }
