@@ -1,11 +1,10 @@
 package com.study.fooddeliveryapplication.adapter;
 
-import android.widget.Button;
-
 import com.study.fooddeliveryapplication.model.Food;
 
 import java.util.List;
 
-public interface UpdateRestFoodItems {
-    void callBack(int position, List<Food> foods);
+public interface UpdateRestInfor {
+    void callBack(List<Food> foods);
+    void updateCategoryLabel(int size,String categoryName);
 }

@@ -75,6 +75,6 @@ public class SearchPageData_ItemsApdapter extends FirebaseRecyclerAdapter<Search
         }
     }
     public void searchDataList(ArrayList<SearchPage_PopularFoodItem> searchList){
-        
+
     }
 }

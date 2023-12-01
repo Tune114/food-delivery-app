@@ -6,28 +6,33 @@
     android:layout_height="wrap_content"
     android:layout_marginRight="15dp"
     android:layout_marginBottom="15dp"
-    app:cardBackgroundColor="#EFE8E8"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="12dp"
+    app:cardCornerRadius="8dp"
+
     >
 
     <LinearLayout
-        android:layout_width="170dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_card_view"
         android:elevation="15dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        >
 
 
         <ImageView
             android:id="@+id/food_image"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:scaleType="fitXY"
             android:src="@drawable/burgers" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/card_view_blue"
+            android:background="@color/white"
             android:orientation="vertical"
             android:padding="6dp">
 
@@ -41,18 +46,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Burger king size"
-                    android:textColor="@color/white"
-                    android:textSize="21dp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    />
 
                 <TextView
                     android:id="@+id/food_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Spicy and juicy"
-                    android:textSize="19dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textColor="@color/searchTextColor"
                     />
             </LinearLayout>
 
@@ -68,22 +73,22 @@
                     android:layout_width="60dp"
                     android:paddingTop="5dp"
                     android:text="40$"
-                    android:textColor="@color/white"
-                    android:textSize="22dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     android:layout_weight="7"/>
 
-                <ImageButton
+                <Button
+                    android:id="@+id/add_to_cart_btn"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/custom_add_icon"
-                    android:paddingLeft="8dp"
-                    android:paddingTop="8dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/img_plus"
+                    android:text="+"
+                    android:textSize="25dp"
+                    android:paddingBottom="5dp"
                     android:layout_weight="3"/>
 
             </LinearLayout>

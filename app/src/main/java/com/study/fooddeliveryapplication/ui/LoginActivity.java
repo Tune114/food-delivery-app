@@ -82,11 +82,19 @@ public class LoginActivity extends AppCompatActivity {
                     if (snapshot.hasChild(phone)){
 
                         String getPass = snapshot.child(phone).child("password").getValue(String.class);
+                        String getmail = snapshot.child(phone).child("email").getValue(String.class);
+                        String getname = snapshot.child(phone).child("name").getValue(String.class);
+                        String getaddress = snapshot.child(phone).child("address").getValue(String.class);
 
                         if (getPass.equals(password)){
                             Toast.makeText(LoginActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, UserProflie.class);
+                            intent.putExtra("phone",phone);
+                            intent.putExtra("password",getPass);
+                            intent.putExtra("email",getmail);
+                            intent.putExtra("name",getname);
+                            intent.putExtra("address",getaddress);
                             startActivity(intent);
                         }
                         else {
