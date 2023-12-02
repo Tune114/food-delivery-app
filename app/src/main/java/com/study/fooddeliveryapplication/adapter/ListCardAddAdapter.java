@@ -19,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.ModelCardPayment;
 
+import java.util.List;
+
 public class ListCardAddAdapter extends FirebaseRecyclerAdapter<ModelCardPayment,ListCardAddAdapter.PaymentViewHolder> {
 
 

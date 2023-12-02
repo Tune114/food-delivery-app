@@ -6,14 +6,10 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.RestauItem;
@@ -38,7 +34,8 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RestaurantListAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RestaurantListAdapter.MyViewHolder holder, int position)
+    {
         holder.restName.setText(restauItems.get(position).getRestName());
         holder.restDescription.setText(restauItems.get(position).getRestDescrip());
         Glide.with(holder.restImage.getContext())
@@ -46,19 +43,23 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
                 .placeholder(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark)
                 .error(com.google.firebase.database.R.drawable.common_google_signin_btn_icon_dark)
                 .into(holder.restImage);
+
         holder.restImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                Intent intent=new Intent(context, RestaurantDetails.class);
-                intent.putExtra("RestName",restauItems.get(position).getRestName());
-                if (context instanceof Activity) {
-                    ((Activity)context).startActivity(intent);
+                Intent intent = new Intent(context, RestaurantDetails.class);
+                int clickedPosition = holder.getAdapterPosition();
+
+                if (clickedPosition != RecyclerView.NO_POSITION) {
+                    intent.putExtra("RestName", restauItems.get(clickedPosition).getRestName());
+                    if (context instanceof Activity) {
+                        ((Activity) context).startActivity(intent);
+                    }
                 }
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return restauItems.size();

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RestCateItemsAdapter extends RecyclerView.Adapter<RestCateItemsAdapter.RestCateItemsViewHolder> {
-
     private UpdateRestInfor updateRestFoodItems;
     private List<Category> categories;
     private List<Food> foods;
