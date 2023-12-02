@@ -147,7 +147,7 @@ public class HomePageActivity extends AppCompatActivity {
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectActitvity(HomePageActivity.this, RestaurantList.class);
+                redirectActitvity(HomePageActivity.this, UserProflie.class);
             }
         });
     }

@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (getPass.equals(password)){
                             Toast.makeText(LoginActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(LoginActivity.this, UserProflie.class);
+                            Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
                             //intent.putExtra("phone",phone);
                             //intent.putExtra("password",getPass);
                             //intent.putExtra("email",getmail);
@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         }
                     }else{
-                        Toast.makeText(LoginActivity.this,"Thông tin số điện thoại hoặc mật khẩu sai!!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this,"Thông tin số điện thoại hoặc mật khẩu sai!",Toast.LENGTH_SHORT).show();
                     }
                 }
 

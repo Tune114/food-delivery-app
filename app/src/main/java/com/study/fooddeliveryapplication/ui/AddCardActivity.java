@@ -141,7 +141,7 @@ public class AddCardActivity extends AppCompatActivity {
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(AddCardActivity.this, RestaurantList.class);
+                HomePageActivity.redirectActitvity(AddCardActivity.this, UserProflie.class);
             }
         });
         constraintLayout = findViewById(R.id.dontknow);

@@ -162,7 +162,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, RestaurantList.class);
+                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, UserProflie.class);
             }
         });
         constraintLayout = findViewById(R.id.dontknow);

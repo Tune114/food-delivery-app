@@ -163,7 +163,7 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(RestaurantDetails.this, RestaurantList.class);
+                HomePageActivity.redirectActitvity(RestaurantDetails.this, UserProflie.class);
             }
         });
         constraintLayout = findViewById(R.id.dontknow);

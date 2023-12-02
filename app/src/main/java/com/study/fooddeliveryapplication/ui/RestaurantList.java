@@ -109,7 +109,7 @@ public class RestaurantList extends AppCompatActivity {
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(RestaurantList.this, RestaurantList.class);
+                HomePageActivity.redirectActitvity(RestaurantList.this, UserProflie.class);
             }
         });
         constraintLayout = findViewById(R.id.dontknow);

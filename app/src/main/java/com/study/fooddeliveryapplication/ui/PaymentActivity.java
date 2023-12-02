@@ -180,7 +180,7 @@ public class PaymentActivity extends AppCompatActivity {
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(PaymentActivity.this, RestaurantList.class);
+                HomePageActivity.redirectActitvity(PaymentActivity.this, UserProflie.class);
             }
         });
         constraintLayout = findViewById(R.id.dontknow);
