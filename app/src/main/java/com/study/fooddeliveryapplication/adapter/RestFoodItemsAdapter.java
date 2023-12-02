@@ -10,10 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,8 +24,6 @@ import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.Food;
 import com.study.fooddeliveryapplication.ui.AddCartActivity;
 import com.study.fooddeliveryapplication.ui.FoodDetailsActivity;
-import com.study.fooddeliveryapplication.ui.PaymentActivity;
-import com.study.fooddeliveryapplication.ui.RestaurantDetails;
 
 import java.util.List;
 

@@ -4,35 +4,29 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.Pair;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.CommentAdapter;
 import com.study.fooddeliveryapplication.adapter.FoodListAdapter;
 import com.study.fooddeliveryapplication.adapter.IngredientListAdapter;
 import com.study.fooddeliveryapplication.adapter.RestCateItemsAdapter;
-import com.study.fooddeliveryapplication.adapter.RestFoodItemsAdapter;
-import com.study.fooddeliveryapplication.adapter.UpdateRestInfor;
 import com.study.fooddeliveryapplication.model.Category;
 import com.study.fooddeliveryapplication.model.Food;
 import com.study.fooddeliveryapplication.model.FoodItem;
@@ -66,21 +60,15 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private RecyclerView xrecyclerView;
     private IngredientListAdapter xadapter;
     private List<IngredientItem> xingredientList;
-    private DatabaseReference databaseReference;
-
     private List<Category> categories;
     private RecyclerView categoriesRecyclerView;
     private RecyclerView foodRecyclerView;
     private RestCateItemsAdapter categoryAdapter;
-
     private List<Food> foods;
     private ImageView fimage;
     private TextView fname;
     private TextView fdescrip;
-
     private TextView fprice;
-
-
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -120,12 +108,9 @@ public class FoodDetailsActivity extends AppCompatActivity {
         addFoodItem("Bún đậu", getResources().getDrawable(R.drawable.bundau));
 
         // Khởi tạo danh sách nguyên liệu
-
-
-
         ImageView imageFood = findViewById(R.id.image_food);
-        TextView dishName = findViewById(R.id.dish_name);
-        TextView dishInfo = findViewById(R.id.dish_info);
+        TextView dishName = findViewById(R.id.tv_dish_name);
+        TextView dishInfo = findViewById(R.id.tv_dish_info);
         btnLove = findViewById(R.id.btn_love);
         textLoveCount = findViewById(R.id.text_love_count);
         btnSizeNho = findViewById(R.id.btn_size_nho);
@@ -147,47 +132,58 @@ public class FoodDetailsActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         xrecyclerView = findViewById(R.id.ingredient_item);
         LinearLayoutManager olayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         xrecyclerView.setLayoutManager(olayoutManager);
-
-        Intent intent=getIntent();
+        Intent intent= getIntent();
         String NameofFood=intent.getStringExtra("foodName");
         String NameofCate=intent.getStringExtra("categoryName");
-        fname=findViewById(R.id.dish_name);
-        fdescrip=findViewById(R.id.dish_info);
+        fname=findViewById(R.id.tv_dish_name);
+        fdescrip=findViewById(R.id.tv_dish_info);
         fimage=findViewById(R.id.image_food);
         fprice=findViewById(R.id.text_price);
 
-        DatabaseReference dishesRef = FirebaseDatabase.getInstance().getReference("restaurants").child("catagories");
-        dishesRef.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference restaurantsRef = database.getReference("restaurants");
+
+        restaurantsRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@androidx.annotation.NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds:snapshot.getChildren()){
-                    String cateName=ds.child("category_name").getValue(String.class);
-                    if (cateName.equals(NameofCate)) {
-                        for (DataSnapshot dish : snapshot.getChildren()) {
-                            String foodName = dish.child("name").getValue(String.class);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot restaurantSnapshot : snapshot.getChildren()) {
+                    if (restaurantSnapshot.hasChild("categories") && restaurantSnapshot.hasChild("foods")) {
+                        DataSnapshot categoriesSnapshot = restaurantSnapshot.child("categories");
+                        DataSnapshot foodsSnapshot = restaurantSnapshot.child("foods");
 
-                            if (foodName.equals(NameofFood)) {
+                        for (DataSnapshot categorySnapshot : categoriesSnapshot.getChildren()) {
+                            String categoryName = categorySnapshot.child("category_name").getValue(String.class);
+                            for (DataSnapshot foodSnapshot : foodsSnapshot.getChildren()) {
+                                String foodName = foodSnapshot.child("name").getValue(String.class);
+                                if (foodName != null && foodName.equals(NameofFood)
+                                        && categoryName != null && categoryName.equals(NameofCate)) {
+                                    String foodNameResult = foodSnapshot.child("name").getValue(String.class);
+                                    String foodPriceResult = foodSnapshot.child("price").getValue(String.class);
+                                    String foodImageResult = foodSnapshot.child("image").getValue(String.class);
+                                    String foodDescriptionResult = foodSnapshot.child("description").getValue(String.class);
 
-                                String ImageofFood = dish.child("image").getValue(String.class);
-                                String DesofFood = dish.child("description").getValue(String.class);
-                                int PriceofFood = dish.child("price").getValue(Integer.class);
-                                fname.setText(foodName);
-                                fdescrip.setText(DesofFood);
-                                fprice.setText(String.valueOf(PriceofFood));
-                                Picasso.get().load(ImageofFood).into(fimage);
+                                    // In ra thông tin
+                                    Log.d("FirebaseSearch", "Tìm thấy kết quả: " +
+                                            "Food Name: " + foodNameResult +
+                                            ", Food Price: " + foodPriceResult +
+                                            ", Food Image: " + foodImageResult +
+                                            ", Food Description: " + foodDescriptionResult);
+
+
+                                    break;
+                                }
                             }
                         }
                     }
+
                 }
             }
+
             @Override
-            public void onCancelled(@androidx.annotation.NonNull DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });

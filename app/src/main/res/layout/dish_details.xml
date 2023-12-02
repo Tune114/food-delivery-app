@@ -119,7 +119,7 @@
             android:orientation="vertical"
             android:layout_marginTop="10dp">
             <TextView
-                android:id="@+id/dish_name"
+                android:id="@+id/tv_dish_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Bún đậu mắm tôm"
@@ -128,7 +128,7 @@
                 android:layout_marginLeft="30dp"
                 android:textStyle="bold"/>
             <TextView
-                android:id="@+id/dish_info"
+                android:id="@+id/tv_dish_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Bún đậu mắm tôm là một món ăn truyền thống của Việt Nam, kết hợp giữa bún (mì sợi), đậu hũ non và mắm tôm. Món ăn này có hương vị đậm đà và thơm ngon, thường được kèm theo rau sống và gia vị tạo nên sự hấp dẫn."
