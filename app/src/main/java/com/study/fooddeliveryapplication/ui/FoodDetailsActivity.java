@@ -10,15 +10,12 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.util.Pair;
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.CommentAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,8 +1,6 @@
 package com.study.fooddeliveryapplication.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -14,13 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.study.fooddeliveryapplication.R;
-
 import java.util.ArrayList;
-
 import com.study.fooddeliveryapplication.R;
 
 public class VerificationActivity extends AppCompatActivity {

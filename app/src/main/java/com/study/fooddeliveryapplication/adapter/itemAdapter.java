@@ -16,7 +16,6 @@ import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.Item;
 import com.study.fooddeliveryapplication.ui.FoodDetailsActivity;
 
-
 public class itemAdapter extends FirebaseRecyclerAdapter<Item,itemAdapter.myViewHolder> {
     public itemAdapter(@NonNull FirebaseRecyclerOptions<Item> options) {
         super(options);

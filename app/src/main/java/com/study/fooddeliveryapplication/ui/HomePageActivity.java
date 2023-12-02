@@ -31,7 +31,6 @@ import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.RestauItemAdapter;
 import com.study.fooddeliveryapplication.adapter.CustomSpinnerAdapter;
 import com.study.fooddeliveryapplication.adapter.itemAdapter;
-import com.study.fooddeliveryapplication.model.Item;
 import com.study.fooddeliveryapplication.model.RestauItem;
 
 public class HomePageActivity extends AppCompatActivity {
@@ -41,6 +40,7 @@ public class HomePageActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     LinearLayout lnHome, lnCart, lnRestaurant, lnProfile;
     ConstraintLayout constraintLayout;
+    TextView tv_more_res;
     RestauItemAdapter adapter2;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -51,6 +51,12 @@ public class HomePageActivity extends AppCompatActivity {
         et_search = (TextView) findViewById(R.id.et_hp_seachBar);
         et_search.setOnClickListener(view -> {
             Intent intent = new Intent(HomePageActivity.this, SearchPageActivity.class);
+            startActivity(intent);
+        });
+
+        tv_more_res = (TextView) findViewById(R.id.tv_see_all_res);
+        tv_more_res.setOnClickListener(view -> {
+            Intent intent = new Intent(HomePageActivity.this, RestaurantList.class);
             startActivity(intent);
         });
 
@@ -89,17 +95,6 @@ public class HomePageActivity extends AppCompatActivity {
         spannableString.setSpan(new StyleSpan(Typeface.BOLD), startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         tvhello.setText(spannableString);
 
-        //Custom Items
-        RecyclerView recyclerView1 = findViewById(R.id.recyclerView1);
-        LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView1.setLayoutManager(layoutManager1);
-        FirebaseRecyclerOptions<Item> options1 =
-                new FirebaseRecyclerOptions.Builder<Item>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/HomePage/HomePage_FoodItems"),Item.class)
-                        .build();
-        adapter1 = new itemAdapter(options1);
-        recyclerView1.setAdapter(adapter1);
-
 
         //Custom Restau Items
         RecyclerView recyclerView2 = findViewById(R.id.recyclerView2);
@@ -107,7 +102,7 @@ public class HomePageActivity extends AppCompatActivity {
         recyclerView2.setLayoutManager(layoutManager2);
         FirebaseRecyclerOptions<RestauItem> options2 =
                 new FirebaseRecyclerOptions.Builder<RestauItem>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/HomePage/HomePage_RestItems"),RestauItem.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/restaurants"),RestauItem.class)
                         .build();
         adapter2 = new RestauItemAdapter(options2);
         recyclerView2.setAdapter(adapter2);
@@ -180,14 +175,12 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        adapter1.startListening();
         adapter2.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        adapter1.stopListening();
         adapter2.stopListening();
     }
 }
