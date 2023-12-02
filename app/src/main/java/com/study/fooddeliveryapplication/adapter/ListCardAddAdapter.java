@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -19,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.CardForPayment;
 import com.study.fooddeliveryapplication.model.ModelCardPayment;
+import com.study.fooddeliveryapplication.ui.AddCartActivity;
 import com.study.fooddeliveryapplication.ui.PaymentActivity;
 import com.study.fooddeliveryapplication.ui.RestaurantDetails;
 
@@ -46,9 +48,9 @@ public class ListCardAddAdapter extends FirebaseRecyclerAdapter<ModelCardPayment
                 .placeholder(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark)
                 .error(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark)
                 .into(holder.mIconview);
-        holder.mIconview.setOnClickListener(view -> {
+        holder.constraintLayout.setOnClickListener(view -> {
             String cardNumber = model.getCardNumber();
-            Intent intent = new Intent(view.getContext(), PaymentActivity.class);
+            Intent intent = new Intent(view.getContext(), AddCartActivity.class);
             intent.putExtra("cardNumber", cardNumber);
             view.getContext().startActivity(intent);
         });
@@ -88,6 +90,7 @@ public class ListCardAddAdapter extends FirebaseRecyclerAdapter<ModelCardPayment
     public class PaymentViewHolder  extends RecyclerView.ViewHolder {
         private ImageView mIconview;
         private TextView mCardNumber, mtxtDelete;
+        ConstraintLayout constraintLayout;
 
 
         public PaymentViewHolder(@NonNull View itemView) {
@@ -95,7 +98,7 @@ public class ListCardAddAdapter extends FirebaseRecyclerAdapter<ModelCardPayment
             mIconview = itemView.findViewById(R.id.iconCard);
             mCardNumber = itemView.findViewById(R.id.cardNumber);
             mtxtDelete = itemView.findViewById(R.id.txtDeleteCard);
-
+            constraintLayout = itemView.findViewById(R.id.addCardToUse);
         }
     }
 }

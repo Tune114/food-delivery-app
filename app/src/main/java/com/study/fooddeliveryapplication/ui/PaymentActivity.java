@@ -16,7 +16,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.ListCardAdapter;
 import com.study.fooddeliveryapplication.adapter.ListCardAddAdapter;
@@ -24,6 +28,11 @@ import com.study.fooddeliveryapplication.model.ModelCard;
 import com.study.fooddeliveryapplication.model.ModelCardPayment;
 import com.study.fooddeliveryapplication.model.ModelOrder;
 import com.study.fooddeliveryapplication.model.ModelOrderPaid;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.rxjava3.annotations.NonNull;
 
 public class PaymentActivity extends AppCompatActivity {
     private RecyclerView rvListCardItem, rvListCardAdd;
@@ -35,7 +44,6 @@ public class PaymentActivity extends AppCompatActivity {
     private TextView txPayable, txtCardUseForPay;
     private ModelOrderPaid modelOrderPaid;
     ConstraintLayout constraintLayout;
-    ModelOrder modelOrder;
     private ImageView btnBack, show_more_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,44 +71,8 @@ public class PaymentActivity extends AppCompatActivity {
                         .build();
         listCardAddAdapter = new ListCardAddAdapter(cardAdded);
         rvListCardAdd.setAdapter(listCardAddAdapter);
-        //
-//        List<ModelOrder> listOrder = new ArrayList<>();
-//        DatabaseReference data = FirebaseDatabase.getInstance().getReference("Order");
-//        data.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-//                    ModelOrder modelorder  = dataSnapshot.getValue(ModelOrder.class);
-//                    listOrder.add(modelorder);
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//        int payable =0;
-//        for (ModelOrder item : listOrder){
-//            payable += Integer.parseInt(item.getPayable());
-//        }
-        // Listener
-        Intent intent = getIntent();
-        String cardNumber =  intent.getStringExtra("cardNumber");
-        String address = intent.getStringExtra("address");
-//        modelOrderPaid.setModelOrder(listOrder);
-//        modelOrderPaid.setAddress(address);
-//        modelOrderPaid.setCardNumber(cardNumber);
-//        modelOrderPaid.setUserName("dintho");
-          txtCardUseForPay = findViewById(R.id.txtCardNumberUsed);
-        if(cardNumber==null){
-            txtCardUseForPay.setText("card use for pay is empty");
-        }
-        else{
-            txtCardUseForPay.setText(cardNumber);
-        }
-//        txPayable = findViewById(R.id.txtPayable);
-//        txPayable.setText(String.valueOf(payable));
-//        //
+
+        txtCardUseForPay = findViewById(R.id.txtCardNumberUsed);
         btnAddNewCard = findViewById(R.id.btnAddNewCard);
         btnAddNewCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,32 +81,7 @@ public class PaymentActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //
-        btnPayAndConfirm= findViewById(R.id.btnPayAndConfirm);
-        btnPayAndConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                if(modelOrder.getCardNumber().equals("")){
-//                    Toast.makeText(PaymentActivity.this, "Please choose your card", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//                FirebaseDatabase.getInstance().getReference().child("Order")
-//                        .push().setValue(modelOrder.toMap()).addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Toast.makeText(PaymentActivity.this, "Failse to order", Toast.LENGTH_SHORT).show();
-//                            }
-//                        })
-//                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void unused) {
-//                                //  FirebaseDatabase.getInstance().getReference().child("ItemCart").removeValue();
-//                                Toast.makeText(PaymentActivity.this, "Success to add", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-            }
-        });
-        //
+
         btnBack= (ImageView)findViewById(R.id.btn_back);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,7 +127,7 @@ public class PaymentActivity extends AppCompatActivity {
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(PaymentActivity.this, UserProflie.class);
+                HomePageActivity.redirectActitvity(PaymentActivity.this, RestaurantList.class);
             }
         });
         constraintLayout = findViewById(R.id.dontknow);

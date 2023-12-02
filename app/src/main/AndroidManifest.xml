@@ -31,6 +31,7 @@
         <activity
             android:name=".ui.AddCartActivity"
             android:exported="false" />
+
         <activity
             android:name=".ui.AddCardActivity"
             android:exported="false" />
@@ -64,7 +65,9 @@
         </activity>
         <activity
             android:name=".ui.SearchPageActivity"
-            android:exported="false" />
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".ui.HomePageActivity"
             android:exported="false">

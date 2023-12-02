@@ -15,6 +15,16 @@ public class ModelCart  {
     private String price;
     private String  quantity;
     private  String total;
+    private String userPhone;
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
     public ModelCart(){
 
     }
