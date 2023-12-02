@@ -38,7 +38,6 @@ public class RestFoodItemsAdapter extends RecyclerView.Adapter<RestFoodItemsAdap
         this.foods = foods;
     }
     private DatabaseReference databaseReference;
-    private boolean result=false;
 
     @NonNull
     @Override
