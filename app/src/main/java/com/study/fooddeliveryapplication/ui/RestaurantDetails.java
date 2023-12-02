@@ -137,7 +137,4 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
     public void updateCategoryLabel(int size,String categoryName) {
         categoryLabel.setText(categoryName+" ("+size+")");
     }
-
-
-
 }

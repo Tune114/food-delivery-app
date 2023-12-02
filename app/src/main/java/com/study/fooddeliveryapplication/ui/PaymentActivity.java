@@ -9,22 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
-
-import com.study.fooddeliveryapplication.R;
-import com.study.fooddeliveryapplication.adapter.ListCardAdapter;
-import com.study.fooddeliveryapplication.adapter.ListCardAddAdapter;
-import com.study.fooddeliveryapplication.model.CardForPayment;
-
-import java.util.ArrayList;
-import java.util.List;
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -34,42 +18,18 @@ import com.study.fooddeliveryapplication.adapter.ListCardAdapter;
 import com.study.fooddeliveryapplication.adapter.ListCardAddAdapter;
 import com.study.fooddeliveryapplication.model.ModelCard;
 import com.study.fooddeliveryapplication.model.ModelCardPayment;
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
 public class PaymentActivity extends AppCompatActivity {
     private RecyclerView rvListCardItem, rvListCardAdd;
     private Button btnAddNewCard;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
     private ListCardAdapter listCardAdapter;
     private ListCardAddAdapter listCardAddAdapter;
     private TextView txPayable;
->>>>>>> master
-=======
-
-    private ListCardAdapter listCardAdapter;
-    private ListCardAddAdapter listCardAddAdapter;
-    private TextView txPayable;
->>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
     private ImageView btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-        SeedData();
-=======
-=======
-
-        SeedData();
->>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
         // listCardItem
         rvListCardItem = findViewById(R.id.listCardItem);
         rvListCardItem.setHasFixedSize(true);
@@ -90,10 +50,6 @@ public class PaymentActivity extends AppCompatActivity {
         listCardAddAdapter = new ListCardAddAdapter(cardAdded);
         rvListCardAdd.setAdapter(listCardAddAdapter);
         // Listener
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
         btnAddNewCard = findViewById(R.id.btnAddNewCard);
         btnAddNewCard.setOnClickListener(new View.OnClickListener() {
@@ -115,48 +71,6 @@ public class PaymentActivity extends AppCompatActivity {
             }
         });
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
-    public void SeedData(){
-        // ListCardAdapter
-        List<CardForPayment> listCard = new ArrayList<>();
-        listCard.add(new CardForPayment("card", R.drawable.img_payment));
-        listCard.add(new CardForPayment("mastercard", R.drawable.img_mastercard));
-        listCard.add(new CardForPayment("visa", R.drawable.img_visa));
-        listCard.add(new CardForPayment("paypal", R.drawable.img_paypal));
-        listCard.add(new CardForPayment("bidv", R.drawable.img_bidv));
-        listCard.add(new CardForPayment("viettinbank", R.drawable.img_viettinbank));
-
-        rvListCardItem = findViewById(R.id.listCardItem);
-        rvListCardItem.setHasFixedSize(true);
-        rvListCardItem.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false));
-        ListCardAdapter listCardAdapter = new ListCardAdapter(listCard);
-        rvListCardItem.setAdapter(listCardAdapter);
-
-        //
-        List<CardForPayment> listCardAdd = new ArrayList<>();
-        for(int i = 1; i<4; i++){
-            listCard.get(i).setCardNumber("***************123");
-        }
-        listCard.get(1).setIcon(R.drawable.icon_mastercard);
-        listCard.get(2).setIcon(R.drawable.icon_visa);
-        listCard.get(3).setIcon(R.drawable.icon_paypal);
-
-        listCardAdd.add(listCard.get(1));
-        listCardAdd.add(listCard.get(2));
-        listCardAdd.add(listCard.get(3));
-
-        rvListCardAdd = findViewById(R.id.listCardAdd);
-        rvListCardAdd.setLayoutManager(new LinearLayoutManager(this ));
-        ListCardAddAdapter listCardAddAdapter = new ListCardAddAdapter(listCardAdd);
-        rvListCardAdd.setAdapter(listCardAddAdapter);
-    }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 
     @Override
     protected void onStart() {
@@ -175,8 +89,4 @@ public class PaymentActivity extends AppCompatActivity {
 
 
 
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> 0fa4301821ea3970d093808e3dc6b17f44a907c7
 }

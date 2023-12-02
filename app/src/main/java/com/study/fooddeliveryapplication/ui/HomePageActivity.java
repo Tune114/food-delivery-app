@@ -26,7 +26,7 @@ import com.study.fooddeliveryapplication.model.Item;
 import com.study.fooddeliveryapplication.model.RestauItem;
 
 public class HomePageActivity extends AppCompatActivity {
-    TextView et_search;
+    TextView et_search, tv_more_res;
     ImageView cart;
     itemAdapter adapter1;
     RestauItemAdapter adapter2;
@@ -48,7 +48,11 @@ public class HomePageActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-
+        tv_more_res = (TextView) findViewById(R.id.tv_see_all_res);
+        tv_more_res.setOnClickListener(view -> {
+            Intent intent = new Intent(HomePageActivity.this, RestaurantList.class);
+            startActivity(intent);
+        });
         //spinner
         String[] options = {"Option 1", "Option 2", "Option 3"};
         CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, android.R.layout.simple_spinner_item, options);
@@ -95,11 +99,13 @@ public class HomePageActivity extends AppCompatActivity {
         recyclerView2.setLayoutManager(layoutManager2);
         FirebaseRecyclerOptions<RestauItem> options2 =
                 new FirebaseRecyclerOptions.Builder<RestauItem>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/HomePage/HomePage_RestItems"),RestauItem.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/restaurants"),RestauItem.class)
                         .build();
         adapter2 = new RestauItemAdapter(options2);
         recyclerView2.setAdapter(adapter2);
     }
+
+
 
     @Override
     protected void onStart() {
