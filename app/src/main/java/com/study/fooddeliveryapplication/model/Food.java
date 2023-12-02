@@ -10,6 +10,7 @@ public class Food {
     private String image;
     private String restaurantName;
     private String categoryName;
+    private String userPhoneNumbers;
 
     public Food() {
     }
@@ -21,12 +22,13 @@ public class Food {
     }
 
 
-    public Food(String name, String description, String price, String image, String restaurantName) {
+    public Food(String name, String description, String price, String image, String restaurantName,String userPhoneNumbers) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.image = image;
         this.restaurantName=restaurantName;
+        this.userPhoneNumbers=userPhoneNumbers;
     }
 
     public String getName() {
@@ -76,7 +78,7 @@ public class Food {
         result.put("price", this.price);
         result.put("quantity", "1");
         result.put("restName", restaurantName);
-
+        result.put("userPhone",userPhoneNumbers);
         return result;
     }
 
@@ -86,5 +88,13 @@ public class Food {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public String getUserPhoneNumbers() {
+        return userPhoneNumbers;
+    }
+
+    public void setUserPhoneNumbers(String userPhoneNumbers) {
+        this.userPhoneNumbers = userPhoneNumbers;
     }
 }
