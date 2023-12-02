@@ -1,7 +1,5 @@
 package com.study.fooddeliveryapplication.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,7 +20,7 @@ import com.study.fooddeliveryapplication.R;
 
 public class SignupActivity extends AppCompatActivity {
     TextView tvHaveacc;
-    EditText editphone,editemail,epassword,editrepass;
+    EditText editphone,editemail,epassword,editrepass,edaddress,edname;
     Button btnsignup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class SignupActivity extends AppCompatActivity {
         epassword = (EditText) findViewById(R.id.editTextPassword);
         editemail = (EditText) findViewById(R.id.editTextEmail);
         editrepass = (EditText) findViewById(R.id.editTextRePassword);
+        edaddress = (EditText) findViewById(R.id.edAddress);
+        edname = (EditText) findViewById(R.id.edname);
         btnsignup = (Button) findViewById(R.id.btnsignup) ;
 
         tvHaveacc.setOnClickListener(new View.OnClickListener() {
@@ -48,15 +52,17 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
     private void Signup(){
-        String phone,email,password,repass;
+        String phone,email,password,repass,name,address;
         email = editemail.getText().toString();
         password = epassword.getText().toString();
         phone = editphone.getText().toString();
         repass = editrepass.getText().toString();
+        name = edname.getText().toString();
+        address = edaddress.getText().toString();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference();
 
-        if (email.isEmpty() || password.isEmpty() || phone.isEmpty() || repass.isEmpty()){
+        if (email.isEmpty() || password.isEmpty() || phone.isEmpty() || repass.isEmpty() || name.isEmpty() || address.isEmpty()){
             Toast.makeText(SignupActivity.this,"Xin điền đầy đủ thông tin!",Toast.LENGTH_SHORT).show();
         }
         else {
@@ -70,6 +76,8 @@ public class SignupActivity extends AppCompatActivity {
                     } else {
                         databaseReference.child("users").child(phone).child("email").setValue(email);
                         databaseReference.child("users").child(phone).child("password").setValue(password);
+                        databaseReference.child("users").child(phone).child("name").setValue(name);
+                        databaseReference.child("users").child(phone).child("address").setValue(address);
 
                         Toast.makeText(SignupActivity.this,"Đăng ký thành công",Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(SignupActivity.this,LoginActivity.class);
