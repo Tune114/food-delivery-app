@@ -1,15 +1,33 @@
 package com.study.fooddeliveryapplication.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class ModelCart {
+public class ModelCart  {
     private String foodName;
     private String foodImg;
     private  String restName;
     private String price;
     private String  quantity;
     private  String total;
+    private String userPhone;
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public ModelCart(){
+
+    }
 
     public String getTotal() {
         return total;
@@ -68,4 +86,5 @@ public class ModelCart {
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
+
 }

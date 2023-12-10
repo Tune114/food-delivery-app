@@ -10,6 +10,7 @@ public class RestauItem {
         RestName = restName;
         RestDescrip = restDescrip;
     }
+
     public String getRestImage() {
         return RestImage;
     }
