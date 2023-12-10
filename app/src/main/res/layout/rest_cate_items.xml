@@ -19,4 +19,5 @@
         android:padding="3dp"
         android:textColor="@color/white"
         />
+
 </androidx.cardview.widget.CardView>

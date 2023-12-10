@@ -5,6 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
+    android:id="@+id/addCardToUse"
     android:background="@drawable/card_background">
 
     <ImageView
