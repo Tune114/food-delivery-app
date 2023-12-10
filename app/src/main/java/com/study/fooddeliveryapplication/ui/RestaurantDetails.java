@@ -128,15 +128,70 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
 
             }
         });
-    }
+        // Draw
+        show_more_btn = findViewById(R.id.show_more_btn);
+        drawerLayout = findViewById(R.id.drawLayout);
+        lnHome = findViewById(R.id.home);
+        lnCart = findViewById(R.id.cart);
+        lnProfile = findViewById(R.id.profile);
+        lnRestaurant = findViewById(R.id.restaurant);
+        show_more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.openDrawer(drawerLayout);
+            }
+        });
+        lnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(RestaurantDetails.this, HomePageActivity.class);
+            }
+        });
+        lnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(RestaurantDetails.this, AddCartActivity.class);
 
+            }
+        });
+        lnRestaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(RestaurantDetails.this, RestaurantList.class);
+            }
+        });
+        lnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(RestaurantDetails.this, UserProflie.class);
+            }
+        });
+        constraintLayout = findViewById(R.id.dontknow);
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("MyApp", "is oke");
+            }
+        });
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        HomePageActivity.closeDrawer(drawerLayout);
+    }
     @Override
     public void callBack(List<Food> foods) {
-
+        RestFoodItemsAdapter foodAdapter = new RestFoodItemsAdapter(foods);
+        foodAdapter.notifyDataSetChanged();
+        foodRecyclerView.setAdapter(foodAdapter);
+        foodRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }
 
     @Override
-    public void updateCategoryLabel(int size, String categoryName) {
-
+    public void updateCategoryLabel(int size,String categoryName) {
+        categoryLabel.setText(categoryName+" ("+size+")");
     }
+
+
+
 }

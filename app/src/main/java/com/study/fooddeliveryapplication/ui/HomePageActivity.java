@@ -106,7 +106,70 @@ public class HomePageActivity extends AppCompatActivity {
                         .build();
         adapter2 = new RestauItemAdapter(options2);
         recyclerView2.setAdapter(adapter2);
+        // bottomNavigationView
+        drawerLayout = findViewById(R.id.drawLayout);
+        iv_menu = findViewById(R.id.iv_menu);
+        lnHome = findViewById(R.id.home);
+        lnCart = findViewById(R.id.cart);
+        lnProfile = findViewById(R.id.profile);
+        lnRestaurant = findViewById(R.id.restaurant);
+        constraintLayout = findViewById(R.id.dontknow);
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("MyApp", "is oke");
+            }
+        });
+        iv_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDrawer(drawerLayout);
+            }
+        });
+        lnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recreate();
+            }
+        });
+        lnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectActitvity(HomePageActivity.this, AddCartActivity.class);
+            }
+        });
+        lnRestaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectActitvity(HomePageActivity.this, RestaurantList.class);
+            }
+        });
+        lnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectActitvity(HomePageActivity.this, UserProflie.class);
+            }
+        });
+    }
+    public static void openDrawer(DrawerLayout drawerLayout){
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+    public static void closeDrawer(DrawerLayout drawerLayout){
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+    public static void redirectActitvity(Activity activity, Class secondActivity){
+        Intent intent = new Intent(activity, secondActivity);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
+        activity.finish();
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout);
     }
 
     @Override

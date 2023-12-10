@@ -1,19 +1,26 @@
 package com.study.fooddeliveryapplication.ui;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,7 +33,6 @@ import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.ListCartItemAdapter;
 import com.study.fooddeliveryapplication.model.ModelCart;
 import com.study.fooddeliveryapplication.model.ModelOrder;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,24 +40,45 @@ public class AddCartActivity extends AppCompatActivity {
 
     private RecyclerView rvListItem;
     private Button btnPlaceOrder;
-    private TextView txtAddPayment, txPayable;
+    ConstraintLayout constraintLayout;
+    private EditText edAddress;
+    private TextView txtAddPayment, txPayable, txtCardNumberUsed;
     private ListCartItemAdapter listCartItemAdapter;
-    private ImageView btnBack;
+    DrawerLayout drawerLayout;
+    LinearLayout lnHome, lnCart, lnRestaurant, lnProfile;
+    private ImageView btnBack, show_more_btn;
     private  List<ModelCart> listOrder;
+    String phone;
     private ModelOrder modelOrder;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mycart);
-
+        //
+        SharedPreferences sharedPreferences = getSharedPreferences("my_app_preferences", Context.MODE_PRIVATE);
+        phone = sharedPreferences.getString("phone", "");
+        if(phone.equals("")){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Error");
+            builder.setMessage("Please login before using the card");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(AddCartActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
+            builder.show();
+        }
         // listCartItemAdapter
         rvListItem = findViewById(R.id.listCartItem);
         rvListItem.setLayoutManager(new LinearLayoutManager(this ));
         FirebaseRecyclerOptions<ModelCart> order =
                 new FirebaseRecyclerOptions.Builder<ModelCart>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("ItemCart"), ModelCart.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("ItemCart").orderByChild("userPhone").equalTo(phone), ModelCart.class)
                         .build();
+
         listCartItemAdapter = new ListCartItemAdapter(order);
         rvListItem.setAdapter(listCartItemAdapter);
 
@@ -66,8 +93,10 @@ public class AddCartActivity extends AppCompatActivity {
                 int payable =0;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     ModelCart modelCart  = dataSnapshot.getValue(ModelCart.class);
-                    payable = payable + Integer.parseInt(modelCart .getPrice())*Integer.parseInt(modelCart .getQuantity());
-                    listOrder.add(modelCart );
+                    if(modelCart.getUserPhone().equals(phone)){
+                        payable = payable + Integer.parseInt(modelCart .getPrice())*Integer.parseInt(modelCart .getQuantity());
+                        listOrder.add(modelCart );
+                    }
                 }
                 txPayable.setText(String.valueOf(payable));
                 modelOrder.setListFood(listOrder);
@@ -79,12 +108,32 @@ public class AddCartActivity extends AppCompatActivity {
 
             }
         });
-
+        //
+        Intent intent = getIntent();
+        String cardNumber = intent.getStringExtra("cardNumber");
+        modelOrder.setCardNumber(cardNumber);
+        txtCardNumberUsed = findViewById(R.id.txtCardNumberUsed);
+        if(modelOrder.getCardNumber() == null){
+            txtCardNumberUsed.setText("card number is empty");
+        } else{
+            txtCardNumberUsed.setText(modelOrder.getCardNumber());
+        }
         // btnPlaceOrder
         btnPlaceOrder = (Button)findViewById(R.id.btnPlaceOrder);
         btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(modelOrder.getCardNumber() == null){
+                    Toast.makeText(AddCartActivity.this, "Please choose card before order", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                edAddress = findViewById(R.id.edAddress);
+                modelOrder.setAddress(edAddress.getText().toString());
+                if(modelOrder.getAddress().equals("")){
+                    Toast.makeText(AddCartActivity.this, "Address is empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 FirebaseDatabase.getInstance().getReference().child("Order")
                         .push().setValue(modelOrder.toMap()).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -95,7 +144,7 @@ public class AddCartActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                //  FirebaseDatabase.getInstance().getReference().child("ItemCart").removeValue();
+                                // FirebaseDatabase.getInstance().getReference().child("ItemCart").removeValue();
                                 Toast.makeText(AddCartActivity.this, "Success to add", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -124,9 +173,58 @@ public class AddCartActivity extends AppCompatActivity {
 
             }
         });
+        show_more_btn = findViewById(R.id.show_more_btn);
+        drawerLayout = findViewById(R.id.drawLayout);
+        lnHome = findViewById(R.id.home);
+        lnCart = findViewById(R.id.cart);
+        lnProfile = findViewById(R.id.profile);
+        lnRestaurant = findViewById(R.id.restaurant);
+        show_more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.openDrawer(drawerLayout);
+            }
+        });
+        lnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(AddCartActivity.this, HomePageActivity.class);
+            }
+        });
+        lnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recreate();
 
+            }
+        });
+        lnRestaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(AddCartActivity.this, RestaurantList.class);
+            }
+        });
+        lnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(AddCartActivity.this, UserProflie.class);
+            }
+        });
+        constraintLayout = findViewById(R.id.dontknow);
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("MyApp", "is oke");
+            }
+        });
     }
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        HomePageActivity.closeDrawer(drawerLayout);
+    }
 
 
     @Override

@@ -13,8 +13,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.SearchPageData_ItemsApdapter;
-import com.study.fooddeliveryapplication.model.SearchPage_PopularFoodItem;
-
+import com.study.fooddeliveryapplication.model.RestauItem;
 public class SearchPageActivity_Data extends AppCompatActivity {
     SearchPageData_ItemsApdapter adapter;
     ImageView backbtn;
@@ -61,18 +60,18 @@ public class SearchPageActivity_Data extends AppCompatActivity {
         recyclerView1 = findViewById(R.id.rv_spd);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView1.setLayoutManager(layoutManager1);
-        FirebaseRecyclerOptions<SearchPage_PopularFoodItem> options1 =
-                new FirebaseRecyclerOptions.Builder<SearchPage_PopularFoodItem>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/SearchPage/SearchPage_PopularFoodItems"),SearchPage_PopularFoodItem.class)
+        FirebaseRecyclerOptions<RestauItem> options1 =
+                new FirebaseRecyclerOptions.Builder<RestauItem>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/restaurants"),RestauItem.class)
                         .build();
         adapter = new SearchPageData_ItemsApdapter(options1);
         recyclerView1.setAdapter(adapter);
     }
 
     private void txtSearch(String str){
-        FirebaseRecyclerOptions<SearchPage_PopularFoodItem> options1 =
-                new FirebaseRecyclerOptions.Builder<SearchPage_PopularFoodItem>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/SearchPage/SearchPage_PopularFoodItems").orderByChild("PopularFoodName").startAt(str).endAt(str+"~"),SearchPage_PopularFoodItem.class)
+        FirebaseRecyclerOptions<RestauItem> options1 =
+                new FirebaseRecyclerOptions.Builder<RestauItem>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/restaurants").orderByChild("RestName").startAt(str).endAt(str+"~"),RestauItem.class)
                         .build();
         adapter = new SearchPageData_ItemsApdapter(options1);
         adapter.startListening();

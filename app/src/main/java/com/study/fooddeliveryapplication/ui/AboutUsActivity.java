@@ -7,11 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
-
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.CustomListAdapter;
 import com.study.fooddeliveryapplication.model.Student;
-
 import java.util.ArrayList;
 
 public class AboutUsActivity extends AppCompatActivity {
