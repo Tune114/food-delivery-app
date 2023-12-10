@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.RestauItem;
 import com.study.fooddeliveryapplication.ui.RestaurantDetails;
-
 import java.util.List;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.MyViewHolder>{
@@ -60,6 +59,8 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
             }
         });
     }
+
+
     @Override
     public int getItemCount() {
         return restauItems.size();

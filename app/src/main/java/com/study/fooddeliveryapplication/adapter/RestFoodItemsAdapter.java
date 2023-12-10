@@ -3,6 +3,7 @@ package com.study.fooddeliveryapplication.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.Food;
 import com.study.fooddeliveryapplication.ui.AddCartActivity;
 import com.study.fooddeliveryapplication.ui.FoodDetailsActivity;
+import com.study.fooddeliveryapplication.ui.PaymentActivity;
+import com.study.fooddeliveryapplication.ui.RestaurantDetails;
 
 import java.util.List;
 
@@ -35,7 +38,6 @@ public class RestFoodItemsAdapter extends RecyclerView.Adapter<RestFoodItemsAdap
         this.foods = foods;
     }
     private DatabaseReference databaseReference;
-    private boolean result=false;
 
     @NonNull
     @Override
@@ -78,49 +80,62 @@ public class RestFoodItemsAdapter extends RecyclerView.Adapter<RestFoodItemsAdap
         holder.addToCartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Food food=new Food(name,description,price,image,restaurantName);
-                if(checkExistingOrder(name,restaurantName)){
-                    Intent intent=new Intent(holder.name.getContext(), AddCartActivity.class);
-                    holder.name.getContext().startActivity(intent);
-                }else{
-                    FirebaseDatabase.getInstance().getReference().child("ItemCart")
-                            .push().setValue(food.toMap()).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(holder.name.getContext(), "Error", Toast.LENGTH_SHORT).show();
-                                }
-                            }).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Toast.makeText(holder.name.getContext(), "Order Success", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }
+                SharedPreferences sharedPreferences = v.getContext().getSharedPreferences("my_app_preferences", Context.MODE_PRIVATE);
+                String phoneNumbers = sharedPreferences.getString("phone", "");
+                Food food=new Food(name,description,price,image,restaurantName,phoneNumbers);
+                checkExistingOrder(name, restaurantName, phoneNumbers, new OrderCheckCallback() {
+                    @Override
+                    public void onResult(boolean result) {
+                        if (result) {
+                            Intent intent = new Intent(holder.name.getContext(), AddCartActivity.class);
+                            holder.name.getContext().startActivity(intent);
+                        } else {
+                            FirebaseDatabase.getInstance().getReference().child("ItemCart")
+                                    .push().setValue(food.toMap()).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(holder.name.getContext(), "Error", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Toast.makeText(holder.name.getContext(), "Order Success", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                    }
+                });
             }
         });
 
     }
 
-    public boolean checkExistingOrder(String foodName, String restaurantName){
-        databaseReference=FirebaseDatabase.getInstance().getReference().child("ItemCart");
-        databaseReference.addValueEventListener(new ValueEventListener(){
+    private interface OrderCheckCallback {
+        void onResult(boolean result);
+    }
+
+    private void checkExistingOrder(String foodName, String restaurantName, String phoneNumbers, OrderCheckCallback callback) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("ItemCart");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot ds:snapshot.getChildren()){
-                    String fName=ds.child("foodName").getValue(String.class);
-                    String rName=ds.child("restName").getValue(String.class);
-                    if(foodName==fName && rName==restaurantName){
-                        result=true;
+                boolean result = false;
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String fName = ds.child("foodName").getValue(String.class);
+                    String rName = ds.child("restName").getValue(String.class);
+                    String userPhone = ds.child("userPhone").getValue(String.class);
+                    if (foodName.equals(fName) && restaurantName.equals(rName) && phoneNumbers.equals(userPhone)) {
+                        result = true;
                         break;
                     }
                 }
+                callback.onResult(result);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-        return result;
     }
 
     @Override
