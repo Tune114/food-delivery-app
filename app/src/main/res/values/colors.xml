@@ -17,4 +17,5 @@
     <color name="mainColor">#1C95FF</color>
     <color name="searchBgColor">#F6F6F6</color>
     <color name="searchTextColor">#676767</color>
+    <color name="custom_white">#E3E0E0</color>
 </resources>

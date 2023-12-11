@@ -69,7 +69,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private TextView fname;
     private TextView fdescrip;
     private TextView fprice;
-    private Button fres;
+    private TextView fres;
     private boolean isLoveClicked = false;
 
     private List<IngredientItem> xingredientList;
