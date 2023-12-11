@@ -64,7 +64,7 @@ public class ListCardAddAdapter extends FirebaseRecyclerAdapter<ModelCardPayment
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         FirebaseDatabase.getInstance().getReference().child("CardForPayment")
-                                .child(getRef(position).getKey()).removeValue();
+                                .child(getRef(holder.getAdapterPosition()).getKey()).removeValue();
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

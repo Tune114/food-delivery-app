@@ -57,7 +57,7 @@ public class ListCartItemAdapter extends FirebaseRecyclerAdapter<ModelCart,ListC
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         FirebaseDatabase.getInstance().getReference().child("ItemCart")
-                                .child(getRef(position).getKey()).removeValue();
+                                .child(getRef(holder.getAdapterPosition()).getKey()).removeValue();
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -76,7 +76,7 @@ public class ListCartItemAdapter extends FirebaseRecyclerAdapter<ModelCart,ListC
                 model.setQuantity(String.valueOf(newQuantity));
                 Map<String, Object> updateQuantity = model.toMap();
                 FirebaseDatabase.getInstance().getReference().child("ItemCart")
-                        .child(getRef(position).getKey()).updateChildren(updateQuantity)
+                        .child(getRef(holder.getAdapterPosition()).getKey()).updateChildren(updateQuantity)
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
@@ -96,7 +96,7 @@ public class ListCartItemAdapter extends FirebaseRecyclerAdapter<ModelCart,ListC
                     model.setQuantity(String.valueOf(newQuantity));
                     Map<String, Object> updateQuantity = model.toMap();
                     FirebaseDatabase.getInstance().getReference().child("ItemCart")
-                            .child(getRef(position).getKey()).updateChildren(updateQuantity)
+                            .child(getRef(holder.getAdapterPosition()).getKey()).updateChildren(updateQuantity)
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
