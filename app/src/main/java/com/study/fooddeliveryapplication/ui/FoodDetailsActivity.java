@@ -5,16 +5,21 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.util.Pair;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.FirebaseApp;
@@ -45,6 +50,9 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private Button btnSizeVua;
     private Button btnSizeLon;
     private TextView txtQuantity;
+    DrawerLayout drawerLayout;
+    ConstraintLayout constraintLayout;
+    LinearLayout lnHome, lnCart, lnRestaurant, lnProfile;
     private TextView txtSumPrice;
     private Button btnPlus;
     private Button btnMinus;
@@ -57,7 +65,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private FoodListAdapter mFoodListAdapter;
     private List<FoodItem> mFoodList;
     private RecyclerView xrecyclerView;
-    private ImageView fimage;
+    private ImageView fimage, show_more_btn;
     private TextView fname;
     private TextView fdescrip;
     private TextView fprice;
@@ -301,7 +309,56 @@ public class FoodDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    //navbar
+        show_more_btn = findViewById(R.id.show_more_btn);
+        drawerLayout = findViewById(R.id.drawLayout);
+        lnHome = findViewById(R.id.home);
+        lnCart = findViewById(R.id.cart);
+        lnProfile = findViewById(R.id.profile);
+        lnRestaurant = findViewById(R.id.restaurant);
+        show_more_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.openDrawer(drawerLayout);
+            }
+        });
+        lnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, HomePageActivity.class);
+            }
+        });
+        lnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, AddCartActivity.class);
 
+            }
+        });
+        lnRestaurant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, RestaurantList.class);
+            }
+        });
+        lnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, UserProflie.class);
+            }
+        });
+        constraintLayout = findViewById(R.id.dontknow);
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("MyApp", "is oke");
+            }
+        });
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        HomePageActivity.closeDrawer(drawerLayout);
     }
     public void onLoveButtonClick(View view) {
         if (!isLoveClicked) { // Kiểm tra trạng thái của nút Love
