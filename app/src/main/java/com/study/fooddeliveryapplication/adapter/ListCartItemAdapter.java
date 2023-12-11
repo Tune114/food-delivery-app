@@ -92,7 +92,7 @@ public class ListCartItemAdapter extends FirebaseRecyclerAdapter<ModelCart,ListC
                 if(newQuantity<1){
                     Toast.makeText(holder.mFoodName.getContext(), "Quantity cannot be less than 1", Toast.LENGTH_SHORT).show();
                 }
-               else{
+                else{
                     model.setQuantity(String.valueOf(newQuantity));
                     Map<String, Object> updateQuantity = model.toMap();
                     FirebaseDatabase.getInstance().getReference().child("ItemCart")

@@ -49,5 +49,6 @@ dependencies {
     implementation("com.firebaseui:firebase-ui-database:8.0.2")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("com.github.bumptech.glide:glide:4.16.0")
-}
 
+    implementation("com.squareup.picasso:picasso:2.71828")
+}
