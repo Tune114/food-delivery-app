@@ -18,12 +18,8 @@
         tools:targetApi="33">
         <activity
             android:name=".ui.RestaurantList"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.UserProflie"
@@ -63,8 +59,12 @@
             android:exported="false" />
         <activity
             android:name=".ui.LoginActivity"
-            android:exported="false" >
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.SearchPageActivity"
@@ -74,6 +74,7 @@
         <activity
             android:name=".ui.HomePageActivity"
             android:exported="false">
+
         </activity>
         <activity
             android:name=".ui.MainActivity"

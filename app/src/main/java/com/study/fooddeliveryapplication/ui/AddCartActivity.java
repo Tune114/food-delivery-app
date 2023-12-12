@@ -28,6 +28,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.ListCartItemAdapter;
@@ -144,7 +145,24 @@ public class AddCartActivity extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                // FirebaseDatabase.getInstance().getReference().child("ItemCart").removeValue();
+                                DatabaseReference itemCartRef = FirebaseDatabase.getInstance().getReference().child("ItemCart");
+
+                                Query query = itemCartRef.orderByChild("userPhone").equalTo(phone);
+
+                                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                            snapshot.getRef().removeValue();
+                                        }
+                                        Toast.makeText(AddCartActivity.this, "Success to add", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        // Xử lý lỗi nếu có
+                                    }
+                                });
                                 Toast.makeText(AddCartActivity.this, "Success to add", Toast.LENGTH_SHORT).show();
                             }
                         });
