@@ -1,14 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layoutListItem"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    >
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:scaleType="centerCrop" />
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/icon_ava"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="15dp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,16 +26,18 @@
             android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            android:text="Đinh Công Minh"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvcomment"
             android:layout_width="match_parent"
+            android:text="Món này rất ngon nha."
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="14sp"/>
+            android:textSize="16sp"/>
 
     </LinearLayout>
 

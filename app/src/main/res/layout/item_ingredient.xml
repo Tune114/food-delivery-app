@@ -1,25 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="120dp"
     android:layout_height="120dp"
-    android:orientation="vertical"
-    android:background="@color/Vang_nhat">
-    <ImageView
-        android:id="@+id/ingre_image"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bunbo"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
-    <TextView
-        android:id="@+id/ingre_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        android:text="Food Name"
-        android:textStyle="bold"
-        android:layout_gravity="center"/>
-</LinearLayout>
+    android:elevation="12dp"
+    android:layout_marginRight="10dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        >
+        <ImageView
+            android:id="@+id/ingre_image"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bunbo"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+        <TextView
+            android:id="@+id/ingre_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:text="Food Name"
+            android:layout_marginTop="5dp"
+            />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
