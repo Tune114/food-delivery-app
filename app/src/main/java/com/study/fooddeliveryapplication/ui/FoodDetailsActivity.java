@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,6 +39,7 @@ import com.study.fooddeliveryapplication.adapter.DataItemAdapter;
 import com.study.fooddeliveryapplication.adapter.FoodListAdapter;
 import com.study.fooddeliveryapplication.adapter.IngredientListAdapter;
 import com.study.fooddeliveryapplication.model.CartItem;
+import com.study.fooddeliveryapplication.model.CommentItem;
 import com.study.fooddeliveryapplication.model.DataItem;
 import com.study.fooddeliveryapplication.model.FoodItem;
 import com.study.fooddeliveryapplication.model.IngredientItem;
@@ -82,6 +84,8 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private List<DataItem> dataItemList;
     private DataItemAdapter dadapter;
     private String foodimagelink;
+    private Button btnSubmitComment;
+    private EditText Comment;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -123,6 +127,9 @@ public class FoodDetailsActivity extends AppCompatActivity {
         btnMinus = findViewById(R.id.btn_minus);
         btnBack = findViewById(R.id.button_back);
         btnAddToCart=findViewById(R.id.add_to_cart);
+        btnSubmitComment=findViewById(R.id.btn_submit_comment);
+        Comment=findViewById(R.id.edit_comment);
+
 
         Intent intent= getIntent();
         String NameofFood=intent.getStringExtra("foodName");
@@ -380,6 +387,68 @@ public class FoodDetailsActivity extends AppCompatActivity {
                 intent.putExtra("foodPrice", foodPrice);
                 intent.putExtra("foodQuantity", foodQuantity);
                 startActivity(intent);
+
+            }
+        });
+        btnSubmitComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("restaurants");
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot restaurantSnapshot : dataSnapshot.getChildren()) {
+                            String restName = restaurantSnapshot.child("RestName").getValue(String.class);
+
+                            // So sánh tên nhà hàng
+                            if (restName.equals(NameofRes)) {
+                                for (DataSnapshot categorySnapshot : restaurantSnapshot.child("categories").getChildren()) {
+                                    String categoryName = categorySnapshot.child("category_name").getValue(String.class);
+
+                                    // So sánh tên danh mục
+                                    if (categoryName.equals(NameofCate)) {
+                                        for (DataSnapshot foodSnapshot : categorySnapshot.child("foods").getChildren()) {
+                                            String foodName = foodSnapshot.child("name").getValue(String.class);
+
+                                            // So sánh tên món ăn
+                                            if (foodName.equals(NameofFood)) {
+                                                DatabaseReference commentRef = foodSnapshot.child("comment").getRef().push();
+                                                String commentKey = commentRef.getKey();
+                                                String image = "https://firebasestorage.googleapis.com/v0/b/food-delivery-cminh.appspot.com/o/icon_ava.jpg?alt=media&token=2303e941-d1da-4341-b362-ca74c0a8ebd1";
+                                                String name = "Admin";
+                                                String content = Comment.getText().toString();
+                                                CommentItem daitem = new CommentItem(image,name,content);
+                                                commentRef.setValue(daitem)
+                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                // Xử lý khi gửi dữ liệu thành công
+                                                                Toast.makeText(FoodDetailsActivity.this, "Thêm bình luận thành công", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        })
+                                                        .addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+                                                                // Xử lý khi gửi dữ liệu thất bại
+                                                                Toast.makeText(FoodDetailsActivity.this, "Thêm bình luận thất bại", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        });
+
+                                                // Gửi dữ liệu mới lên vị trí comment
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Xử lý khi có lỗi xảy ra
+                    }
+                });
 
             }
         });
