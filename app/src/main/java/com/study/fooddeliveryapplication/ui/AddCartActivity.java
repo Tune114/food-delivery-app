@@ -124,6 +124,10 @@ public class AddCartActivity extends AppCompatActivity {
         btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(modelOrder.getListFood().size()==0){
+                    Toast.makeText(AddCartActivity.this, "Gio hang trong ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(modelOrder.getCardNumber()==null){
                     Toast.makeText(AddCartActivity.this, "Please choose card before order", Toast.LENGTH_SHORT).show();
                     return;
@@ -155,6 +159,7 @@ public class AddCartActivity extends AppCompatActivity {
                                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                             snapshot.getRef().removeValue();
                                         }
+
                                         Toast.makeText(AddCartActivity.this, "Success to add", Toast.LENGTH_SHORT).show();
                                     }
 
