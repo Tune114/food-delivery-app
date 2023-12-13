@@ -54,8 +54,8 @@ public class ListCardAdapter extends FirebaseRecyclerAdapter<ModelCard, ListCard
     @NonNull
     @Override
     public PaymentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card, parent, false);
-       return  new PaymentViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card, parent, false);
+        return  new PaymentViewHolder(view);
     }
 
 
