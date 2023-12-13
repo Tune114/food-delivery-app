@@ -58,7 +58,7 @@ public class AddCartActivity extends AppCompatActivity {
         //
         SharedPreferences sharedPreferences = getSharedPreferences("my_app_preferences", Context.MODE_PRIVATE);
         phone = sharedPreferences.getString("phone", "");
-        if(phone.equals("")){
+        if(phone.isEmpty()){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Error");
             builder.setMessage("Please login before using the card");
@@ -85,7 +85,7 @@ public class AddCartActivity extends AppCompatActivity {
         // txPayable and ModelOrder modelOrder
         listOrder = new ArrayList<>();
         modelOrder = new ModelOrder();
-        txPayable = (TextView) findViewById(R.id.txtPayable);
+        txPayable = findViewById(R.id.txtPayable);
         DatabaseReference data = FirebaseDatabase.getInstance().getReference("ItemCart");
         data.addValueEventListener(new ValueEventListener() {
             @Override
@@ -93,7 +93,7 @@ public class AddCartActivity extends AppCompatActivity {
                 int payable =0;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     ModelCart modelCart  = dataSnapshot.getValue(ModelCart.class);
-                    if(modelCart.getUserPhone().equals(phone)){
+                    if(!modelCart.getUserPhone().isEmpty() && modelCart.getUserPhone().equals(phone)){
                         payable = payable + Integer.parseInt(modelCart .getPrice())*Integer.parseInt(modelCart .getQuantity());
                         listOrder.add(modelCart );
                     }
@@ -108,14 +108,14 @@ public class AddCartActivity extends AppCompatActivity {
 
             }
         });
-        //
+
         Intent intent = getIntent();
         String cardNumber = intent.getStringExtra("cardNumber");
-        modelOrder.setCardNumber(cardNumber);
         txtCardNumberUsed = findViewById(R.id.txtCardNumberUsed);
-        if(modelOrder.getCardNumber() == null){
+        if(cardNumber ==null ){
             txtCardNumberUsed.setText("card number is empty");
         } else{
+            modelOrder.setCardNumber(cardNumber);
             txtCardNumberUsed.setText(modelOrder.getCardNumber());
         }
         // btnPlaceOrder
@@ -123,13 +123,13 @@ public class AddCartActivity extends AppCompatActivity {
         btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(modelOrder.getCardNumber() == null){
+                if(modelOrder.getCardNumber()==null){
                     Toast.makeText(AddCartActivity.this, "Please choose card before order", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 edAddress = findViewById(R.id.edAddress);
                 modelOrder.setAddress(edAddress.getText().toString());
-                if(modelOrder.getAddress().equals("")){
+                if(modelOrder.getAddress().isEmpty() ){
                     Toast.makeText(AddCartActivity.this, "Address is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -173,6 +173,7 @@ public class AddCartActivity extends AppCompatActivity {
 
             }
         });
+        // Drawer Layout
         show_more_btn = findViewById(R.id.show_more_btn);
         drawerLayout = findViewById(R.id.drawLayout);
         lnHome = findViewById(R.id.home);

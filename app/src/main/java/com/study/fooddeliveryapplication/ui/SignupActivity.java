@@ -36,6 +36,7 @@ public class SignupActivity extends AppCompatActivity {
         edname = (EditText) findViewById(R.id.edname);
         btnsignup = (Button) findViewById(R.id.btnsignup) ;
 
+
         tvHaveacc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

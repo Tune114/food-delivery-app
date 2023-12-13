@@ -36,9 +36,16 @@ public class LoginActivity extends AppCompatActivity {
         passwordedit = (EditText) findViewById(R.id.password);
         btnlogin = (Button) findViewById(R.id.btnlogin) ;
 
+
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String pnumber = phoneedit.getText().toString();
+                SharedPreferences sharedPreferences = getSharedPreferences("my_app_preferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("pnumber", pnumber);
+                editor.apply();
                 Login();
             }
         });
@@ -58,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     private void Login(){
@@ -113,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this,"Thông tin số điện thoại hoặc mật khẩu sai!",Toast.LENGTH_SHORT).show();
                     }
                 }
+
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
