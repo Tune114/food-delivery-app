@@ -137,6 +137,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
         String NameofRes=intent.getStringExtra("restaurantName");
         SharedPreferences sharedPreferences = getSharedPreferences("my_app_preferences", Context.MODE_PRIVATE);
         String pnumber = sharedPreferences.getString("pnumber", "");
+        String username = sharedPreferences.getString("name","Default");
         fname=findViewById(R.id.tv_dish_name);
         fdescrip=findViewById(R.id.tv_dish_info);
         fimage=findViewById(R.id.image_food);
@@ -415,10 +416,11 @@ public class FoodDetailsActivity extends AppCompatActivity {
                                             if (foodName.equals(NameofFood)) {
                                                 DatabaseReference commentRef = foodSnapshot.child("comment").getRef().push();
                                                 String commentKey = commentRef.getKey();
+                                                if(pnumber.equals("")){}
                                                 String image = "https://firebasestorage.googleapis.com/v0/b/food-delivery-cminh.appspot.com/o/icon_ava.jpg?alt=media&token=2303e941-d1da-4341-b362-ca74c0a8ebd1";
-                                                String name = "Admin";
                                                 String content = Comment.getText().toString();
-                                                CommentItem daitem = new CommentItem(image,name,content);
+
+                                                CommentItem daitem = new CommentItem(image,username,content, pnumber);
                                                 commentRef.setValue(daitem)
                                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
