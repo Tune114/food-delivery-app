@@ -87,6 +87,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private Button btnSubmitComment;
     private EditText Comment;
 
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,13 +109,13 @@ public class FoodDetailsActivity extends AppCompatActivity {
         // Thiết lập Adapter cho ListView
 
         // Thêm dữ liệu vào danh sách món ăn
-        addFoodItem("Bún bò", getResources().getDrawable(R.drawable.bunbo));
-        addFoodItem("Bún chả", getResources().getDrawable(R.drawable.buncha));
-        addFoodItem("Nem cuốn", getResources().getDrawable(R.drawable.nemcuon));
-        addFoodItem("Bánh cuốn", getResources().getDrawable(R.drawable.banhcuon));
-        addFoodItem("Bánh mì", getResources().getDrawable(R.drawable.banhmi));
+        addFoodItem("Beef Noodle Soup", getResources().getDrawable(R.drawable.bunbo));
+        addFoodItem("Cha Noodle", getResources().getDrawable(R.drawable.buncha));
+        addFoodItem("Spring rolls", getResources().getDrawable(R.drawable.nemcuon));
+        addFoodItem("Steamed rice rolls", getResources().getDrawable(R.drawable.banhcuon));
+        addFoodItem("Banh mi", getResources().getDrawable(R.drawable.banhmi));
         addFoodItem("Burger", getResources().getDrawable(R.drawable.burgers));
-        addFoodItem("Bún đậu", getResources().getDrawable(R.drawable.bundau));
+        addFoodItem("Tofu Noodle", getResources().getDrawable(R.drawable.bundau));
 
         btnLove = findViewById(R.id.btn_love);
         textLoveCount = findViewById(R.id.text_love_count);
@@ -237,6 +238,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
                                         fprice.setText(foodPrice);
                                         fvalue = Integer.parseInt(fprice.getText().toString());
                                         fres.setText(restName);
+                                        txtSumPrice.setText(foodPrice);
                                     }
                                 }
                             }
@@ -349,7 +351,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Context context = view.getContext();
                 finish();
-                Intent intent = new Intent(FoodDetailsActivity.this, SearchPageActivity.class);
+                Intent intent = new Intent(FoodDetailsActivity.this, RestaurantList.class);
                 startActivity(intent);
             }
         });
@@ -372,14 +374,14 @@ public class FoodDetailsActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 // Xử lý khi gửi dữ liệu thành công
-                                Toast.makeText(FoodDetailsActivity.this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(FoodDetailsActivity.this, "Add to Cart successfully!", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 // Xử lý khi gửi dữ liệu thất bại
-                                Toast.makeText(FoodDetailsActivity.this, "Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(FoodDetailsActivity.this, "Add to Cart failed!", Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -417,7 +419,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
                                                 DatabaseReference commentRef = foodSnapshot.child("comment").getRef().push();
                                                 String commentKey = commentRef.getKey();
                                                 if(pnumber.equals("")){}
-                                                String image = "https://firebasestorage.googleapis.com/v0/b/food-delivery-cminh.appspot.com/o/icon_ava.jpg?alt=media&token=2303e941-d1da-4341-b362-ca74c0a8ebd1";
+                                                String image = "https://firebasestorage.googleapis.com/v0/b/food-delivery-cminh.appspot.com/o/ava_default.jpg?alt=media&token=f3fe6132-be4c-4a50-ba58-2a7ceffd5318";
                                                 String content = Comment.getText().toString();
 
                                                 CommentItem daitem = new CommentItem(image,username,content, pnumber);
@@ -426,14 +428,14 @@ public class FoodDetailsActivity extends AppCompatActivity {
                                                             @Override
                                                             public void onSuccess(Void aVoid) {
                                                                 // Xử lý khi gửi dữ liệu thành công
-                                                                Toast.makeText(FoodDetailsActivity.this, "Thêm bình luận thành công", Toast.LENGTH_SHORT).show();
+                                                                Toast.makeText(FoodDetailsActivity.this, "Add new comment successfully!", Toast.LENGTH_SHORT).show();
                                                             }
                                                         })
                                                         .addOnFailureListener(new OnFailureListener() {
                                                             @Override
                                                             public void onFailure(@NonNull Exception e) {
                                                                 // Xử lý khi gửi dữ liệu thất bại
-                                                                Toast.makeText(FoodDetailsActivity.this, "Thêm bình luận thất bại", Toast.LENGTH_SHORT).show();
+                                                                Toast.makeText(FoodDetailsActivity.this, "Add new comment failed", Toast.LENGTH_SHORT).show();
                                                             }
                                                         });
 

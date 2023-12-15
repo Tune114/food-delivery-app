@@ -266,7 +266,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nguyên liệu gồm:"
+                        android:text="Ingredient:"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -288,7 +288,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
-                        android:text="Gợi ý một số món gần bạn:"
+                        android:text="Some nearby food suggestions:"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -321,7 +321,7 @@
                         android:id="@+id/btn_size_nho"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nhỏ"
+                        android:text="Small"
                         android:textSize="14sp"
                         android:textColor="@color/black"
                         android:layout_marginLeft="10dp"
@@ -330,7 +330,7 @@
                         android:id="@+id/btn_size_vua"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vừa"
+                        android:text="Medium"
                         android:textSize="14sp"
                         android:textColor="@color/black"
                         android:layout_marginLeft="10dp"
@@ -339,7 +339,7 @@
                         android:id="@+id/btn_size_lon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lớn"
+                        android:text="Large"
                         android:textSize="14sp"
                         android:textColor="@color/black"
                         android:layout_marginLeft="10dp"
@@ -356,7 +356,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Đơn giá:"
+                    android:text="Price:"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="20sp"
@@ -390,7 +390,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Số lượng:"
+                    android:text="Quantity:"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -414,7 +414,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="0"
+                    android:text="1"
                     android:textSize="25sp"
                     android:layout_marginLeft="20dp"/>
                 <Button
@@ -443,7 +443,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tạm tính:"
+                    android:text="Total:"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"/>
@@ -474,7 +474,7 @@
                     android:id="@+id/add_to_cart"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:text="Thêm vào giỏ hàng"
+                    android:text="Add to Cart"
                     android:drawableLeft="@drawable/ic_xehang"
                     android:layout_gravity="center"
                     android:textStyle="bold"
@@ -494,7 +494,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Bình luận:"
+                    android:text="Comment:"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -521,15 +521,16 @@
                     android:orientation="horizontal"
                     android:layout_marginTop="20dp">
                     <ImageView
+                        android:id="@+id/cmt_ava"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/icon_ava"
+                        android:src="@drawable/ava_default"
                         android:layout_marginLeft="30dp"/>
                     <EditText
                         android:id="@+id/edit_comment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nhập bình luận của bạn"
+                        android:hint="Write your comment here!"
                         android:textSize="18sp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"/>
@@ -539,7 +540,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Gửi bình luận"
+                    android:text="Send comment"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:drawableLeft="@drawable/ic_chat"
