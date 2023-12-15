@@ -1,7 +1,9 @@
 package com.study.fooddeliveryapplication.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -9,19 +11,21 @@ import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.util.Pair;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,9 +35,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Callback;
 import com.study.fooddeliveryapplication.R;
-import com.study.fooddeliveryapplication.adapter.CommentAdapter;
+import com.study.fooddeliveryapplication.adapter.DataItemAdapter;
 import com.study.fooddeliveryapplication.adapter.FoodListAdapter;
 import com.study.fooddeliveryapplication.adapter.IngredientListAdapter;
+import com.study.fooddeliveryapplication.model.CartItem;
+import com.study.fooddeliveryapplication.model.CommentItem;
+import com.study.fooddeliveryapplication.model.DataItem;
 import com.study.fooddeliveryapplication.model.FoodItem;
 import com.study.fooddeliveryapplication.model.IngredientItem;
 
@@ -74,6 +81,11 @@ public class FoodDetailsActivity extends AppCompatActivity {
 
     private List<IngredientItem> xingredientList;
     private IngredientListAdapter xadapter;
+    private List<DataItem> dataItemList;
+    private DataItemAdapter dadapter;
+    private String foodimagelink;
+    private Button btnSubmitComment;
+    private EditText Comment;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -81,17 +93,6 @@ public class FoodDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dish_details);
         FirebaseApp.initializeApp(this);
-        List<Pair<String, String>> data = new ArrayList<>();
-        data.add(new Pair<>("Đinh Công Minh\nMón này khá ngon", "minh"));
-        data.add(new Pair<>("Đỗ Viết Thắng\nKhá nhiều so với mức ăn của tôi", "thang"));
-        data.add(new Pair<>("Phạm Tấn Tú\nTạm ổn", "tu"));
-        data.add(new Pair<>("Trần Đình Thọ\nSẽ mua lại lần sau", "tho"));
-        data.add(new Pair<>("Mai Hồng Quang\nRất là ngon", "quang"));
-
-
-        ListView listView = findViewById(R.id.list_comment);
-        CommentAdapter adapter = new CommentAdapter(this, data);
-        listView.setAdapter(adapter);
 
         mFoodList = new ArrayList<>();
 
@@ -126,11 +127,17 @@ public class FoodDetailsActivity extends AppCompatActivity {
         btnMinus = findViewById(R.id.btn_minus);
         btnBack = findViewById(R.id.button_back);
         btnAddToCart=findViewById(R.id.add_to_cart);
+        btnSubmitComment=findViewById(R.id.btn_submit_comment);
+        Comment=findViewById(R.id.edit_comment);
+
 
         Intent intent= getIntent();
         String NameofFood=intent.getStringExtra("foodName");
         String NameofCate=intent.getStringExtra("categoryName");
         String NameofRes=intent.getStringExtra("restaurantName");
+        SharedPreferences sharedPreferences = getSharedPreferences("my_app_preferences", Context.MODE_PRIVATE);
+        String pnumber = sharedPreferences.getString("pnumber", "");
+        String username = sharedPreferences.getString("name","Default");
         fname=findViewById(R.id.tv_dish_name);
         fdescrip=findViewById(R.id.tv_dish_info);
         fimage=findViewById(R.id.image_food);
@@ -142,7 +149,6 @@ public class FoodDetailsActivity extends AppCompatActivity {
         xrecyclerView = findViewById(R.id.ingredient_item);
         LinearLayoutManager olayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         xrecyclerView.setLayoutManager(olayoutManager);
-
         xrecyclerView.setHasFixedSize(true);
         xadapter = new IngredientListAdapter(this, xingredientList);
         xrecyclerView.setAdapter(xadapter);
@@ -188,11 +194,6 @@ public class FoodDetailsActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("restaurants");
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -215,6 +216,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
                                         String foodDescription = foodSnapshot.child("description").getValue(String.class);
                                         String foodImage = foodSnapshot.child("image").getValue(String.class);
                                         String foodPrice = foodSnapshot.child("price").getValue(String.class);
+                                        foodimagelink = foodSnapshot.child("image").getValue(String.class);
 
                                         // Gán dữ liệu vào các giá trị
                                         fname.setText(foodName);
@@ -249,6 +251,55 @@ public class FoodDetailsActivity extends AppCompatActivity {
                 // Xử lý khi có lỗi xảy ra trong quá trình truy vấn dữ liệu
             }
         });
+
+
+        dataItemList = new ArrayList<>();
+        dadapter = new DataItemAdapter(this, dataItemList);
+
+        RecyclerView recyclerView = findViewById(R.id.list_comment);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(dadapter);
+
+        DatabaseReference databaseReference1 = FirebaseDatabase.getInstance().getReference("restaurants");
+        databaseReference1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot restaurantSnapshot : dataSnapshot.getChildren()) {
+                    String restName = restaurantSnapshot.child("RestName").getValue(String.class);
+                    // So sánh tên nhà hàng
+                    if (restName.equals(NameofRes)) {
+                        for (DataSnapshot categorySnapshot : restaurantSnapshot.child("categories").getChildren()) {
+                            String categoryName = categorySnapshot.child("category_name").getValue(String.class);
+                            // So sánh tên danh mục
+                            if (categoryName.equals(NameofCate)) {
+                                for (DataSnapshot foodSnapshot : categorySnapshot.child("foods").getChildren()) {
+                                    String foodName = foodSnapshot.child("name").getValue(String.class);
+                                    // So sánh tên món ăn
+                                    if (foodName.equals(NameofFood)) {
+                                        for (DataSnapshot commentSnapshot : foodSnapshot.child("comment").getChildren()) {
+                                            String image = commentSnapshot.child("cmtimage").getValue(String.class);
+                                            String name = commentSnapshot.child("cmtname").getValue(String.class);
+                                            String content = commentSnapshot.child("cmtcontent").getValue(String.class);
+                                            DataItem item = new DataItem(image, name, content);
+                                            dataItemList.add(item);
+                                        }
+                                        dadapter.notifyDataSetChanged();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Xử lý lỗi khi không thể đọc dữ liệu từ Firebase
+            }
+        });
+
+
+
         btnSizeNho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -296,6 +347,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Context context = view.getContext();
                 finish();
                 Intent intent = new Intent(FoodDetailsActivity.this, SearchPageActivity.class);
                 startActivity(intent);
@@ -303,13 +355,106 @@ public class FoodDetailsActivity extends AppCompatActivity {
         });
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                finish();
+            public void onClick(View v) {
+                String foodName = fname.getText().toString(); // Lấy giá trị từ biến fname
+                String foodPrice = fprice.getText().toString(); // Lấy giá trị từ biến fprice
+                String foodQuantity = txtQuantity.getText().toString(); // Lấy giá trị từ TextView txtQuantity
+
+                DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("ItemCart"); // Tham chiếu đến nút "ItemCart" trong cơ sở dữ liệu
+                String cartId = cartRef.push().getKey(); // Tạo một khóa ngẫu nhiên cho giỏ hàng mới
+
+                // Tạo một đối tượng CartItem chứa thông tin sản phẩm
+                CartItem cartItem = new CartItem(foodName, foodPrice, foodQuantity, foodimagelink, NameofRes, pnumber);
+
+                // Gửi dữ liệu lên cơ sở dữ liệu thời gian thực
+                cartRef.child(cartId).setValue(cartItem)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                // Xử lý khi gửi dữ liệu thành công
+                                Toast.makeText(FoodDetailsActivity.this, "Thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                // Xử lý khi gửi dữ liệu thất bại
+                                Toast.makeText(FoodDetailsActivity.this, "Thêm vào giỏ hàng thất bại", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
                 Intent intent = new Intent(FoodDetailsActivity.this, AddCartActivity.class);
+                intent.putExtra("foodName", foodName);
+                intent.putExtra("foodPrice", foodPrice);
+                intent.putExtra("foodQuantity", foodQuantity);
                 startActivity(intent);
+
             }
         });
-    //navbar
+        btnSubmitComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("restaurants");
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot restaurantSnapshot : dataSnapshot.getChildren()) {
+                            String restName = restaurantSnapshot.child("RestName").getValue(String.class);
+
+                            // So sánh tên nhà hàng
+                            if (restName.equals(NameofRes)) {
+                                for (DataSnapshot categorySnapshot : restaurantSnapshot.child("categories").getChildren()) {
+                                    String categoryName = categorySnapshot.child("category_name").getValue(String.class);
+
+                                    // So sánh tên danh mục
+                                    if (categoryName.equals(NameofCate)) {
+                                        for (DataSnapshot foodSnapshot : categorySnapshot.child("foods").getChildren()) {
+                                            String foodName = foodSnapshot.child("name").getValue(String.class);
+
+                                            // So sánh tên món ăn
+                                            if (foodName.equals(NameofFood)) {
+                                                DatabaseReference commentRef = foodSnapshot.child("comment").getRef().push();
+                                                String commentKey = commentRef.getKey();
+                                                if(pnumber.equals("")){}
+                                                String image = "https://firebasestorage.googleapis.com/v0/b/food-delivery-cminh.appspot.com/o/icon_ava.jpg?alt=media&token=2303e941-d1da-4341-b362-ca74c0a8ebd1";
+                                                String content = Comment.getText().toString();
+
+                                                CommentItem daitem = new CommentItem(image,username,content, pnumber);
+                                                commentRef.setValue(daitem)
+                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                // Xử lý khi gửi dữ liệu thành công
+                                                                Toast.makeText(FoodDetailsActivity.this, "Thêm bình luận thành công", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        })
+                                                        .addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+                                                                // Xử lý khi gửi dữ liệu thất bại
+                                                                Toast.makeText(FoodDetailsActivity.this, "Thêm bình luận thất bại", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        });
+
+                                                // Gửi dữ liệu mới lên vị trí comment
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Xử lý khi có lỗi xảy ra
+                    }
+                });
+
+            }
+        });
+        //navbar
         show_more_btn = findViewById(R.id.show_more_btn);
         drawerLayout = findViewById(R.id.drawLayout);
         lnHome = findViewById(R.id.home);
