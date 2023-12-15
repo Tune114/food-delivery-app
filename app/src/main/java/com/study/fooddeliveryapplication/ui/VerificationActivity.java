@@ -62,7 +62,7 @@ public class VerificationActivity extends AppCompatActivity {
                         inputcode4.getText().toString().trim().isEmpty() ||
                         inputcode5.getText().toString().trim().isEmpty() ||
                         inputcode6.getText().toString().trim().isEmpty()){
-                    Toast.makeText(VerificationActivity.this, "Vui lòng nhập đầy đủ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VerificationActivity.this, "Please enter complete information!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String code = inputcode1.getText().toString() + inputcode2.getText().toString() + inputcode3.getText().toString() +
@@ -77,7 +77,7 @@ public class VerificationActivity extends AppCompatActivity {
                     Intent i = new Intent(VerificationActivity.this, LoginActivity.class);
                     startActivity(i);
                 }else{
-                    Toast.makeText(getApplicationContext(),"mã OTP không chính xác!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"OTP is incorrect!",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -97,7 +97,7 @@ public class VerificationActivity extends AppCompatActivity {
                 ArrayList<String> parts = smsManager.divideMessage(otp+": "+mess);
                 String phoneNumber = phone;
                 smsManager.sendMultipartTextMessage(phoneNumber,null,parts,null,null);
-                Toast.makeText(getApplicationContext(),otp,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"OTP has resend!",Toast.LENGTH_SHORT).show();
 
             }
         });
