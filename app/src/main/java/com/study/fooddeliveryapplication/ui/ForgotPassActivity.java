@@ -77,7 +77,7 @@ public class ForgotPassActivity extends AppCompatActivity {
             if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED);
             sendOTP();
         }else {
-            Toast.makeText(ForgotPassActivity.this, "OTP chưa được gửi!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ForgotPassActivity.this, "OTP not send!", Toast.LENGTH_SHORT).show();
 
         }
     }
@@ -91,7 +91,7 @@ public class ForgotPassActivity extends AppCompatActivity {
     private void sendOTP() {
         String phone = inputphone.getText().toString();
         if (TextUtils.isEmpty(phone)){
-            Toast.makeText(this,"Xin hãy nhập số điện thoại!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please enter your phone number!",Toast.LENGTH_SHORT).show();
             return;
         }
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -108,7 +108,7 @@ public class ForgotPassActivity extends AppCompatActivity {
                     ArrayList<String> parts = smsManager.divideMessage(otp+": "+mess);
                     String phoneNumber = inputphone.getText().toString();
                     smsManager.sendMultipartTextMessage(phoneNumber,null,parts,null,null);
-                    Toast.makeText(getApplicationContext(),otp,Toast.LENGTH_SHORT).show();
+                    
                     Intent i = new Intent(ForgotPassActivity.this, VerificationActivity.class);
                     i.putExtra("OTP",otp);
                     i.putExtra("phone",phone);
@@ -118,7 +118,7 @@ public class ForgotPassActivity extends AppCompatActivity {
 
 
                 }else{
-                    Toast.makeText(getApplicationContext(),"Thông tin số điện thoại chưa được đăng ký!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Phone number information has not been signup!",Toast.LENGTH_SHORT).show();
                 }
             }
 
