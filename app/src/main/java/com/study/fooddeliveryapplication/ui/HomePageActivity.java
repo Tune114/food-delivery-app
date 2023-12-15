@@ -66,26 +66,6 @@ public class HomePageActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-
-        //spinner
-        String[] options = {"Option 1", "Option 2", "Option 3"};
-        CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, android.R.layout.simple_spinner_item, options);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner spinner = findViewById(R.id.sp_place_deliver);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = (String) parent.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(), "You Picked: " + selectedOption, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Xử lý khi không có tùy chọn nào được chọn
-            }
-        });
-
         //Custom hello text
         TextView tvhello = findViewById(R.id.tv_hello_text);
         String fullText = "Hey Quang, Good Morning!";
