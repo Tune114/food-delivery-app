@@ -2,23 +2,23 @@ package com.study.fooddeliveryapplication.model;
 
 public class CartItem {
     private String foodName;
-    private String foodPrice;
-    private String foodQuantity;
-    private String fImage;
-    private String nameofRes;
-    private String pNumber;
+    private String foodImg;
+    private String restName;
+    private String price;
+    private String quantity;
+    private String userPhone;
 
     public CartItem() {
         // Constructor mặc định (cần thiết cho Firebase)
     }
 
-    public CartItem(String foodName, String foodPrice, String foodQuantity, String fImage, String nameofRes, String pNumber) {
+    public CartItem(String foodName, String foodImg, String restName, String price, String quantity, String userPhone) {
         this.foodName = foodName;
-        this.foodPrice = foodPrice;
-        this.foodQuantity = foodQuantity;
-        this.fImage = fImage;
-        this.nameofRes = nameofRes;
-        this.pNumber = pNumber;
+        this.foodImg = foodImg;
+        this.restName = restName;
+        this.price = price;
+        this.quantity = quantity;
+        this.userPhone = userPhone;
     }
 
     public String getFoodName() {
@@ -29,43 +29,43 @@ public class CartItem {
         this.foodName = foodName;
     }
 
-    public String getFoodPrice() {
-        return foodPrice;
+    public String getFoodImg() {
+        return foodImg;
     }
 
-    public void setFoodPrice(String foodPrice) {
-        this.foodPrice = foodPrice;
+    public void setFoodImg(String foodImg) {
+        this.foodImg = foodImg;
     }
 
-    public String getFoodQuantity() {
-        return foodQuantity;
+    public String getRestName() {
+        return restName;
     }
 
-    public void setFoodQuantity(String foodQuantity) {
-        this.foodQuantity = foodQuantity;
+    public void setRestName(String restName) {
+        this.restName = restName;
     }
 
-    public String getFImage() {
-        return fImage;
+    public String getPrice() {
+        return price;
     }
 
-    public void setFImage(String fImage) {
-        this.fImage = fImage;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public String getNameofRes() {
-        return nameofRes;
+    public String getQuantity() {
+        return quantity;
     }
 
-    public void setNameofRes(String nameofRes) {
-        this.nameofRes = nameofRes;
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
-    public String getPNumber() {
-        return pNumber;
+    public String getUserPhone() {
+        return userPhone;
     }
 
-    public void setPNumber(String pNumber) {
-        this.pNumber = pNumber;
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 }

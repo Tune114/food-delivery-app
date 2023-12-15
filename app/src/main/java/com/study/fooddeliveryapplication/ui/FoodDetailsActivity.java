@@ -136,7 +136,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
         String NameofCate=intent.getStringExtra("categoryName");
         String NameofRes=intent.getStringExtra("restaurantName");
         SharedPreferences sharedPreferences = getSharedPreferences("my_app_preferences", Context.MODE_PRIVATE);
-        String pnumber = sharedPreferences.getString("pnumber", "");
+        String pnumber = sharedPreferences.getString("phone", "");
         String username = sharedPreferences.getString("name","Default");
         fname=findViewById(R.id.tv_dish_name);
         fdescrip=findViewById(R.id.tv_dish_info);
@@ -364,7 +364,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
                 String cartId = cartRef.push().getKey(); // Tạo một khóa ngẫu nhiên cho giỏ hàng mới
 
                 // Tạo một đối tượng CartItem chứa thông tin sản phẩm
-                CartItem cartItem = new CartItem(foodName, foodPrice, foodQuantity, foodimagelink, NameofRes, pnumber);
+                CartItem cartItem = new CartItem(foodName, foodimagelink, NameofRes,foodPrice, foodQuantity, pnumber);
 
                 // Gửi dữ liệu lên cơ sở dữ liệu thời gian thực
                 cartRef.child(cartId).setValue(cartItem)
