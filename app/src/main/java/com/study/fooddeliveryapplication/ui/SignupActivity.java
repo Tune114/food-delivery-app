@@ -67,23 +67,23 @@ public class SignupActivity extends AppCompatActivity {
         DatabaseReference databaseReference = database.getReference();
 
         if (email.isEmpty() || password.isEmpty() || phone.isEmpty() || repass.isEmpty() || name.isEmpty() || address.isEmpty()){
-            Toast.makeText(SignupActivity.this,"Xin điền đầy đủ thông tin!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignupActivity.this,"Please enter complete information!",Toast.LENGTH_SHORT).show();
         }
         else {
             databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.hasChild(phone)){
-                        Toast.makeText(SignupActivity.this,"Số điện thoại đã tồn tại",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignupActivity.this,"Phone number already exists!",Toast.LENGTH_SHORT).show();
                     } else if (!password.equals(repass)) {
-                        Toast.makeText(SignupActivity.this,"Mật khẩu không trùng khớp",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignupActivity.this,"Passwords do not match!",Toast.LENGTH_SHORT).show();
                     } else {
                         databaseReference.child("users").child(phone).child("email").setValue(email);
                         databaseReference.child("users").child(phone).child("password").setValue(password);
                         databaseReference.child("users").child(phone).child("name").setValue(name);
                         databaseReference.child("users").child(phone).child("address").setValue(address);
 
-                        Toast.makeText(SignupActivity.this,"Đăng ký thành công",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignupActivity.this,"SignUp Success!",Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(SignupActivity.this,LoginActivity.class);
                         startActivity(i);
                     }
