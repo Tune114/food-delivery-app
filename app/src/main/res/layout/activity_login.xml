@@ -115,7 +115,7 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:text="LOG IN"
-        android:textSize="2323dp" />
+        android:textSize="20dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
