@@ -3,14 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:orientation="horizontal"
-    android:layout_marginTop="20dp"
-    android:layout_marginBottom="20dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
     >
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/icon_ava"
         android:scaleType="centerCrop"
         android:layout_marginLeft="15dp"
         />
@@ -25,13 +26,15 @@
             android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="17sp"
+            android:text="Đinh Công Minh"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvcomment"
             android:layout_width="match_parent"
+            android:text="Món này rất ngon nha."
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="16sp"/>

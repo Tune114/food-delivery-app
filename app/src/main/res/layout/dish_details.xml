@@ -36,7 +36,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textSize="19sp"
+                        android:textSize="16sp"
                         android:text="Food details"
                         android:layout_marginLeft="85dp"
                         android:gravity="center_vertical"
@@ -86,7 +86,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="300dp"
-                        android:layout_height="55dp"
+                        android:layout_height="50dp"
                         app:cardBackgroundColor="@color/white"
                         app:cardElevation="12dp"
                         app:cardCornerRadius="8dp"
@@ -109,7 +109,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Narumi's Restaurant"
                                 android:textColor="@color/black"
-                                android:textSize="18sp"
+                                android:textSize="15sp"
                                 android:textStyle="bold"
                                 android:layout_marginRight="20dp"
                                 />
@@ -139,7 +139,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="17"
-                            android:textSize="12sp"
+                            android:textSize="10sp"
                             android:textColor="@android:color/black"
                             android:layout_marginLeft="4dp"/>
 
@@ -164,7 +164,7 @@
                         android:layout_height="wrap_content"
                         android:text="Bún đậu mắm tôm"
                         android:textColor="@color/black"
-                        android:textSize="23sp"
+                        android:textSize="16sp"
                         android:textStyle="bold"/>
                 </LinearLayout>
                 <TextView
@@ -173,7 +173,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Bún đậu mắm tôm là một món ăn truyền thống của Việt Nam, kết hợp giữa bún (mì sợi), đậu hũ non và mắm tôm. Món ăn này có hương vị đậm đà và thơm ngon, thường được kèm theo rau sống và gia vị tạo nên sự hấp dẫn."
-                    android:textSize="17sp"
+                    android:textSize="14sp"
                     android:layout_marginLeft="25dp"
                     android:layout_marginRight="25dp"
                     android:layout_marginTop="30dp"
@@ -205,7 +205,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="4.8"
-                            android:textSize="18dp"
+                            android:textSize="15sp"
                             android:textColor="@color/dark_blue"
                             />
 
@@ -227,7 +227,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Free"
-                            android:textSize="18dp"
+                            android:textSize="15sp"
                             android:textColor="@color/dark_blue"
                             />
 
@@ -250,7 +250,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="15 min"
-                            android:textSize="18dp"
+                            android:textSize="15sp"
                             android:textColor="@color/dark_blue"
                             />
 
@@ -266,9 +266,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Nguyên liệu gồm:"
+                        android:text="Ingredient:"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="10dp"/>
@@ -288,9 +288,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
-                        android:text="Gợi ý một số món gần bạn:"
+                        android:text="Some nearby food suggestions:"
                         android:textColor="@color/black"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:layout_marginLeft="20dp"/>
 
@@ -315,14 +315,14 @@
                         android:text="Size:"
                         android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:textSize="20sp"
+                        android:textSize="14sp"
                         android:layout_marginLeft="20dp"/>
                     <Button
                         android:id="@+id/btn_size_nho"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nhỏ"
-                        android:textSize="14sp"
+                        android:text="Small"
+                        android:textSize="12sp"
                         android:textColor="@color/black"
                         android:layout_marginLeft="10dp"
                         />
@@ -330,8 +330,8 @@
                         android:id="@+id/btn_size_vua"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vừa"
-                        android:textSize="14sp"
+                        android:text="Medium"
+                        android:textSize="12sp"
                         android:textColor="@color/black"
                         android:layout_marginLeft="10dp"
                         />
@@ -339,8 +339,8 @@
                         android:id="@+id/btn_size_lon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lớn"
-                        android:textSize="14sp"
+                        android:text="Large"
+                        android:textSize="12sp"
                         android:textColor="@color/black"
                         android:layout_marginLeft="10dp"
                         />
@@ -350,42 +350,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="15dp"
                 android:gravity="center_vertical"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Đơn giá:"
+                    android:text="Price:"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
                     android:layout_marginLeft="20dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/text_price"
-                    android:text="25000 $"
+                    android:text="25000"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="25sp"
+                    android:textSize="17sp"
                     android:layout_marginLeft="50dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:layout_marginLeft="20dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Số lượng:"
+                    android:text="Quantity:"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
                     />
                 <Button
                     android:id="@+id/btn_minus"
@@ -406,8 +412,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="0"
-                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:text="1"
+                    android:textSize="17sp"
                     android:layout_marginLeft="20dp"/>
                 <Button
                     android:id="@+id/btn_plus"
@@ -429,40 +436,47 @@
                 android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tạm tính:"
+                    android:text="Total:"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/text_sumprice"
-                    android:text="0 $"
+                    android:text="0"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="25sp"
+                    android:textSize="17sp"
                     android:layout_marginLeft="50dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:layout_marginLeft="20dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="10dp">
                 <Button
                     android:id="@+id/add_to_cart"
                     android:layout_width="350dp"
                     android:layout_height="wrap_content"
-                    android:text="Thêm vào giỏ hàng"
+                    android:text="Add to Cart"
                     android:drawableLeft="@drawable/ic_xehang"
                     android:layout_gravity="center"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:textColor="@color/black"
                     android:elevation="20dp"
                     android:backgroundTint="@color/white"
@@ -472,31 +486,30 @@
                 android:id="@+id/binhluan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Bình luận:"
+                    android:text="Comment:"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="50dp"/>
+                    android:layout_marginTop="30dp"/>
 
 
                 <LinearLayout
-                    android:layout_width="400dp"
-                    android:layout_height="400dp"
-                    android:layout_marginTop="20dp"
-                    >
-                    <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/list_comment"
+                        android:layout_marginTop="20dp"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp" />
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:scrollbars="horizontal" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -505,15 +518,16 @@
                     android:orientation="horizontal"
                     android:layout_marginTop="20dp">
                     <ImageView
+                        android:id="@+id/cmt_ava"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/icon_ava"
+                        android:src="@drawable/ava_default"
                         android:layout_marginLeft="30dp"/>
                     <EditText
                         android:id="@+id/edit_comment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nhập bình luận của bạn"
+                        android:hint="Write your comment here!"
                         android:textSize="18sp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"/>
@@ -523,9 +537,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Gửi bình luận"
+                    android:text="Send comment"
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:drawableLeft="@drawable/ic_chat"
                     android:backgroundTint="@color/white"
                     android:textColor="@android:color/black"

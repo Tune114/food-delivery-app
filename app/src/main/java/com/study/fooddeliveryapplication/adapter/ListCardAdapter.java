@@ -13,13 +13,13 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.study.fooddeliveryapplication.R;
-import com.study.fooddeliveryapplication.model.ModelCard;
+import com.study.fooddeliveryapplication.model.Card;
 
 import java.util.List;
 
-public class ListCardAdapter extends FirebaseRecyclerAdapter<ModelCard, ListCardAdapter.PaymentViewHolder> {
+public class ListCardAdapter extends FirebaseRecyclerAdapter<Card, ListCardAdapter.PaymentViewHolder> {
 
-    private List<ModelCard> listCard;
+    private List<Card> listCard;
 
 
     /**
@@ -28,12 +28,12 @@ public class ListCardAdapter extends FirebaseRecyclerAdapter<ModelCard, ListCard
      *
      * @param options
      */
-    public ListCardAdapter(@NonNull FirebaseRecyclerOptions<ModelCard> options) {
+    public ListCardAdapter(@NonNull FirebaseRecyclerOptions<Card> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull PaymentViewHolder holder, int position, @NonNull ModelCard model) {
+    protected void onBindViewHolder(@NonNull PaymentViewHolder holder, int position, @NonNull Card model) {
         holder.mText.setText(model.getCardName());
 
         Glide.with(holder.mImageview.getContext())

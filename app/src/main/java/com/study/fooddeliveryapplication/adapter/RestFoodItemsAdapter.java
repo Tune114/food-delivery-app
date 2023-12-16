@@ -25,8 +25,6 @@ import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.Food;
 import com.study.fooddeliveryapplication.ui.AddCartActivity;
 import com.study.fooddeliveryapplication.ui.FoodDetailsActivity;
-import com.study.fooddeliveryapplication.ui.PaymentActivity;
-import com.study.fooddeliveryapplication.ui.RestaurantDetails;
 
 import java.util.List;
 

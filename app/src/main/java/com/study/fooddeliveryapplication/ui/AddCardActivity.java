@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.FirebaseDatabase;
 import com.study.fooddeliveryapplication.R;
-import com.study.fooddeliveryapplication.model.ModelCardPayment;
+import com.study.fooddeliveryapplication.model.CardPayment;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,33 +45,33 @@ public class AddCardActivity extends AppCompatActivity {
         btnAddNewCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ModelCardPayment modelCardPayment = new ModelCardPayment();
-                modelCardPayment.setCardName("visa");
-                modelCardPayment.setCardIcon("https://2.bp.blogspot.com/-JtxLIr8Jhw4/XDQRfkIGZMI/AAAAAAAAABQ/q9m6GgAas-Q74T1kKuBRhf1Puk9ao-1HgCLcBGAs/w1200-h630-p-k-no-nu/Paypal-logo-pp-2014.png");
-                modelCardPayment.setCardNumber(edCardNumber.getText().toString());
-                modelCardPayment.setCardHolderName(edCardHolderName.getText().toString());
-                modelCardPayment.setCvc(edCvc.getText().toString());
-                modelCardPayment.setExpireDate(edExDate.getText().toString());
-                if(modelCardPayment.getCardHolderName().equals("")){
+                CardPayment cardPayment = new CardPayment();
+                cardPayment.setCardName("visa");
+                cardPayment.setCardIcon("https://2.bp.blogspot.com/-JtxLIr8Jhw4/XDQRfkIGZMI/AAAAAAAAABQ/q9m6GgAas-Q74T1kKuBRhf1Puk9ao-1HgCLcBGAs/w1200-h630-p-k-no-nu/Paypal-logo-pp-2014.png");
+                cardPayment.setCardNumber(edCardNumber.getText().toString());
+                cardPayment.setCardHolderName(edCardHolderName.getText().toString());
+                cardPayment.setCvc(edCvc.getText().toString());
+                cardPayment.setExpireDate(edExDate.getText().toString());
+                if(cardPayment.getCardHolderName().equals("")){
                     Toast.makeText(AddCardActivity.this, "CardHolderName is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(modelCardPayment.getCvc().equals("")){
+                if(cardPayment.getCvc().equals("")){
                     Toast.makeText(AddCardActivity.this, "Cvc is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(modelCardPayment.getExpireDate().equals("")){
+                if(cardPayment.getExpireDate().equals("")){
                     Toast.makeText(AddCardActivity.this, "ExpireDate is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(modelCardPayment.getCardNumber().equals("")){
+                if(cardPayment.getCardNumber().equals("")){
                     Toast.makeText(AddCardActivity.this, "CardNumber is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(isValidDateFormat(modelCardPayment.getExpireDate())){
+                if(isValidDateFormat(cardPayment.getExpireDate())){
 
                     FirebaseDatabase.getInstance().getReference().child("CardForPayment")
-                            .push().setValue(modelCardPayment.toMap()).addOnFailureListener(new OnFailureListener() {
+                            .push().setValue(cardPayment.toMap()).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Toast.makeText(AddCardActivity.this, "Failse to add", Toast.LENGTH_SHORT).show();
@@ -135,13 +135,13 @@ public class AddCardActivity extends AppCompatActivity {
         lnRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(AddCardActivity.this, RestaurantList.class);
+                HomePageActivity.redirectActitvity(AddCardActivity.this, RestaurantListActivity.class);
             }
         });
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(AddCardActivity.this, UserProflie.class);
+                HomePageActivity.redirectActitvity(AddCardActivity.this, UserProfileActivity.class);
             }
         });
         constraintLayout = findViewById(R.id.dontknow);

@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -28,15 +30,16 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.FirebaseDatabase;
 import com.study.fooddeliveryapplication.R;
+import com.study.fooddeliveryapplication.adapter.ItemAdapter;
 import com.study.fooddeliveryapplication.adapter.RestauItemAdapter;
 import com.study.fooddeliveryapplication.adapter.CustomSpinnerAdapter;
-import com.study.fooddeliveryapplication.adapter.itemAdapter;
+import com.study.fooddeliveryapplication.adapter.RestaurantListAdapter;
 import com.study.fooddeliveryapplication.model.RestauItem;
 
 public class HomePageActivity extends AppCompatActivity {
     TextView et_search;
     ImageView cart, iv_menu;
-    itemAdapter adapter1;
+    ItemAdapter adapter1;
     DrawerLayout drawerLayout;
     LinearLayout lnHome, lnCart, lnRestaurant, lnProfile;
     ConstraintLayout constraintLayout;
@@ -56,7 +59,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         tv_more_res = (TextView) findViewById(R.id.tv_see_all_res);
         tv_more_res.setOnClickListener(view -> {
-            Intent intent = new Intent(HomePageActivity.this, RestaurantList.class);
+            Intent intent = new Intent(HomePageActivity.this, RestaurantListActivity.class);
             startActivity(intent);
         });
 
@@ -66,29 +69,11 @@ public class HomePageActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-
-        //spinner
-        String[] options = {"Option 1", "Option 2", "Option 3"};
-        CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, android.R.layout.simple_spinner_item, options);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner spinner = findViewById(R.id.sp_place_deliver);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = (String) parent.getItemAtPosition(position);
-                Toast.makeText(getApplicationContext(), "You Picked: " + selectedOption, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Xử lý khi không có tùy chọn nào được chọn
-            }
-        });
-
+        SharedPreferences sharedPreferences = getSharedPreferences("my_app_preferences", Context.MODE_PRIVATE);
+        String Name = sharedPreferences.getString("name", null);
         //Custom hello text
         TextView tvhello = findViewById(R.id.tv_hello_text);
-        String fullText = "Hey Quang, Good Morning!";
+        String fullText = "Hello, "+ Name;
         SpannableString spannableString = new SpannableString(fullText);
         int startIndex = fullText.indexOf(",");
         int endIndex = fullText.length();
@@ -141,13 +126,13 @@ public class HomePageActivity extends AppCompatActivity {
         lnRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectActitvity(HomePageActivity.this, RestaurantList.class);
+                redirectActitvity(HomePageActivity.this, RestaurantListAdapter.class);
             }
         });
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectActitvity(HomePageActivity.this, UserProflie.class);
+                redirectActitvity(HomePageActivity.this, UserProfileActivity.class);
             }
         });
     }
