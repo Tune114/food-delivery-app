@@ -73,7 +73,7 @@ public class VerificationActivity extends AppCompatActivity {
                     ArrayList<String> parts = smsManager.divideMessage(yourpass+": "+mess);
 
                     smsManager.sendMultipartTextMessage(phone,null,parts,null,null);
-                    Toast.makeText(getApplicationContext(),"Your password is: "+yourpass,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Your password has send to your phone!",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(VerificationActivity.this, LoginActivity.class);
                     startActivity(i);
                 }else{
