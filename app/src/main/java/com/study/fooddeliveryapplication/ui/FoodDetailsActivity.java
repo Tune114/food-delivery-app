@@ -90,6 +90,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
 
     @SuppressLint("MissingInflatedId")
     @Override
+    @SuppressWarnings("InvalidSetHasFixedSize")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dish_details);
