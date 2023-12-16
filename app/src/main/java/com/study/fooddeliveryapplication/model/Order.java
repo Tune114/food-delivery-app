@@ -1,16 +1,11 @@
 package com.study.fooddeliveryapplication.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import androidx.annotation.NonNull;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ModelOrder  {
-    private List<ModelCart> listFood;
+public class Order {
+    private List<Cart> listFood;
     private  String payable;
     private  String cardNumber;
     private String userPhone;
@@ -40,7 +35,7 @@ public class ModelOrder  {
         this.userPhone = userPhone;
     }
 
-    public ModelOrder(){
+    public Order(){
 
     }
 
@@ -54,11 +49,11 @@ public class ModelOrder  {
 
         return result;
     }
-    public List<ModelCart> getListFood() {
+    public List<Cart> getListFood() {
         return listFood;
     }
 
-    public void setListFood(List<ModelCart> listFood) {
+    public void setListFood(List<Cart> listFood) {
         this.listFood = listFood;
     }
 

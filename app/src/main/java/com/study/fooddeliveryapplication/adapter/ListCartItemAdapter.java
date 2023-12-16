@@ -16,11 +16,11 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.database.FirebaseDatabase;
 import com.study.fooddeliveryapplication.R;
-import com.study.fooddeliveryapplication.model.ModelCart;
+import com.study.fooddeliveryapplication.model.Cart;
 
 import java.util.Map;
 
-public class ListCartItemAdapter extends FirebaseRecyclerAdapter<ModelCart,ListCartItemAdapter.PaymentViewHolder> {
+public class ListCartItemAdapter extends FirebaseRecyclerAdapter<Cart,ListCartItemAdapter.PaymentViewHolder> {
 
 
     /**
@@ -30,12 +30,12 @@ public class ListCartItemAdapter extends FirebaseRecyclerAdapter<ModelCart,ListC
      * @param options
      */
 
-    public ListCartItemAdapter(@NonNull FirebaseRecyclerOptions<ModelCart> options) {
+    public ListCartItemAdapter(@NonNull FirebaseRecyclerOptions<Cart> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull PaymentViewHolder holder, int position, @NonNull ModelCart model) {
+    protected void onBindViewHolder(@NonNull PaymentViewHolder holder, int position, @NonNull Cart model) {
         holder.mFoodName.setText(model.getFoodName());
         holder.mRestName.setText(model.getRestName());
         holder.mQuantity.setText(model.getQuantity());

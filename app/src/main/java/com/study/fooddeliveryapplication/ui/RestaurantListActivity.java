@@ -22,14 +22,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.RestaurantListAdapter;
-import com.study.fooddeliveryapplication.model.Category;
-import com.study.fooddeliveryapplication.model.Food;
 import com.study.fooddeliveryapplication.model.RestauItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RestaurantList extends AppCompatActivity {
+public class RestaurantListActivity extends AppCompatActivity {
     private List<RestauItem> restauItemList;
     private RestaurantListAdapter restaurantListAdapter;
     private DatabaseReference databaseReference;
@@ -70,7 +68,7 @@ public class RestaurantList extends AppCompatActivity {
 
         backbtn = (ImageButton) findViewById(R.id.btnback_reslist);
         backbtn.setOnClickListener(view -> {
-            Intent intent = new Intent(RestaurantList.this,HomePageActivity.class);
+            Intent intent = new Intent(RestaurantListActivity.this,HomePageActivity.class);
             startActivity(intent);
             finish();
         });
@@ -90,13 +88,13 @@ public class RestaurantList extends AppCompatActivity {
         lnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(RestaurantList.this, HomePageActivity.class);
+                HomePageActivity.redirectActitvity(RestaurantListActivity.this, HomePageActivity.class);
             }
         });
         lnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(RestaurantList.this, AddCartActivity.class);
+                HomePageActivity.redirectActitvity(RestaurantListActivity.this, AddCartActivity.class);
 
             }
         });
@@ -109,7 +107,7 @@ public class RestaurantList extends AppCompatActivity {
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(RestaurantList.this, UserProflie.class);
+                HomePageActivity.redirectActitvity(RestaurantListActivity.this, UserProfileActivity.class);
             }
         });
         constraintLayout = findViewById(R.id.dontknow);

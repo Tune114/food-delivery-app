@@ -14,7 +14,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.RestauItem;
-import com.study.fooddeliveryapplication.ui.RestaurantDetails;
+import com.study.fooddeliveryapplication.ui.RestaurantDetailsActivity;
 
 public class RestauItemAdapter extends FirebaseRecyclerAdapter<RestauItem,RestauItemAdapter.myViewHolder> {
     public RestauItemAdapter(@NonNull FirebaseRecyclerOptions<RestauItem> options) {
@@ -38,7 +38,7 @@ public class RestauItemAdapter extends FirebaseRecyclerAdapter<RestauItem,Restau
 
             Log.d("RestauItem", RestName + " " + RestDescrip + " "+ RestImage);
 
-            Intent intent = new Intent(view.getContext(), RestaurantDetails.class);
+            Intent intent = new Intent(view.getContext(), RestaurantDetailsActivity.class);
 
             intent.putExtra("RestName", RestName);
             intent.putExtra("RestDescrip", RestDescrip);

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.RestauItem;
-import com.study.fooddeliveryapplication.ui.RestaurantDetails;
+import com.study.fooddeliveryapplication.ui.RestaurantDetailsActivity;
 import java.util.List;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.MyViewHolder>{
@@ -47,7 +47,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                Intent intent = new Intent(context, RestaurantDetails.class);
+                Intent intent = new Intent(context, RestaurantDetailsActivity.class);
                 int clickedPosition = holder.getAdapterPosition();
 
                 if (clickedPosition != RecyclerView.NO_POSITION) {

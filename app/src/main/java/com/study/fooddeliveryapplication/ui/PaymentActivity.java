@@ -16,23 +16,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.adapter.ListCardAdapter;
 import com.study.fooddeliveryapplication.adapter.ListCardAddAdapter;
-import com.study.fooddeliveryapplication.model.ModelCard;
-import com.study.fooddeliveryapplication.model.ModelCardPayment;
-import com.study.fooddeliveryapplication.model.ModelOrder;
-import com.study.fooddeliveryapplication.model.ModelOrderPaid;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import io.reactivex.rxjava3.annotations.NonNull;
+import com.study.fooddeliveryapplication.model.Card;
+import com.study.fooddeliveryapplication.model.CardPayment;
+import com.study.fooddeliveryapplication.model.OrderPaid;
 
 public class PaymentActivity extends AppCompatActivity {
     private RecyclerView rvListCardItem, rvListCardAdd;
@@ -42,7 +32,7 @@ public class PaymentActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     LinearLayout lnHome, lnCart, lnRestaurant, lnProfile;
     private TextView txPayable, txtCardUseForPay;
-    private ModelOrderPaid modelOrderPaid;
+    private OrderPaid orderPaid;
     ConstraintLayout constraintLayout;
     private ImageView btnBack, show_more_btn;
     @Override
@@ -56,18 +46,18 @@ public class PaymentActivity extends AppCompatActivity {
         rvListCardItem = findViewById(R.id.listCardItem);
         rvListCardItem.setHasFixedSize(true);
         rvListCardItem.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false));
-        FirebaseRecyclerOptions<ModelCard> card =
-                new FirebaseRecyclerOptions.Builder<ModelCard>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Card"), ModelCard.class)
+        FirebaseRecyclerOptions<Card> card =
+                new FirebaseRecyclerOptions.Builder<Card>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Card"), Card.class)
                         .build();
         listCardAdapter = new ListCardAdapter(card);
         rvListCardItem.setAdapter(listCardAdapter);
         // listCardAdd
         rvListCardAdd = findViewById(R.id.listCardAdd);
         rvListCardAdd.setLayoutManager(new LinearLayoutManager(this ));
-        FirebaseRecyclerOptions<ModelCardPayment> cardAdded =
-                new FirebaseRecyclerOptions.Builder<ModelCardPayment>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("CardForPayment"),ModelCardPayment.class)
+        FirebaseRecyclerOptions<CardPayment> cardAdded =
+                new FirebaseRecyclerOptions.Builder<CardPayment>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("CardForPayment"), CardPayment.class)
                         .build();
         listCardAddAdapter = new ListCardAddAdapter(cardAdded);
         rvListCardAdd.setAdapter(listCardAddAdapter);
@@ -121,13 +111,13 @@ public class PaymentActivity extends AppCompatActivity {
         lnRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(PaymentActivity.this, RestaurantList.class);
+                HomePageActivity.redirectActitvity(PaymentActivity.this, RestaurantListActivity.class);
             }
         });
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(PaymentActivity.this, RestaurantList.class);
+                HomePageActivity.redirectActitvity(PaymentActivity.this, RestaurantListActivity.class);
             }
         });
         constraintLayout = findViewById(R.id.dontknow);

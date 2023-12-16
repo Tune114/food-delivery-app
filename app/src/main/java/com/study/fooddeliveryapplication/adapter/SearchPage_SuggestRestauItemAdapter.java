@@ -14,7 +14,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.SearchPage_SuggestRestauItem;
-import com.study.fooddeliveryapplication.ui.RestaurantDetails;
+import com.study.fooddeliveryapplication.ui.RestaurantDetailsActivity;
 
 public class SearchPage_SuggestRestauItemAdapter extends FirebaseRecyclerAdapter<SearchPage_SuggestRestauItem,SearchPage_SuggestRestauItemAdapter.myViewHolder> {
 
@@ -39,7 +39,7 @@ public class SearchPage_SuggestRestauItemAdapter extends FirebaseRecyclerAdapter
 
             Log.d("SearchPage_SuggestRestauItem", SuggestRestItemName + " "+ SuggestRestItemStar+ " "+ SuggestRestItemImage);
 
-            Intent intent = new Intent(view.getContext(), RestaurantDetails.class);
+            Intent intent = new Intent(view.getContext(), RestaurantDetailsActivity.class);
 
             intent.putExtra("SuggestRestItemName", SuggestRestItemName);
             intent.putExtra("SuggestRestItemStar", SuggestRestItemStar);

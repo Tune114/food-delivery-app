@@ -2,16 +2,16 @@ package com.study.fooddeliveryapplication.model;
 
 import java.util.List;
 
-public class ModelOrderPaid {
-    private List<ModelOrder> modelOrder;
+public class OrderPaid {
+    private List<Order> order;
 
 
-    public List<ModelOrder> getModelOrder() {
-        return modelOrder;
+    public List<Order> getModelOrder() {
+        return order;
     }
 
-    public void setModelOrder(List<ModelOrder> modelOrder) {
-        this.modelOrder = modelOrder;
+    public void setModelOrder(List<Order> order) {
+        this.order = order;
     }
 
     public String getUserName() {

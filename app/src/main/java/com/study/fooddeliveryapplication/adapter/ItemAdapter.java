@@ -16,12 +16,12 @@ import com.study.fooddeliveryapplication.R;
 import com.study.fooddeliveryapplication.model.Item;
 import com.study.fooddeliveryapplication.ui.FoodDetailsActivity;
 
-public class itemAdapter extends FirebaseRecyclerAdapter<Item,itemAdapter.myViewHolder> {
-    public itemAdapter(@NonNull FirebaseRecyclerOptions<Item> options) {
+public class ItemAdapter extends FirebaseRecyclerAdapter<Item, ItemAdapter.myViewHolder> {
+    public ItemAdapter(@NonNull FirebaseRecyclerOptions<Item> options) {
         super(options);
     }
     @Override
-    protected void onBindViewHolder(@NonNull itemAdapter.myViewHolder holder, int position, @NonNull Item item) {
+    protected void onBindViewHolder(@NonNull ItemAdapter.myViewHolder holder, int position, @NonNull Item item) {
         holder.FoodName.setText(item.getFoodName());
         Glide.with(holder.FoodImage.getContext())
                 .load(item.getFoodImage())

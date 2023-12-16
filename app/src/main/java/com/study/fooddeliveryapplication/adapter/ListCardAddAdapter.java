@@ -3,7 +3,6 @@ package com.study.fooddeliveryapplication.adapter;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +17,10 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 import com.study.fooddeliveryapplication.R;
-import com.study.fooddeliveryapplication.model.CardForPayment;
-import com.study.fooddeliveryapplication.model.ModelCardPayment;
+import com.study.fooddeliveryapplication.model.CardPayment;
 import com.study.fooddeliveryapplication.ui.AddCartActivity;
-import com.study.fooddeliveryapplication.ui.PaymentActivity;
-import com.study.fooddeliveryapplication.ui.RestaurantDetails;
 
-import java.util.List;
-
-public class ListCardAddAdapter extends FirebaseRecyclerAdapter<ModelCardPayment,ListCardAddAdapter.PaymentViewHolder> {
+public class ListCardAddAdapter extends FirebaseRecyclerAdapter<CardPayment,ListCardAddAdapter.PaymentViewHolder> {
 
 
     /**
@@ -35,12 +29,12 @@ public class ListCardAddAdapter extends FirebaseRecyclerAdapter<ModelCardPayment
      *
      * @param options
      */
-    public ListCardAddAdapter(@NonNull FirebaseRecyclerOptions<ModelCardPayment> options) {
+    public ListCardAddAdapter(@NonNull FirebaseRecyclerOptions<CardPayment> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull PaymentViewHolder holder, int position, @NonNull ModelCardPayment model) {
+    protected void onBindViewHolder(@NonNull PaymentViewHolder holder, int position, @NonNull CardPayment model) {
         holder.mCardNumber.setText(model.getCardNumber());
 
         Glide.with(holder.mIconview.getContext())

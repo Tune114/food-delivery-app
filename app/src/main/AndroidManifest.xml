@@ -17,11 +17,11 @@
         android:theme="@style/Theme.FoodDeliveryApplication"
         tools:targetApi="33">
         <activity
-            android:name=".ui.RestaurantList"
+            android:name=".ui.RestaurantListActivity"
             android:exported="false" >
         </activity>
         <activity
-            android:name=".ui.UserProflie"
+            android:name=".ui.UserProfileActivity"
             android:exported="false">
         </activity>
         <activity
@@ -44,7 +44,7 @@
             android:name=".ui.FoodDetailsActivity"
             android:exported="false"></activity>
         <activity
-            android:name=".ui.RestaurantDetails"
+            android:name=".ui.RestaurantDetailsActivity"
             android:exported="false">
         </activity>
         <activity

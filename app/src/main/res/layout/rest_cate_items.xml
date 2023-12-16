@@ -14,7 +14,7 @@
         android:background="@drawable/custom_btn_unselected"
         android:text="Burger"
         android:textAllCaps="false"
-        android:textSize="16dp"
+        android:textSize="14dp"
         android:layout_marginRight="5dp"
         android:padding="3dp"
         android:textColor="@color/white"

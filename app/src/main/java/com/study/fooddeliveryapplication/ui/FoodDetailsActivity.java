@@ -63,7 +63,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
     private TextView txtSumPrice;
     private Button btnPlus;
     private Button btnMinus;
-    private int quantity = 0;
+    private int quantity = 1;
     private int price = 0;
 
     private ImageButton btnBack;
@@ -351,7 +351,7 @@ public class FoodDetailsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Context context = view.getContext();
                 finish();
-                Intent intent = new Intent(FoodDetailsActivity.this, RestaurantList.class);
+                Intent intent = new Intent(FoodDetailsActivity.this, RestaurantListActivity.class);
                 startActivity(intent);
             }
         });
@@ -485,13 +485,13 @@ public class FoodDetailsActivity extends AppCompatActivity {
         lnRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, RestaurantList.class);
+                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, RestaurantListActivity.class);
             }
         });
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, UserProflie.class);
+                HomePageActivity.redirectActitvity(FoodDetailsActivity.this, UserProfileActivity.class);
             }
         });
         constraintLayout = findViewById(R.id.dontknow);

@@ -2,6 +2,7 @@ package com.study.fooddeliveryapplication.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -65,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         phone = phoneedit.getText().toString();
         password = passwordedit.getText().toString();
         if (TextUtils.isEmpty(phone)){
-            Toast.makeText(this,"Xin hãy nhập số điện thoại!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please enter your phone number!",Toast.LENGTH_SHORT).show();
             return;
         }
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -73,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if (phone.isEmpty() || password.isEmpty() ){
-            Toast.makeText(LoginActivity.this,"Xin hãy nhập đủ thông tin!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this,"Please enter complete information!",Toast.LENGTH_SHORT).show();
         }
         else {
             databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -87,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                         String getaddress = snapshot.child(phone).child("address").getValue(String.class);
 
                         if (getPass.equals(password)){
-                            Toast.makeText(LoginActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this,"Login Success!",Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
                             //intent.putExtra("phone",phone);
@@ -106,11 +110,11 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else {
-                            Toast.makeText(LoginActivity.this,"Đăng nhập thất bại!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this,"Login Fail!",Toast.LENGTH_SHORT).show();
 
                         }
                     }else{
-                        Toast.makeText(LoginActivity.this,"Thông tin số điện thoại hoặc mật khẩu sai!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this,"Incorrect phone number or password information!",Toast.LENGTH_SHORT).show();
                     }
                 }
 

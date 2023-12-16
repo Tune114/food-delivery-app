@@ -1,14 +1,9 @@
 package com.study.fooddeliveryapplication.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import androidx.annotation.NonNull;
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class ModelCart  {
+public class Cart {
     private String foodName;
     private String foodImg;
     private  String restName;
@@ -25,7 +20,7 @@ public class ModelCart  {
         this.userPhone = userPhone;
     }
 
-    public ModelCart(){
+    public Cart(){
 
     }
 

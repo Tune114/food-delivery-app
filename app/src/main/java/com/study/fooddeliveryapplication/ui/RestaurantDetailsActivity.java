@@ -30,7 +30,7 @@ import com.study.fooddeliveryapplication.model.Food;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RestaurantDetails extends AppCompatActivity implements UpdateRestInfor {
+public class RestaurantDetailsActivity extends AppCompatActivity implements UpdateRestInfor {
 
     private RecyclerView categoriesRecyclerView;
     private RecyclerView foodRecyclerView;
@@ -60,7 +60,7 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
             @Override
             public void onClick(View view) {
                 finish();
-                Intent intent = new Intent(RestaurantDetails.this, HomePageActivity.class);
+                Intent intent = new Intent(RestaurantDetailsActivity.this, HomePageActivity.class);
                 startActivity(intent);
             }
         });
@@ -144,26 +144,26 @@ public class RestaurantDetails extends AppCompatActivity implements UpdateRestIn
         lnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(RestaurantDetails.this, HomePageActivity.class);
+                HomePageActivity.redirectActitvity(RestaurantDetailsActivity.this, HomePageActivity.class);
             }
         });
         lnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(RestaurantDetails.this, AddCartActivity.class);
+                HomePageActivity.redirectActitvity(RestaurantDetailsActivity.this, AddCartActivity.class);
 
             }
         });
         lnRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(RestaurantDetails.this, RestaurantList.class);
+                HomePageActivity.redirectActitvity(RestaurantDetailsActivity.this, RestaurantListActivity.class);
             }
         });
         lnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomePageActivity.redirectActitvity(RestaurantDetails.this, UserProflie.class);
+                HomePageActivity.redirectActitvity(RestaurantDetailsActivity.this, UserProfileActivity.class);
             }
         });
         constraintLayout = findViewById(R.id.dontknow);
