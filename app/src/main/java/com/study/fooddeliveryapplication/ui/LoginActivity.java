@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (getPass.equals(password)){
                             Toast.makeText(LoginActivity.this,"Login Success!",Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(LoginActivity.this, UserProflie.class);
+                            Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
                             //intent.putExtra("phone",phone);
                             //intent.putExtra("password",getPass);
                             //intent.putExtra("email",getmail);
