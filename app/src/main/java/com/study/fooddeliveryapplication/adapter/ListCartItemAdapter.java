@@ -39,7 +39,6 @@ public class ListCartItemAdapter extends FirebaseRecyclerAdapter<Cart,ListCartIt
         holder.mFoodName.setText(model.getFoodName());
         holder.mRestName.setText(model.getRestName());
         holder.mQuantity.setText(model.getQuantity());
-        holder.mPrice.setText(model.getPrice());
         int total =Integer.parseInt(model.getPrice())*Integer.parseInt(model.getQuantity());
         holder.mTotal.setText(String.valueOf(total));
         Glide.with(holder.mImgFood.getContext())
@@ -117,13 +116,12 @@ public class ListCartItemAdapter extends FirebaseRecyclerAdapter<Cart,ListCartIt
     }
 
     public class PaymentViewHolder  extends RecyclerView.ViewHolder {
-        private TextView mFoodName, mTotal, mPrice, mQuantity, mRestName, mDelete, mIncrease, mDecrease;
+        private TextView mFoodName, mTotal, mQuantity, mRestName, mDelete, mIncrease, mDecrease;
         private ImageView mImgFood;
 
         public PaymentViewHolder(@NonNull View itemView) {
             super(itemView);
             mFoodName = itemView.findViewById(R.id.txtFoodName);
-            mPrice = itemView.findViewById(R.id.txtPrice);
             mImgFood = itemView.findViewById(R.id.imgFood);
             mQuantity = itemView.findViewById(R.id.txtQuantity);
             mRestName = itemView.findViewById(R.id.txtRestName);
