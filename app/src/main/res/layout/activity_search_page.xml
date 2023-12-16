@@ -27,8 +27,8 @@
 
     <TextView
         android:id="@+id/search"
-        android:layout_width="54dp"
-        android:layout_height="22dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="85dp"
         android:layout_alignParentTop="true"
@@ -81,8 +81,8 @@
 
     <TextView
         android:id="@+id/tv_Recent_keywords"
-        android:layout_width="140dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="24dp"
         android:layout_alignParentTop="true"
@@ -104,8 +104,8 @@
 
     <TextView
         android:id="@+id/tv_Suggested_Restaurants"
-        android:layout_width="214dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="24dp"
         android:layout_alignParentTop="true"
@@ -126,8 +126,8 @@
 
     <TextView
         android:id="@+id/tv_Popular_Fast_Food"
-        android:layout_width="214dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="24dp"
         android:layout_alignParentTop="true"
